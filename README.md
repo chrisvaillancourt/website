@@ -16,3 +16,7 @@ My personal website.
 ## Preview
 
 Preview the built app with `npm run preview`. Don't use this to serve the app.
+
+### Todo
+
+- [ ] Add base styles
