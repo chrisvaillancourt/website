@@ -1,9 +1,9 @@
 import AppList from "./AppList";
 export default function AppNav() {
   const items = [
-    { title: "test", link: "#" },
-    { title: "test", link: "#" },
-    { title: "test", link: "#" },
+    { title: "Posts", link: "./posts" },
+    { title: "About", link: "./about" },
+    { title: "Contact", link: "./contact" },
   ];
 
   return (
