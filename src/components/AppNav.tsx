@@ -1,14 +1,22 @@
-import AppList from "./AppList";
-export default function AppNav() {
-  const items = [
-    { title: "Posts", link: "./posts" },
-    { title: "About", link: "./about" },
-    { title: "Contact", link: "./contact" },
-  ];
+import { NavLink } from "solid-app-router";
+import { For } from "solid-js";
+import { routes } from "../routes";
 
+export default function AppNav() {
+  const routeLinks = routes.map(({ title, path }) => ({ title, path }));
+
+  const styles = {
+    "padding-right": "10px",
+  };
   return (
     <nav>
-      <AppList items={items} />
+      <For each={routeLinks}>
+        {({ title, path }) => (
+          <NavLink style={styles} href={path}>
+            {title}
+          </NavLink>
+        )}
+      </For>
     </nav>
   );
 }
