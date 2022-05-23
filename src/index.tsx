@@ -1,13 +1,12 @@
-import { render } from "solid-js/web";
+import { MountableElement, render } from "solid-js/web";
+import { Router } from "solid-app-router";
+import App from "./app";
 
-import { PageHeading } from "./components/PageHeading";
-import AppNav from "./components/AppNav";
 render(
   () => (
-    <>
-      <AppNav />
-      <PageHeading />
-    </>
+    <Router>
+      <App />
+    </Router>
   ),
-  document.getElementById("root")
+  document.getElementById("root") as MountableElement
 );
