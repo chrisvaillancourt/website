@@ -1,18 +1,19 @@
 /// <reference types="vitest" />
 /// <reference types="vite/client" />
 
-import { defineConfig } from 'vite';
-import solidPlugin from 'vite-plugin-solid';
+import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 export default defineConfig({
-  plugins: [solidPlugin()],
+  plugins: [solidPlugin(), vanillaExtractPlugin()],
   test: {
-    environment: 'jsdom',
+    environment: "jsdom",
     globals: true,
     transformMode: {
       web: [/\.[jt]sx?$/],
     },
-    setupFiles: './setupVitest.ts',
+    setupFiles: "./setupVitest.ts",
     // solid needs to be inline to work around
     // a resolution issue in vitest:
     deps: {
@@ -24,10 +25,10 @@ export default defineConfig({
     isolate: false,
   },
   build: {
-    target: 'esnext',
+    target: "esnext",
     polyfillDynamicImport: false,
   },
   resolve: {
-    conditions: ['development', 'browser'],
-  }
+    conditions: ["development", "browser"],
+  },
 });
