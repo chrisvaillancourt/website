@@ -3,10 +3,10 @@
 
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import postcss from "./postcss.config.js";
 
 export default defineConfig({
-  plugins: [solidPlugin(), vanillaExtractPlugin()],
+  plugins: [solidPlugin()],
   test: {
     environment: "jsdom",
     globals: true,
@@ -30,5 +30,8 @@ export default defineConfig({
   },
   resolve: {
     conditions: ["development", "browser"],
+  },
+  css: {
+    postcss,
   },
 });
