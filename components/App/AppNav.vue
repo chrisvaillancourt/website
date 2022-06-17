@@ -23,8 +23,8 @@ const links = new Set([
   <nav>
     <NuxtLink
       v-for="{ to, text } in links"
-      :class="$style.link"
       :key="text"
+      :class="$style.link"
       :to="to"
     >
       {{ text }}
