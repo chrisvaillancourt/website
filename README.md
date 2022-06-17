@@ -2,9 +2,7 @@
 
 ## Actions
 
-[ ] [eslint](https://github.com/nuxt/framework/discussions/2815)
-[ ] prettier
-[ ] content module
+- [ ] content module
 
 ## Setup
 
