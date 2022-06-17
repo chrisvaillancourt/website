@@ -1,5 +1,6 @@
-<script setup></script>
-
+<script setup>
+// TODO add page level metadata with `useHead()`
+</script>
 <template>
   <main>
     <h2>Contact</h2>
