@@ -1,6 +1,7 @@
 # Logs
 logs
 *.log
+*.log*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -87,9 +88,11 @@ web_modules/
 .next
 out
 
-# Nuxt.js build / generate output
+# Nuxt.js
 .nuxt
 dist
+.nitro
+.output
 
 # Gatsby files
 .cache/
