@@ -1,20 +1,20 @@
 <script setup lang="ts">
 const links = new Set([
   {
-    to: "/",
-    text: "Home",
+    to: '/',
+    text: 'Home',
   },
   {
-    to: "/posts",
-    text: "Posts",
+    to: '/posts',
+    text: 'Posts',
   },
   {
-    to: "/about",
-    text: "About",
+    to: '/about',
+    text: 'About',
   },
   {
-    to: "/contact",
-    text: "Contact",
+    to: '/contact',
+    text: 'Contact',
   },
 ]);
 </script>
@@ -33,7 +33,7 @@ const links = new Set([
 </template>
 
 <style module>
-@import "open-props/sizes";
+@import 'open-props/sizes';
 
 .link {
   padding-inline-end: var(--size-3);
