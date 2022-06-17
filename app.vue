@@ -20,3 +20,22 @@ useHead({
     </NuxtLayout>
   </div>
 </template>
+
+<style>
+@import "open-props/normalize";
+@import "open-props/style";
+
+:root {
+  --link-visited: var(--link); /* use consistent link style */
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+a[href],
+a[href]:visited {
+  color: var(--link);
+  text-decoration-color: var(--link);
+}
+</style>
