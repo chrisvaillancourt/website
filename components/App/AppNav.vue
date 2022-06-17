@@ -21,10 +21,21 @@ const links = new Set([
 
 <template>
   <nav>
-    <NuxtLink v-for="{ to, text } in links" :key="text" :to="to">
+    <NuxtLink
+      v-for="{ to, text } in links"
+      :class="$style.link"
+      :key="text"
+      :to="to"
+    >
       {{ text }}
     </NuxtLink>
   </nav>
 </template>
 
-<style module></style>
+<style module>
+@import "open-props/sizes";
+
+.link {
+  padding-inline-end: var(--size-3);
+}
+</style>
