@@ -6,7 +6,7 @@ const links = new Set([
   },
   {
     to: "/posts",
-    text: "posts",
+    text: "Posts",
   },
   {
     to: "/about",
