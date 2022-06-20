@@ -50,4 +50,7 @@ a[href]:visited {
   color: var(--link);
   text-decoration-color: var(--link);
 }
+h1 {
+  font-size: var(--font-size-6);
+}
 </style>
