@@ -4,7 +4,7 @@
 
 <template>
   <main>
-    <h2>Posts</h2>
+    <ContentDoc />
   </main>
 </template>
 

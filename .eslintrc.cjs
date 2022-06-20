@@ -1,4 +1,9 @@
+// TODO get process env
+// const isDev = import.meta.env.DEV;
+const isDev = true;
+
 const baseRules = {
+  'no-console': isDev ? 'off' : 'error',
   'no-new-wrappers': 'error',
   eqeqeq: ['error', 'smart'],
   'no-return-await': 'error',
@@ -37,6 +42,12 @@ module.exports = {
         ...baseRules,
         'vue/component-name-in-template-casing': ['error', 'PascalCase'],
         'vue/valid-v-slot': ['error', { allowModifiers: true }],
+        'vue/component-tags-order': [
+          'error',
+          {
+            order: [['script', 'template'], 'style'],
+          },
+        ],
       },
     },
     {
