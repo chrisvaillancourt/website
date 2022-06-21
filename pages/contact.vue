@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 // TODO add page level metadata with `useHead()`
 </script>
 <template>

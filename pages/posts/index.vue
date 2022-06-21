@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { logError } from '~/lib/logger';
 // TODO add page level metadata with `useHead()`
-const posts = ref(null);
+const posts = ref<unknown>(null);
 // TODO use async data: https://content.nuxtjs.org/guide/displaying/querying#with-useasyncdata
 queryContent('/posts')
   .find()
@@ -9,6 +9,7 @@ queryContent('/posts')
     posts.value = content;
   })
   .catch((error) => {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     logError({ msg: 'There was an error loading all posts.', error });
   });
 </script>
@@ -21,5 +22,4 @@ queryContent('/posts')
     </ul>
   </main>
 </template>
-
 <style module></style>
