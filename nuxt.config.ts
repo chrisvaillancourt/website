@@ -12,14 +12,6 @@ export default defineNuxtConfig({
     shim: false,
     strict: true,
     typeCheck: true,
-    tsConfig: {
-      compilerOptions: {
-        moduleResolution: 'node',
-        allowSyntheticDefaultImports: true,
-        esModuleInterop: true,
-        isolatedModules: true,
-      },
-    },
   },
   telemetry: false,
   vite: {
