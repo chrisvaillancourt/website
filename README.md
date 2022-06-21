@@ -1,30 +1,22 @@
 # Website
 
-## Actions
-
-- [ ] content module
+Christopher Vaillancourt's personal website.
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
 # pnpm
 pnpm install --shamefully-hoist
 ```
 
 ## Development Server
 
-Start the development server on http://localhost:3000
+Start the development server on <http://localhost:3000>
 
 ```bash
-pnpm run dev -- -o
+pnpm run dev
 ```
 
 ## Production
@@ -32,7 +24,7 @@ pnpm run dev -- -o
 Build the application for production:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 Locally preview production build:
