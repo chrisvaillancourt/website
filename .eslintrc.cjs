@@ -9,13 +9,13 @@ module.exports = {
     es2022: true,
     node: true,
   },
-  plugins: ['vue', '@typescript-eslint'],
+  plugins: ['@typescript-eslint'], //? Does `vue` need to be added?
   extends: [
     'eslint:recommended',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    '@nuxtjs/eslint-config-typescript',
+    // '@nuxtjs/eslint-config-typescript', // TODO enabled after https://github.com/nuxt/eslint-config/pull/217
     'prettier',
   ],
   parser: 'vue-eslint-parser',
@@ -51,11 +51,11 @@ module.exports = {
       },
     ],
   },
-  // overrides: [
-  //   {
-  //     files: ['layouts/*.vue', 'pages/**/*.vue'],
-  //     rules: { 'vue/multi-word-component-names': 'off' },
-  //   },
-  // ],
+  overrides: [
+    {
+      files: ['layouts/*.vue', 'pages/**/*.vue'],
+      rules: { 'vue/multi-word-component-names': 'off' },
+    },
+  ],
   ignorePatterns: ['.eslintrc.cjs'],
 };
