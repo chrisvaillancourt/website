@@ -26,10 +26,12 @@ useHead({
 
 <template>
   <div>
-    <NuxtLayout>
+    <!-- theme toggle needs to be first to apply theme styles -->
+    <AppThemeToggle />
+    <div class="content">
       <AppNav />
       <NuxtPage />
-    </NuxtLayout>
+    </div>
   </div>
 </template>
 
@@ -39,6 +41,22 @@ useHead({
 
 :root {
   --link-visited: var(--link); /* use consistent link style */
+  /* background */
+  --bg-color-dark: black;
+  --bg-color-light: white;
+  /* text */
+  --color-light: black;
+  --color-dark: white;
+  /* defaults */
+  --bg-color: var(--bg-color-light);
+  --color: var(--color-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: var(--bg-color-dark);
+    --color: var(--color-dark);
+  }
 }
 
 body {
@@ -52,5 +70,14 @@ a[href]:visited {
 }
 h1 {
   font-size: var(--font-size-6);
+}
+.content {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--color);
+}
+::selection {
+  background: var(--color);
+  color: var(--bg-color);
 }
 </style>
