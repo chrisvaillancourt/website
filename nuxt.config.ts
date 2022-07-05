@@ -13,6 +13,22 @@ export default defineNuxtConfig({
     shim: false,
     strict: true,
     typeCheck: true,
+    tsConfig: {
+      compilerOptions: {
+        target: 'esnext',
+        useDefineForClassFields: true,
+        module: 'esnext',
+        moduleResolution: 'node',
+        strict: true,
+        jsx: 'preserve',
+        sourceMap: true,
+        resolveJsonModule: true,
+        isolatedModules: true,
+        esModuleInterop: true,
+        lib: ['esnext', 'dom'],
+        skipLibCheck: true,
+      },
+    },
   },
   telemetry: false,
 });
