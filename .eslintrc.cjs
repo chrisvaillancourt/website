@@ -1,6 +1,5 @@
 // TODO get process env
-// const isDev = import.meta.env.DEV;
-const isDev = true;
+const isDev = import.meta.env.DEV;
 
 module.exports = {
   root: true,
@@ -15,7 +14,7 @@ module.exports = {
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    // '@nuxtjs/eslint-config-typescript', // TODO enabled after https://github.com/nuxt/eslint-config/pull/217
+    '@nuxtjs/eslint-config-typescript',
     'prettier',
   ],
   parser: 'vue-eslint-parser',
