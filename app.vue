@@ -27,13 +27,19 @@ useHead({
 <template>
   <div>
     <!-- theme toggle needs to be first to apply theme styles -->
-    <AppThemeToggle />
+    <AppThemeToggle class="app-theme-toggle" />
     <div class="content">
-      <AppNav />
+      <AppNav class="app-nav" />
       <NuxtPage />
     </div>
   </div>
 </template>
+
+<style scoped>
+.content {
+  padding-block-start: var(--content-padding-block-start);
+}
+</style>
 
 <style>
 @import 'open-props/normalize';
@@ -50,6 +56,7 @@ useHead({
   /* defaults */
   --bg-color: var(--bg-color-light);
   --color: var(--color-light);
+  --content-padding-block-start: var(--size-fluid-2);
 }
 
 @media (prefers-color-scheme: dark) {

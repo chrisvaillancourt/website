@@ -39,18 +39,21 @@
 }
 </style>
 <style scoped>
-.theme-toggle {
-  opacity: 0.00001;
-  position: absolute;
-}
+.theme-toggle,
 .theme-toggle-label {
   position: absolute;
+}
+.theme-toggle {
+  opacity: 0.00001;
+}
+.theme-toggle-label {
   background-color: var(--color);
   color: var(--bg-color);
   cursor: pointer;
   background: var(--color);
   color: var(--bg-color);
   padding: 1rem;
+  top: var(--content-padding-block-start);
   left: 85vw;
   display: flex;
   align-items: center;
