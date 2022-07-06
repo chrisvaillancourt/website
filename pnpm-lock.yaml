@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@mdi/js': ^6.9.96
   '@nuxt/content': ^2.0.1
   '@nuxtjs/eslint-config-typescript': ^10.0.0
   '@typescript-eslint/eslint-plugin': ^5.29.0
@@ -15,6 +16,7 @@ specifiers:
   vite-plugin-eslint: ^1.6.1
 
 dependencies:
+  '@mdi/js': 6.9.96
   open-props: 1.3.16
 
 devDependencies:
@@ -436,6 +438,10 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@mdi/js/6.9.96:
+    resolution: {integrity: sha512-rK0/vLFaiItYS2W7uVmaKPKnhNQE4XVkylpk5njtVwENnp8elwY5uRL6qvdj2esuvUHG7DwygE4Qu3eKxxuJiQ==}
+    dev: false
 
   /@netlify/functions/1.0.0:
     resolution: {integrity: sha512-7fnJv3vr8uyyyOYPChwoec6MjzsCw1CoRUO2DhQ1BD6bOyJRlD4DUaOOGlMILB2LCT8P24p5LexEGx8AJb7xdA==}
