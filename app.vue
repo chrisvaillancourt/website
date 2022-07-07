@@ -27,7 +27,7 @@ useHead({
 <template>
   <div>
     <!-- theme toggle needs to be first to apply theme styles -->
-    <AppThemeToggle class="app-theme-toggle" />
+    <AppThemeToggle />
     <div class="content">
       <AppNav class="app-nav" />
       <NuxtPage />
