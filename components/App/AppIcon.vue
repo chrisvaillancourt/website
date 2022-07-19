@@ -15,6 +15,7 @@ const props = withDefaults(
     color: 'currentColor',
   },
 );
+const viewBox = computed(() => `0 0 ${props.width} ${props.height}`);
 
 const id = `${props.name}-${uid()}`;
 </script>
@@ -23,15 +24,14 @@ const id = `${props.name}-${uid()}`;
   <svg
     class="svg"
     xmlns="http://www.w3.org/2000/svg"
+    :viewBox="viewBox"
     :width="width"
     :height="height"
-    viewBox="0 0 24 24"
-    :aria-labelledby="name"
+    :aria-labelledby="id"
     role="presentation"
   >
     <title :id="id" lang="en">{{ name }} icon</title>
     <g :fill="color">
-      <!-- TODO refactor to use default slot and not path prop -->
       <path :d="path"></path>
     </g>
   </svg>
@@ -39,8 +39,6 @@ const id = `${props.name}-${uid()}`;
 
 <style scoped>
 .svg {
-  /* display: inline-block; */
   vertical-align: baseline;
-  margin-bottom: -2px;
 }
 </style>

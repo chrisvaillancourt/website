@@ -5,6 +5,7 @@ import { defineNuxtConfig } from 'nuxt';
 export default defineNuxtConfig({
   ssr: true,
   target: 'static',
+  css: ['~/assets/styles/app.css', '~/assets/styles/utils.css'],
   modules: ['@nuxt/content'],
   content: {
     // https://content.nuxtjs.org/api/configuration

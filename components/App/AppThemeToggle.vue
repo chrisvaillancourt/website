@@ -1,4 +1,7 @@
 /* eslint-disable vue/no-multiple-template-root */
+<script setup lang="ts">
+import { weatherSunny, weatherNight } from '~/lib/icons';
+</script>
 <template>
   <input
     id="theme-toggle"
@@ -7,8 +10,16 @@
     name="theme-toggle"
   />
   <label for="theme-toggle" class="theme-toggle-label">
-    <span class="dark-mode-hide">Dark Mode</span>
-    <span class="light-mode-hide">Light Mode</span>
+    <AppIcon
+      class="dark-mode-hide"
+      name="dark mode icon"
+      :path="weatherNight"
+    />
+    <AppIcon
+      class="light-mode-hide"
+      name="light mode icon"
+      :path="weatherSunny"
+    />
   </label>
 </template>
 
@@ -44,7 +55,9 @@
   position: absolute;
 }
 .theme-toggle {
-  opacity: 0.00001;
+  opacity: 0;
+  width: 1rem;
+  height: 1rem;
 }
 .theme-toggle-label {
   background-color: var(--color);
@@ -68,16 +81,6 @@
 .theme-toggle-label:active {
   transform: translateY(1px);
   /* box-shadow: 0 1px var(--bg), 0 3px var(--text); */
-}
-.theme-toggle-label:after {
-  content: '✔\FE0E';
-  height: 1.2rem;
-  width: 1.2rem;
-  margin-left: 1rem;
-  border: solid 2px var(--bg-color);
-  text-align: center;
-  border-radius: 4px;
-  color: transparent;
 }
 .theme-toggle:checked + .theme-toggle-label:after {
   color: var(--bg-color);
