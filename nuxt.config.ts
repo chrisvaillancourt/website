@@ -29,7 +29,6 @@ export default defineNuxtConfig({
         lib: ['esnext', 'dom'],
         skipLibCheck: true,
       },
-      include: ['./env.d.ts'],
     },
   },
   telemetry: false,
