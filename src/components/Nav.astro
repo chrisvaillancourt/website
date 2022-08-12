@@ -1,0 +1,24 @@
+---
+const links = [
+  {
+    to: '/',
+    text: 'Home',
+  },
+  {
+    to: '/posts',
+    text: 'Posts',
+  },
+  {
+    to: '/about',
+    text: 'About',
+  },
+  {
+    to: '/contact',
+    text: 'Contact',
+  },
+];
+---
+
+<nav>
+  {links.map(({ to, text }) => <a href={to}>{text}</a>)}
+</nav>
