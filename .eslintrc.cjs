@@ -1,60 +1,47 @@
-// TODO get process env
-const isDev = import.meta.env.DEV;
-
 module.exports = {
   root: true,
-  env: {
-    browser: true,
-    es2022: true,
-    node: true,
-  },
-  plugins: ['@typescript-eslint'], //? Does `vue` need to be added?
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    '@nuxtjs/eslint-config-typescript',
+    // 'plugin:@typescript-eslint/recommended-requiring-type-checking', // doesn't work with config
+    'plugin:jsx-a11y/strict',
+    'plugin:astro/recommended',
     'prettier',
   ],
-  parser: 'vue-eslint-parser',
+  plugins: ['@typescript-eslint', 'jsx-a11y'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    sourceType: 'module',
+    project: './tsconfig.json',
     ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
-    extraFileExtensions: ['.vue'],
-  },
-  rules: {
-    'no-console': isDev ? 'off' : 'error',
-    'no-new-wrappers': 'error',
-    eqeqeq: ['error', 'smart'],
-    'no-return-await': 'error',
-    // 'no-void': ['error', {allowAsStatement: true}] // * May be helpful to uncomment later
-    '@typescript-eslint/prefer-ts-expect-error': 'error',
-    'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-    'vue/valid-v-slot': ['error', { allowModifiers: true }],
-    'vue/component-tags-order': [
-      'error',
-      {
-        order: ['script', 'template', 'style'],
-      },
-    ],
-    'vue/block-lang': [
-      'error',
-      {
-        script: {
-          lang: 'ts',
-        },
-      },
-    ],
+    sourceType: 'module',
+    extraFileExtensions: ['.astro'], // required setting in `@typescript-eslint/parser` v5
   },
   overrides: [
     {
-      files: ['layouts/*.vue', 'pages/**/*.vue'],
-      rules: { 'vue/multi-word-component-names': 'off' },
+      // Define the configuration for `.astro` file.
+      files: ['*.astro'],
+      // Allows Astro components to be parsed.
+      parser: 'astro-eslint-parser',
+      // Parse the script in `.astro` as TypeScript by adding the following configuration.
+      // It's the setting you need when using TypeScript.
+      parserOptions: {
+        parser: '@typescript-eslint/parser',
+      },
+      rules: {
+        // override/add rules settings here, such as:
+        // "astro/no-set-html-directive": "error"
+      },
+    },
+    {
+      files: ['*.ts'],
+      parser: '@typescript-eslint/parser',
+      extends: ['plugin:@typescript-eslint/recommended'],
+      rules: {
+        // '@typescript-eslint/no-unused-vars': [
+        //   'error',
+        //   { argsIgnorePattern: '^_', destructuredArrayIgnorePattern: '^_' },
+        // ],
+      },
     },
   ],
-  ignorePatterns: ['.eslintrc.cjs'],
 };

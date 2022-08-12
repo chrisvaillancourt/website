@@ -1,0 +1,36 @@
+---
+import { uuid } from '../lib/string';
+
+export interface Props {
+  width?: string | number;
+  height?: string | number;
+  name: string;
+  path: string;
+  color?: string;
+}
+const defaultSize = 24;
+const {
+  width = defaultSize,
+  height = defaultSize,
+  name,
+  path,
+  color = 'currentColor',
+} = Astro.props as Props;
+const viewBox = `0 0 ${width} ${height}`;
+const id = `${name}-${uuid()}`;
+---
+
+<svg
+  class="svg"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={viewBox}
+  width={width}
+  height={height}
+  aria-labelledby="id"
+  role="presentation"
+>
+  <title id={id} lang="en">{name} icon</title>
+  <g fill={color}>
+    <path d={path}></path>
+  </g>
+</svg>
