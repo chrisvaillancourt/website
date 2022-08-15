@@ -1,24 +1,16 @@
 ---
-const links = [
-  {
-    to: '/',
-    text: 'Home',
-  },
-  {
-    to: '/posts',
-    text: 'Posts',
-  },
-  {
-    to: '/about',
-    text: 'About',
-  },
-  {
-    to: '/contact',
-    text: 'Contact',
-  },
-];
+import Link from './Link.astro';
+
+export interface Props {
+  links: {
+    to: string;
+    text: string;
+  }[];
+}
+
+const { links } = Astro.props as Props;
 ---
 
 <nav>
-  {links.map(({ to, text }) => <a href={to}>{text}</a>)}
+  {links.map(({ to, text }) => <Link href={to}>{text}</Link>)}
 </nav>
