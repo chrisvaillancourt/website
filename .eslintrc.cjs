@@ -21,6 +21,12 @@ module.exports = {
   },
   overrides: [
     {
+      files: ['**/*.cjs'],
+      env: {
+        node: true,
+      },
+    },
+    {
       // Define the configuration for `.astro` file.
       files: ['*.astro'],
       env: {
