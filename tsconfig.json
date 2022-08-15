@@ -37,12 +37,11 @@
     "noUncheckedIndexedAccess": true,
     // Report an error when the value `undefined` is given to an optional property that doesn't specify `undefined` as a valid value.
     "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@lib/*": ["src/lib/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": [".eslintrc.cjs", "src"]
+  "include": [".eslintrc.cjs", "src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"]
 }
