@@ -35,5 +35,11 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [".eslintrc.cjs", "src/**/*.ts", "src/**/*.tsx", "src/**/*.astro"]
+  "include": [
+    ".eslintrc.cjs",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro",
+    "./tailwind.config.cjs"
+  ]
 }
