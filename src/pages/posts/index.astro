@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/BaseLayout.astro';
+import Link from '@/components/Link.astro';
+import { validPosts } from '@/lib/validators';
+
+const posts = validPosts(await getPosts());
+// TODO fix type err
+const nonDraftPosts = posts.filter((post) => !post.frontmatter?.draft);
+
+function getPosts() {
+  return Astro.glob('./*.md');
+}
+---
+
+<Layout title="Christopher Vaillancourt">
+  <main>
+    <h1 class="text-gradient">Posts</h1>
+    {
+      nonDraftPosts.map((post) => (
+        <article>
+          <h2>{post.frontmatter.title}</h2>
+          <p>{post.frontmatter.summary}</p>
+          <Link href={post.url}>Read more</Link>
+        </article>
+      ))
+    }
+  </main>
+</Layout>
