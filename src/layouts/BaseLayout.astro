@@ -1,57 +1,85 @@
 ---
+import Nav from '@/components/Nav.astro';
+
 export interface Props {
-	title: string;
+  title: string;
 }
 
-const { title } = Astro.props as Props;
+const { title } = (Astro.props as Props) || (Astro.props.frontmatter as Props);
+
+const navLinks = [
+  {
+    to: '/',
+    text: 'Home',
+  },
+  {
+    to: '/posts',
+    text: 'Posts',
+  },
+  {
+    to: '/about',
+    text: 'About',
+  },
+  {
+    to: '/contact',
+    text: 'Contact',
+  },
+];
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐢</text></svg>" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Christopher Vaillancourt's personal website" />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot/>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐢</text></svg>"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Christopher Vaillancourt's personal website"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Nav links={navLinks} />
+    <slot />
+    <style>
+      :root {
+        --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
+        --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
+        --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
+
+        --color-text: hsl(12, 5%, 4%);
+        --color-bg: hsl(10, 21%, 95%);
+        --color-border: hsl(17, 24%, 90%);
+      }
+
+      html {
+        font-family: system-ui, sans-serif;
+        font-size: var(--font-size-base);
+        color: var(--color-text);
+        background-color: var(--color-bg);
+      }
+
+      body {
+        margin: 0;
+      }
+
+      :global(h1) {
+        font-size: var(--font-size-xl);
+      }
+
+      :global(h2) {
+        font-size: var(--font-size-lg);
+      }
+
+      :global(code) {
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+      }
+    </style>
+  </body>
 </html>
-<style>
-	:root {
-		--font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-		--font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-		--font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-
-		--color-text: hsl(12, 5%, 4%);
-		--color-bg: hsl(10, 21%, 95%);
-		--color-border: hsl(17, 24%, 90%);
-	}
-
-	html {
-		font-family: system-ui, sans-serif;
-		font-size: var(--font-size-base);
-		color: var(--color-text);
-		background-color: var(--color-bg);
-	}
-
-	body {
-		margin: 0;
-	}
-
-	:global(h1) {
-		font-size: var(--font-size-xl);
-	}
-
-	:global(h2) {
-		font-size: var(--font-size-lg);
-	}
-
-	:global(code) {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
