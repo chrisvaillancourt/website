@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     es2022: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -77,6 +78,10 @@ module.exports = {
         project: './tsconfig.json',
       },
       extends: ['plugin:@typescript-eslint/recommended'],
+      env: {
+        es2022: true,
+        node: true,
+      },
       rules: {
         // '@typescript-eslint/no-unused-vars': [
         //   'error',
