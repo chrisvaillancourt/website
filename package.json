@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write --ignore-path .gitignore --plugin-search-dir=. .",
-    "lint": "eslint src/**/*.{js,astro} --ignore-path .gitignore",
+    "lint": "eslint src/**/*.{ts,astro} --ignore-path .gitignore",
     "lint:fix": "pnpm lint --fix"
   },
   "devDependencies": {
