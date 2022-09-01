@@ -36,6 +36,9 @@ module.exports = {
       },
       globals: {
         Astro: 'readonly',
+        // make ESLint aware of astroHTML so we can do something like:
+        //  `export type Props = astroHTML.JSX.AnchorHTMLAttributes`
+        astroHTML: 'readonly',
       },
       // Allows Astro components to be parsed.
       parser: 'astro-eslint-parser',
