@@ -20,6 +20,7 @@ module.exports = {
       jsx: true,
     },
   },
+  reportUnusedDisableDirectives: true,
   overrides: [
     {
       files: ['**/*.cjs'],
