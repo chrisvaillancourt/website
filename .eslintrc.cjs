@@ -4,12 +4,7 @@ module.exports = {
     es2022: true,
     node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:astro/recommended',
-    'plugin:astro/jsx-a11y-strict',
-    'prettier',
-  ],
+  extends: ['eslint:recommended', 'plugin:astro/recommended', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
