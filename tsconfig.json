@@ -35,13 +35,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [
-    ".eslintrc.cjs",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.astro",
-    "*.js",
-    "*.cjs",
-    "*.mjs"
-  ]
+  "include": [".eslintrc.cjs", "src/**/*.ts"]
 }

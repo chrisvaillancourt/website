@@ -1,14 +1,18 @@
 ---
 import Layout from '@/layouts/BaseLayout.astro';
 import Link from '@/components/Link.astro';
-import { validPosts } from '@/lib/validators';
 
-const posts = validPosts(await getPosts());
-// TODO fix type err
-const nonDraftPosts = posts.filter((post) => !post.frontmatter?.draft);
+interface Frontmatter {
+  title: string;
+  summary: string;
+  draft?: boolean;
+}
+const posts = await getPosts();
+
+const nonDraftPosts = posts.filter((post) => !Object.hasOwn(post, 'draft'));
 
 function getPosts() {
-  return Astro.glob('./*.md');
+  return Astro.glob<Frontmatter>('./*.md');
 }
 ---
 

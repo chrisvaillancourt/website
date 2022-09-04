@@ -9,6 +9,7 @@
     "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "tsc": "tsc",
     "format": "prettier --write --ignore-path .gitignore --plugin-search-dir=. .",
     "lint": "eslint src/**/*.{ts,astro} --ignore-path .gitignore",
     "lint:fix": "pnpm lint --fix"
