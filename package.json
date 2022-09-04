@@ -14,7 +14,6 @@
     "lint:fix": "pnpm lint --fix"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^1.0.0",
     "@types/node": "^16.11.56",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
@@ -22,6 +21,9 @@
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-astro": "^0.17.1",
+    "open-props": "^1.4.14",
+    "postcss": "^8.4.16",
+    "postcss-jit-props": "^1.0.7",
     "prettier": "2.7.1",
     "prettier-plugin-astro": "^0.5.4",
     "typescript": "^4.8.2"
