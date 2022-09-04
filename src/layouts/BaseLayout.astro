@@ -1,7 +1,6 @@
 ---
 // @ts-expect-error ts isn't aware of the module's exports
 import Nav from '@/components/Nav.astro';
-import ThemeToggle from '@/components/ThemeToggle.astro';
 import '@/styles/global.css';
 export interface Props {
   title: string;
@@ -46,10 +45,7 @@ const navLinks = [
     <title>{title}</title>
   </head>
   <body>
-    <ThemeToggle />
-    <div class="content">
-      <Nav links={navLinks} />
-      <slot />
-    </div>
+    <Nav links={navLinks} />
+    <slot />
   </body>
 </html>
