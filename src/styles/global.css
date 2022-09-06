@@ -1,2 +1,10 @@
 @import 'open-props/style';
 @import 'open-props/normalize';
+
+:root {
+  --link: var(--indigo-2);
+}
+
+a[href]:visited {
+  color: var(--link);
+}
