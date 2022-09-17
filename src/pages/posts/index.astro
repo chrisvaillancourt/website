@@ -1,18 +1,14 @@
 ---
 import Layout from '@/layouts/BaseLayout.astro';
 import Link from '@/components/Link.astro';
+import type { PostFrontmatter } from '@/types';
 
-interface Frontmatter {
-  title: string;
-  summary: string;
-  draft?: boolean;
-}
 const posts = await getPosts();
 
 const nonDraftPosts = posts.filter((post) => !Object.hasOwn(post, 'draft'));
 
 function getPosts() {
-  return Astro.glob<Frontmatter>('./*.md');
+  return Astro.glob<PostFrontmatter>('./*.md');
 }
 ---
 
