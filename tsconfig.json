@@ -35,5 +35,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": [".eslintrc.cjs", "src/**/*.ts"]
+  "include": [".eslintrc.cjs", "src/**/*.ts", "src/**/*.astro"]
 }
