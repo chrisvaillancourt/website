@@ -2,10 +2,10 @@ lockfileVersion: 5.4
 
 specifiers:
   '@mdi/js': ^7.0.96
-  '@types/node': ^16.11.57
+  '@types/node': ^16.11.58
   '@typescript-eslint/eslint-plugin': ^5.36.2
   '@typescript-eslint/parser': ^5.36.2
-  astro: ^1.1.5
+  astro: ^1.1.7
   eslint: ^8.23.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-astro: ^0.18.0
@@ -20,10 +20,10 @@ dependencies:
   '@mdi/js': 7.0.96
 
 devDependencies:
-  '@types/node': 16.11.57
+  '@types/node': 16.11.58
   '@typescript-eslint/eslint-plugin': 5.36.2_iurrlxgqcgk5svigzxakafpeuu
   '@typescript-eslint/parser': 5.36.2_yqf6kl63nyoq5megxukfnom5rm
-  astro: 1.1.5
+  astro: 1.1.7
   eslint: 8.23.0
   eslint-config-prettier: 8.5.0_eslint@8.23.0
   eslint-plugin-astro: 0.18.0_eslint@8.23.0
@@ -46,6 +46,10 @@ packages:
 
   /@astrojs/compiler/0.23.4:
     resolution: {integrity: sha512-vNZIa5Tf5nOqBEGJvM6xyYBnGcz4MAp+bBPnyVI0UYRjsIWlP7RgMdCpRV0OOh5kgh00BoAypGv27kcoJCMVfA==}
+    dev: true
+
+  /@astrojs/compiler/0.23.5:
+    resolution: {integrity: sha512-vBMPy9ok4iLapSyCCT1qsZ9dK7LkVFl9mObtLEmWiec9myGHS9h2kQY2xzPeFNJiWXUf9O6tSyQpQTy5As/p3g==}
     dev: true
 
   /@astrojs/language-server/0.23.1:
@@ -605,8 +609,8 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/node/16.11.57:
-    resolution: {integrity: sha512-diBb5AE2V8h9Fs9zEDtBwSeLvIACng/aAkdZ3ujMV+cGuIQ9Nc/V+wQqurk9HJp8ni5roBxQHW21z/ZYbGDivg==}
+  /@types/node/16.11.58:
+    resolution: {integrity: sha512-uMVxJ111wpHzkx/vshZFb6Qni3BOMnlWLq7q9jrwej7Yw/KvjsEbpxCCxw+hLKxexFMc8YmpG8J9tnEe/rKsIg==}
     dev: true
 
   /@types/parse5/6.0.3:
@@ -862,12 +866,12 @@ packages:
       - supports-color
     dev: true
 
-  /astro/1.1.5:
-    resolution: {integrity: sha512-V3uDGTHYDbrqDbCpziEgCv8uElow/Ae1LjGC7guTQTU3IXzcVbJPkIfx8uNDThQ6nZpSb38z9GsFtsNJ9A3OmQ==}
+  /astro/1.1.7:
+    resolution: {integrity: sha512-bQr95BIgD6Eu0exGOY26TxxKahZ3FiiEOpu3oUzsdM9kgeWUW8Mtjz3BKD+klZS9x0z3NYWOueCgxqe+vij8Vg==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
     hasBin: true
     dependencies:
-      '@astrojs/compiler': 0.23.4
+      '@astrojs/compiler': 0.23.5
       '@astrojs/language-server': 0.23.1
       '@astrojs/markdown-remark': 1.1.1
       '@astrojs/telemetry': 1.0.0
