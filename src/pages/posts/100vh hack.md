@@ -1,8 +1,8 @@
 ---
 title: 100vh hack
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/PostLayout.astro
 summary: Fixing 100vh on mobile
-status: draft
+added: 09-02-2022
 ---
 
 ## The problem

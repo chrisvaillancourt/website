@@ -1,8 +1,8 @@
 ---
 title: Using pnpm with Cloudflare Pages
-layout: ../../layouts/BaseLayout.astro
+layout: ../../layouts/PostLayout.astro
 summary: How to setup a Cloudflare Pages deployment with pnpm.
-date: 09-4-2022
+added: 09-4-2022
 ---
 
 ## TLDR

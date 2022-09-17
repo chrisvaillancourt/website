@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import type { PostLayoutProps } from '@/types';
+
+// TODO open new links in a new tab
+// add a PostContent component that taks the result of `compiledContent()`
+// and modifies the anchor tag as needed
+
+const {
+  frontmatter: { title, summary, added },
+  compiledContent,
+} = Astro.props as PostLayoutProps;
+---
+
+<BaseLayout>
+  <h2>{title}</h2>
+  <time>{added}</time>
+  <p>{summary}</p>
+
+  <slot />
+</BaseLayout>
