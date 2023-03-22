@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro check --watch & astro dev",
     "start": "astro dev",
-    "build": "astro check && tsc --noEmit && astro build",
+    "build": "astro check && tsc --noEmit && pnpm lint && astro build",
     "wrangler": "wrangler",
     "deploy": "wrangler pages publish dist",
     "preview": "astro preview",
