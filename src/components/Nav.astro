@@ -6,11 +6,12 @@ export interface Props {
     href: string;
     text: string;
   }[];
+  class: string;
 }
 
-const { links } = Astro.props as Props;
+const { links, class: className } = Astro.props as Props;
 ---
 
-<nav>
+<nav class={className}>
   {links.map(({ href, text }) => <Link href={href}>{text}</Link>)}
 </nav>
