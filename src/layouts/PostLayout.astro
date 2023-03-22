@@ -1,6 +1,9 @@
 ---
-import BaseLayout from './BaseLayout.astro';
-import type { PostLayoutProps } from '@/types';
+import BlogLayout from './BlogLayout.astro';
+import type { MarkdownLayoutProps } from 'astro';
+import type { PostFrontmatter } from '@/types';
+
+type PostLayoutProps = MarkdownLayoutProps<PostFrontmatter>;
 
 // TODO open new links in a new tab
 // add a PostContent component that taks the result of `compiledContent()`
@@ -8,14 +11,15 @@ import type { PostLayoutProps } from '@/types';
 
 const {
   frontmatter: { title, summary, added },
+  // @ts-expect-error TODO add custom parser to configure how links open in new tab
   compiledContent,
 } = Astro.props as PostLayoutProps;
 ---
 
-<BaseLayout>
+<BlogLayout>
   <h2>{title}</h2>
   <time>{added}</time>
   <p>{summary}</p>
 
   <slot />
-</BaseLayout>
+</BlogLayout>

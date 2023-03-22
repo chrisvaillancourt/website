@@ -1,13 +1,11 @@
 ---
-// @ts-expect-error ts isn't aware of the module's exports
 import Nav from '@/components/Nav.astro';
-import '@/styles/global.css';
 export interface Props {
   title?: string;
+  showNav?: boolean;
 }
 
-const { title = 'Chris Vaillancourt' } =
-  (Astro.props as Props) || (Astro.props.frontmatter as Props);
+const { title = 'Chris Vaillancourt', showNav = true } = Astro.props;
 
 const navLinks = [
   {
@@ -46,7 +44,13 @@ const navLinks = [
     <title>{title}</title>
   </head>
   <body>
-    <Nav links={navLinks} />
+    {showNav && <Nav class="nav" links={navLinks} />}
     <slot />
   </body>
 </html>
+
+<style>
+.nav {
+  margin-top: var(--size-3);
+}
+</style>

@@ -1,4 +1,6 @@
 <script>
+  // ! Old resume that we're replacing
+
   function getElementClasses(selector: string) {
     const els = document.querySelectorAll(selector);
     const classes = new Set();
@@ -12,7 +14,7 @@
   const tailwindClasses = getElementClasses('*');
   console.log(tailwindClasses);
 </script>
-<div class="font-firago hyphens-manual">
+<div class="hyphens-manual">
   <!-- Page -->
   <div
     class="p-6 mx-auto page max-w-2xl print:max-w-letter md:max-w-letter md:h-letter xsm:p-8 sm:p-9 md:p-16 bg-white"
@@ -66,15 +68,14 @@
                 class="absolute -ml-3 sm:-ml-3.2 select-none transform -translate-y-px"
                 >›</span
               >
-              Develop front and back end of Absci's core application platform using
-              Vue.js, Node.js, and Python
+              Creator and core maintainer of core application development platform
             </li>
             <li class="mt-2.1 text-md text-gray-700 leading-normal">
               <span
                 class="absolute -ml-3 sm:-ml-3.2 select-none transform -translate-y-px"
                 >›</span
               >
-              Build REST APIs to interact with relational, NoSQL, and graph databases
+              Build, deploy, and operate back end services using REST and WebSockets
             </li>
 
             <li class="mt-2.1 text-md text-gray-700 leading-normal">
@@ -82,23 +83,22 @@
                 class="absolute -ml-3 sm:-ml-3.2 select-none transform -translate-y-px"
                 >›</span
               >
-              Prototype new applications in collaboration with data scientists, engineers,
-              and lab scientists
+              Prototype and deliver applications for data scientists, executive leaders,
+              and individual contributors
             </li>
             <li class="mt-2.1 text-md text-gray-700 leading-normal">
               <span
                 class="absolute -ml-3 sm:-ml-3.2 select-none transform -translate-y-px"
                 >›</span
               >
-              Mentor junior team members to deliver performant and scalable web applications
+              Mentor team members to deliver performant and scalable web applications
             </li>
             <li class="mt-2.1 text-md text-gray-700 leading-normal">
               <span
                 class="absolute -ml-3 sm:-ml-3.2 select-none transform -translate-y-px"
                 >›</span
               >
-              Establish unit and end-to-end testing best practices using Jest and
-              Cypress
+              Establish testing tools and standards for UI and back end services.
             </li>
           </ul>
         </section>
@@ -572,462 +572,6 @@
 </div>
 
 <style>
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.latin.woff2) format('woff2');
-    unicode-range: u+0000-007f, u+0080-00ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.latin-ext.woff2) format('woff2');
-    unicode-range: u+0100-017f, u+0180-024f, u+0250-02af, u+1e??, u+2c60-2c7f,
-      u+a720-a7ff, u+ab30-ab6f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.cyrillic.woff2) format('woff2');
-    unicode-range: u+04??, u+0500-052f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.special.woff2) format('woff2');
-    unicode-range: u+02b0-02ff, u+0300-036f, u+1d00-1d7f, u+1d80-1dbf,
-      u+1dc0-1dff, u+23??, u+2980-29ff, u+2b??, u+e000-f8ff, u+fb00-fb4f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.greek.woff2) format('woff2');
-    unicode-range: u+0370-03ff, u+1f??;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.hebrew.woff2) format('woff2');
-    unicode-range: u+0590-05ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.arabic.woff2) format('woff2');
-    unicode-range: u+06??, u+0750-077f, u+fb50-fdff, u+fe70-feff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.devanagari.woff2) format('woff2');
-    unicode-range: u+0900-097f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.thai.woff2) format('woff2');
-    unicode-range: u+0e00-0e7f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.georgian.woff2) format('woff2');
-    unicode-range: u+10a0-10ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(/fonts/FiraGO-SemiBold.shared.woff2) format('woff2');
-    unicode-range: u+2000-206f, u+2070-209f, u+20a0-20cf, u+2100-214f,
-      u+2150-218f, u+2190-21ff, u+22??, u+25a0-25ff, u+2700-27bf;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.latin.woff2) format('woff2');
-    unicode-range: u+0000-007f, u+0080-00ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.latin-ext.woff2) format('woff2');
-    unicode-range: u+0100-017f, u+0180-024f, u+0250-02af, u+1e??, u+2c60-2c7f,
-      u+a720-a7ff, u+ab30-ab6f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.cyrillic.woff2) format('woff2');
-    unicode-range: u+04??, u+0500-052f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.special.woff2) format('woff2');
-    unicode-range: u+02b0-02ff, u+0300-036f, u+1d00-1d7f, u+1d80-1dbf,
-      u+1dc0-1dff, u+23??, u+2980-29ff, u+2b??, u+e000-f8ff, u+fb00-fb4f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.greek.woff2) format('woff2');
-    unicode-range: u+0370-03ff, u+1f??;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.hebrew.woff2) format('woff2');
-    unicode-range: u+0590-05ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.arabic.woff2) format('woff2');
-    unicode-range: u+06??, u+0750-077f, u+fb50-fdff, u+fe70-feff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.devanagari.woff2) format('woff2');
-    unicode-range: u+0900-097f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.thai.woff2) format('woff2');
-    unicode-range: u+0e00-0e7f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.georgian.woff2) format('woff2');
-    unicode-range: u+10a0-10ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Bold.shared.woff2) format('woff2');
-    unicode-range: u+2000-206f, u+2070-209f, u+20a0-20cf, u+2100-214f,
-      u+2150-218f, u+2190-21ff, u+22??, u+25a0-25ff, u+2700-27bf;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.latin.woff2) format('woff2');
-    unicode-range: u+0000-007f, u+0080-00ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.latin-ext.woff2) format('woff2');
-    unicode-range: u+0100-017f, u+0180-024f, u+0250-02af, u+1e??, u+2c60-2c7f,
-      u+a720-a7ff, u+ab30-ab6f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.cyrillic.woff2) format('woff2');
-    unicode-range: u+04??, u+0500-052f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.special.woff2) format('woff2');
-    unicode-range: u+02b0-02ff, u+0300-036f, u+1d00-1d7f, u+1d80-1dbf,
-      u+1dc0-1dff, u+23??, u+2980-29ff, u+2b??, u+e000-f8ff, u+fb00-fb4f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.greek.woff2) format('woff2');
-    unicode-range: u+0370-03ff, u+1f??;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.hebrew.woff2) format('woff2');
-    unicode-range: u+0590-05ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.arabic.woff2) format('woff2');
-    unicode-range: u+06??, u+0750-077f, u+fb50-fdff, u+fe70-feff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.devanagari.woff2) format('woff2');
-    unicode-range: u+0900-097f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.thai.woff2) format('woff2');
-    unicode-range: u+0e00-0e7f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.georgian.woff2) format('woff2');
-    unicode-range: u+10a0-10ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 300;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Book.shared.woff2) format('woff2');
-    unicode-range: u+2000-206f, u+2070-209f, u+20a0-20cf, u+2100-214f,
-      u+2150-218f, u+2190-21ff, u+22??, u+25a0-25ff, u+2700-27bf;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.latin.woff2) format('woff2');
-    unicode-range: u+0000-007f, u+0080-00ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.latin-ext.woff2) format('woff2');
-    unicode-range: u+0100-017f, u+0180-024f, u+0250-02af, u+1e??, u+2c60-2c7f,
-      u+a720-a7ff, u+ab30-ab6f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.cyrillic.woff2) format('woff2');
-    unicode-range: u+04??, u+0500-052f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.special.woff2) format('woff2');
-    unicode-range: u+02b0-02ff, u+0300-036f, u+1d00-1d7f, u+1d80-1dbf,
-      u+1dc0-1dff, u+23??, u+2980-29ff, u+2b??, u+e000-f8ff, u+fb00-fb4f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.greek.woff2) format('woff2');
-    unicode-range: u+0370-03ff, u+1f??;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.hebrew.woff2) format('woff2');
-    unicode-range: u+0590-05ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.arabic.woff2) format('woff2');
-    unicode-range: u+06??, u+0750-077f, u+fb50-fdff, u+fe70-feff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.devanagari.woff2) format('woff2');
-    unicode-range: u+0900-097f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.thai.woff2) format('woff2');
-    unicode-range: u+0e00-0e7f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.georgian.woff2) format('woff2');
-    unicode-range: u+10a0-10ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Medium.shared.woff2) format('woff2');
-    unicode-range: u+2000-206f, u+2070-209f, u+20a0-20cf, u+2100-214f,
-      u+2150-218f, u+2190-21ff, u+22??, u+25a0-25ff, u+2700-27bf;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.latin.woff2) format('woff2');
-    unicode-range: u+0000-007f, u+0080-00ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.latin-ext.woff2) format('woff2');
-    unicode-range: u+0100-017f, u+0180-024f, u+0250-02af, u+1e??, u+2c60-2c7f,
-      u+a720-a7ff, u+ab30-ab6f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.cyrillic.woff2) format('woff2');
-    unicode-range: u+04??, u+0500-052f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.special.woff2) format('woff2');
-    unicode-range: u+02b0-02ff, u+0300-036f, u+1d00-1d7f, u+1d80-1dbf,
-      u+1dc0-1dff, u+23??, u+2980-29ff, u+2b??, u+e000-f8ff, u+fb00-fb4f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.greek.woff2) format('woff2');
-    unicode-range: u+0370-03ff, u+1f??;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.hebrew.woff2) format('woff2');
-    unicode-range: u+0590-05ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.arabic.woff2) format('woff2');
-    unicode-range: u+06??, u+0750-077f, u+fb50-fdff, u+fe70-feff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.devanagari.woff2) format('woff2');
-    unicode-range: u+0900-097f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.thai.woff2) format('woff2');
-    unicode-range: u+0e00-0e7f;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.georgian.woff2) format('woff2');
-    unicode-range: u+10a0-10ff;
-  }
-  @font-face {
-    font-family: FiraGo;
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url(/fonts/FiraGO-Regular.shared.woff2) format('woff2');
-    unicode-range: u+2000-206f, u+2070-209f, u+20a0-20cf, u+2100-214f,
-      u+2150-218f, u+2190-21ff, u+22??, u+25a0-25ff, u+2700-27bf;
-  }
-
   /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
   html {
     line-height: 1.15;
@@ -1114,11 +658,6 @@
   }
   .items-center {
     align-items: center;
-  }
-  .font-firago {
-    font-family: FiraGO, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI,
-      Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
-      Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
   }
   .font-normal {
     font-weight: 400;

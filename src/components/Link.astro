@@ -3,6 +3,6 @@ export type Props = astroHTML.JSX.AnchorHTMLAttributes;
 const { href, ...attrs } = Astro.props as Props;
 ---
 
-<a {href} {...attrs}>
+<a href={href} {...attrs}>
   <slot />
 </a>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  headingLevel: string;
+  class?: string;
+}
+
+const { headingLevel, class: className }: Props = Astro.props;
+const Heading = `h${headingLevel}`;
+---
+
+<article class={className}>
+  <header>
+    <Heading>
+      <slot name="heading" />
+    </Heading>
+  </header>
+  <slot />
+</article>

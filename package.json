@@ -4,10 +4,13 @@
   "description": "Christopher Vaillancourt's personal website.",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro check --watch & astro dev",
     "start": "astro dev",
     "build": "astro check && tsc --noEmit && astro build",
+    "wrangler": "wrangler",
+    "deploy": "wrangler pages publish dist",
     "preview": "astro preview",
+    "preview:wrangler": "wrangler pages dev ./dist",
     "astro": "astro",
     "tsc": "tsc",
     "format": "prettier --write --ignore-path .gitignore --plugin-search-dir=. .",
@@ -15,21 +18,22 @@
     "lint:fix": "pnpm lint --fix"
   },
   "devDependencies": {
-    "@types/node": "^16.11.58",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
-    "astro": "^1.1.7",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-astro": "^0.18.0",
-    "open-props": "^1.4.14",
-    "postcss": "^8.4.16",
-    "postcss-jit-props": "^1.0.7",
-    "prettier": "2.7.1",
-    "prettier-plugin-astro": "^0.5.4",
-    "typescript": "^4.8.2"
+    "@types/node": "^18.15.5",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "astro": "^2.1.4",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-astro": "^0.26.0",
+    "open-props": "^1.5.6",
+    "postcss": "^8.4.21",
+    "postcss-jit-props": "^1.0.12",
+    "prettier": "2.8.6",
+    "prettier-plugin-astro": "^0.8.0",
+    "typescript": "^5.0.2",
+    "wrangler": "^2.13.0"
   },
   "dependencies": {
-    "@mdi/js": "^7.0.96"
+    "@mdi/js": "^7.2.96"
   }
 }

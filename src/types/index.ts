@@ -1,5 +1,3 @@
-import type { MarkdownLayoutProps } from 'astro';
-
 interface PostFrontmatter {
   title: string;
   summary: string;
@@ -8,6 +6,4 @@ interface PostFrontmatter {
   updated?: string;
 }
 
-type PostLayoutProps = MarkdownLayoutProps<PostFrontmatter>;
-
-export type { PostFrontmatter, PostLayoutProps };
+export type { PostFrontmatter };

@@ -1,0 +1,43 @@
+---
+interface Props {
+  class?: string;
+  title: string;
+  company: string;
+  start: {
+    text: string;
+    value: string;
+  };
+  end: {
+    text: string;
+    value: string;
+  };
+  items: string[];
+}
+const {
+  title,
+  company,
+  start,
+  end,
+  items,
+  class: className,
+}: Props = Astro.props;
+---
+
+<section class={className}>
+  <h3>{title}</h3>
+  <h4>
+    {company} | <time datetime={start.value}>{start.text}</time> — <time
+      datetime={end.value}
+      >{end.text}
+    </time>
+  </h4>
+  <ul>
+    {
+      items.map((item) => (
+        <>
+          <li>{item}</li>
+        </>
+      ))
+    }
+  </ul>
+</section>
