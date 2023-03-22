@@ -1,0 +1,39 @@
+---
+import { experiences } from './experience';
+import ResumeHeader from './ResumeHeader.astro';
+import ResumeExperience from './ResumeExperience.astro';
+import ResumeSkills from './ResumeSkills.astro';
+import ResumeEducation from './ResumeEducation.astro';
+---
+
+<article>
+  <ResumeHeader class="header" />
+  <ResumeExperience class="experience" experiences={experiences} />
+  <ResumeSkills class="skills" />
+  <ResumeEducation class="education" />
+</article>
+
+<style>
+  article {
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+    /* grid-template-rows: 1fr 3fr 3fr; */
+  }
+  /* div {
+    border: 2px solid red;
+    background-color: black;
+  } */
+  .header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+  }
+  .experience {
+    grid-column: 1 / 2;
+  }
+  .skills {
+    grid-column: 2 / 3;
+  }
+  .education {
+    grid-column: 2 / 3;
+  }
+</style>

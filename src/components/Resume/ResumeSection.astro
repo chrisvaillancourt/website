@@ -1,0 +1,28 @@
+---
+import { toArray } from '@/lib/collections';
+
+interface Props {
+  headingLevel: string;
+  items: string[] | Set<string>;
+  headingText?: string;
+}
+
+const { headingLevel, items, headingText }: Props = Astro.props;
+const Heading = `h${headingLevel}`;
+---
+
+<section>
+  <Heading>
+    <slot name="headingText" />
+    {headingText ? headingText : null}
+  </Heading>
+  <ul>
+    {
+      toArray(items).map((language) => (
+        <>
+          <li>{language}</li>
+        </>
+      ))
+    }
+  </ul>
+</section>

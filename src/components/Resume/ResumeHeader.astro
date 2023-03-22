@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<header class={className}>
+  <div>
+    <h1>Christopher Vaillancourt</h1>
+  </div>
+  <address>
+    <a href="tel:+16196309056"> 📞 (619) 630-9056</a>
+    <a href="mailto:chris.d.vaillancourt@gmail.com">
+      ✉️ chris.d.vaillancourt@gmail.com
+    </a>
+    <a href="https://www.chrisvaillancourt.io/"> 🔗 Website</a>
+    <a href="https://www.linkedin.com/in/chrisdvaillancourt/"> 🔗 Linkedin</a>
+  </address>
+</header>
+<style>
+  /* TODO horizontally center name and address */
+  h1 {
+    font-size: var(--font-size-6);
+  }
+  address {
+    padding-block-start: var(--size-2);
+    font-size: var(--font-size-1);
+  }
+</style>
