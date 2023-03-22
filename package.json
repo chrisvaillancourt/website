@@ -4,7 +4,7 @@
   "description": "Christopher Vaillancourt's personal website.",
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro check --watch & astro dev",
     "start": "astro dev",
     "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
