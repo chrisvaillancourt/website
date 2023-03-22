@@ -1,0 +1,15 @@
+---
+import BaseLayout, { type Props as BaseLayoutProps } from './BaseLayout.astro';
+import '@/styles/global.css';
+
+/*
+ * A simple wrapper so we can import page global styles
+ */
+interface Props extends BaseLayoutProps {}
+
+const { ...props }: Props = Astro.props;
+---
+
+<BaseLayout {...props}>
+  <slot />
+</BaseLayout>

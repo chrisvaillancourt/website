@@ -1,5 +1,5 @@
 ---
-import Layout from '@/layouts/BaseLayout.astro';
+import BlogLayout from '@/layouts/BlogLayout.astro';
 import Link from '@/components/Link.astro';
 import type { PostFrontmatter } from '@/types';
 
@@ -12,17 +12,17 @@ function getPosts() {
 }
 ---
 
-<Layout title="Christopher Vaillancourt">
+<BlogLayout title="Christopher Vaillancourt">
   <main>
     <h1 class="text-gradient">Posts</h1>
     {
       nonDraftPosts.map((post) => (
         <article>
-          <h2>{post.frontmatter.title}</h2>
+          <h3>{post.frontmatter.title}</h3>
           <p>{post.frontmatter.summary}</p>
           <Link href={post.url}>Read more</Link>
         </article>
       ))
     }
   </main>
-</Layout>
+</BlogLayout>
