@@ -1,5 +1,6 @@
 ---
 import Nav from '@/components/Nav.astro';
+import '@/styles/global.css';
 export interface Props {
   title?: string;
   showNav?: boolean;
@@ -50,7 +51,7 @@ const navLinks = [
 </html>
 
 <style>
-.nav {
-  margin-top: var(--size-3);
-}
+  .nav {
+    margin-top: var(--size-3);
+  }
 </style>

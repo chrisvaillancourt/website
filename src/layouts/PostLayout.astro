@@ -1,5 +1,5 @@
 ---
-import BlogLayout from './BlogLayout.astro';
+import BaseLayout from './BaseLayout.astro';
 import type { MarkdownLayoutProps } from 'astro';
 import type { PostFrontmatter } from '@/types';
 
@@ -17,10 +17,10 @@ const {
 } = Astro.props as PostLayoutProps;
 ---
 
-<BlogLayout>
+<BaseLayout>
   <h2>{title}</h2>
   <time>{added}</time>
   <p>{summary}</p>
 
   <slot />
-</BlogLayout>
+</BaseLayout>
