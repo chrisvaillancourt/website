@@ -1,5 +1,5 @@
 ---
-import BlogLayout from '@/layouts/BlogLayout.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
 import Link from '@/components/Link.astro';
 import type { PostFrontmatter } from '@/types';
 
@@ -12,7 +12,7 @@ function getPosts() {
 }
 ---
 
-<BlogLayout title="Christopher Vaillancourt">
+<BaseLayout title="Christopher Vaillancourt">
   <main>
     <h1 class="text-gradient">Posts</h1>
     {
@@ -25,4 +25,4 @@ function getPosts() {
       ))
     }
   </main>
-</BlogLayout>
+</BaseLayout>
