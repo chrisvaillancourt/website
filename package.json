@@ -18,17 +18,17 @@
     "lint:fix": "pnpm lint --fix"
   },
   "devDependencies": {
-    "@types/node": "^18.15.5",
+    "@types/node": "^18.15.7",
     "@typescript-eslint/eslint-plugin": "^5.56.0",
     "@typescript-eslint/parser": "^5.56.0",
-    "astro": "^2.1.5",
+    "astro": "^2.1.7",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-astro": "^0.26.1",
     "open-props": "^1.5.6",
     "postcss": "^8.4.21",
     "postcss-jit-props": "^1.0.12",
-    "prettier": "2.8.6",
+    "prettier": "2.8.7",
     "prettier-plugin-astro": "^0.8.0",
     "typescript": "^5.0.2",
     "wrangler": "^2.13.0"
