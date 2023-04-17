@@ -1,6 +1,6 @@
 ---
 export type Props = astroHTML.JSX.AnchorHTMLAttributes;
-const { href, ...attrs } = Astro.props as Props;
+const { href, ...attrs } = Astro.props;
 ---
 
 <a href={href} {...attrs}>
