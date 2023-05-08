@@ -1,15 +1,11 @@
-/* TODO Check if we need to import or if this is handled by postcss JIT props */
-/* @import 'open-props/style'; */
-@import 'open-props/normalize';
+@import 'open-props/normalize' layer(normalize);
 
 :root {
   --link: var(--indigo-2);
 }
 
 html {
-  max-width: 70ch;
-  padding: 0 1rem;
-  line-height: 1.75;
+  line-height: var(--font-lineheight-4);
 }
 
 h1,
@@ -18,15 +14,28 @@ h3,
 h4,
 h5,
 h6 {
-  margin-bottom: 1rem;
+  margin-bottom: var(--size-3);
 }
 
 p,
 ul,
 ol {
-  margin-bottom: 2rem;
+  margin-bottom: var(--size-7);
 }
 
 a[href]:visited {
   color: var(--link);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr min(var(--size-content-3), 100%) 1fr;
+}
+main > * {
+  grid-column: 2;
+}
+/* TODO fix this so it extends fully */
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / -1;
 }

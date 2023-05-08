@@ -1,17 +1,53 @@
 ---
-import Link from '@/components/Link.astro';
+import NavHamburger from '@/components/NavHamburger.astro';
 
 export interface Props {
   links: {
     href: string;
     text: string;
   }[];
-  class: string;
+  class?: string;
 }
 
 const { links, class: className } = Astro.props as Props;
 ---
 
 <nav class={className}>
-  {links.map(({ href, text }) => <Link href={href}>{text}</Link>)}
+  <ul>
+    {
+      links?.map(({ href, text }) => (
+        <li>
+          <a href={href}>{text}</a>
+        </li>
+      ))
+    }
+  </ul>
+  <NavHamburger class="hamburger" links={links} />
 </nav>
+<style>
+  nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--size-2);
+    margin-inline-end: 10px;
+  }
+  nav > a:last-child {
+    padding-inline-end: 0;
+    margin-inline-end: 0;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+  }
+  .hamburger {
+    display: none;
+  }
+  @media (--sm-n-below) {
+    .hamburger {
+      display: initial;
+    }
+    ul {
+      display: none;
+    }
+  }
+</style>

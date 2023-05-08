@@ -13,16 +13,14 @@ function getPosts() {
 ---
 
 <BaseLayout title="Christopher Vaillancourt">
-  <main>
-    <h1 class="text-gradient">Posts</h1>
-    {
-      nonDraftPosts.map((post) => (
-        <article>
-          <h3>{post.frontmatter.title}</h3>
-          <p>{post.frontmatter.summary}</p>
-          <Link href={post.url}>Read more</Link>
-        </article>
-      ))
-    }
-  </main>
+  <h1 class="text-gradient">Posts</h1>
+  {
+    nonDraftPosts.map((post) => (
+      <article>
+        <h3>{post.frontmatter.title}</h3>
+        <p>{post.frontmatter.summary}</p>
+        <Link href={post.url}>Read more</Link>
+      </article>
+    ))
+  }
 </BaseLayout>
