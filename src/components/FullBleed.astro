@@ -26,6 +26,7 @@ const { class: className } = Astro.props;
     object-fit: cover;
   }
   body {
+    /* Will cause problems if we need to use position sticky on other elements */
     overflow-x: hidden;
   }
 </style>

@@ -2,6 +2,8 @@
 
 :root {
   --link: var(--indigo-2);
+  --grid-columns: 1fr min(var(--size-content-3), 100%) 1fr;
+  --grid-column: 2;
 }
 
 html {
@@ -26,16 +28,14 @@ ol {
 a[href]:visited {
   color: var(--link);
 }
-
-main {
+.app-grid {
   display: grid;
-  grid-template-columns: 1fr min(var(--size-content-3), 100%) 1fr;
+  grid-template-columns: var(--grid-columns);
 }
-main > * {
-  grid-column: 2;
+.app-grid > * {
+  grid-column: var(--grid-column);
 }
-/* TODO fix this so it extends fully */
-.full-bleed {
-  width: 100%;
-  grid-column: 1 / -1;
+
+body {
+  overflow-y: scroll;
 }

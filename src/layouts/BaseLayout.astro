@@ -44,8 +44,14 @@ const navLinks = [
     />
     <title>{title}</title>
   </head>
-  <body>
-    {showNav && <Nav class="nav" links={navLinks} />}
+  <body class="app-grid">
+    {
+      showNav && (
+        <header>
+          <Nav class="nav" links={navLinks} />
+        </header>
+      )
+    }
     <main>
       <slot />
     </main>
