@@ -1,0 +1,31 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<div class={`full-bleed ${className}`}>
+  <slot />
+</div>
+
+<style>
+  .full-bleed {
+    width: 100vw;
+    position: relative;
+    margin: 0;
+    left: 50%;
+    margin-left: -50vw;
+  }
+  .full-bleed > :global(*) {
+    width: 100%;
+    margin: 0;
+  }
+  .full-bleed > :global(img) {
+    max-height: 60vh;
+    object-fit: cover;
+  }
+  body {
+    overflow-x: hidden;
+  }
+</style>
