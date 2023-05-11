@@ -3,7 +3,7 @@ export interface Props {
   value: string | number;
 }
 
-const { value } = Astro.props as Props;
+const { value } = Astro.props;
 const Heading = `h${value}`;
 ---
 
