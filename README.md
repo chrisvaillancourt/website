@@ -1,5 +1,10 @@
 # Website
 
+## Deployed app
+
+View the deployed app at
+[chrisvaillancourt.io](https://www.chrisvaillancourt.io/)
+
 ## Development without docker
 
 This app may be run without using Docker. Run all commands from the root of the
@@ -14,6 +19,11 @@ project, from a terminal:
 | `pnpm astro ...`    | Run CLI commands like `astro add`, `astro preview`   |
 | `pnpm astro --help` | Get help using the Astro CLI                         |
 | `pnpm tsc`          | Run the TypeScript compiler with any compiler option |
+
+## Deployment
+
+To build and deploy, run `pnpm i && pnpm build && pnpm run deploy` and follow
+the output instructions.
 
 ## Development with docker
 
