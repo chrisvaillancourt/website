@@ -31,6 +31,7 @@ a[href]:visited {
 .app-grid {
   display: grid;
   grid-template-columns: var(--grid-columns);
+  grid-template-rows: min-content;
 }
 .app-grid > * {
   grid-column: var(--grid-column);
@@ -38,4 +39,8 @@ a[href]:visited {
 
 body {
   overflow-y: scroll;
+}
+
+header {
+  margin-bottom: var(--size-7);
 }
