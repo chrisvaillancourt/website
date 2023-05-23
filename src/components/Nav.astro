@@ -22,7 +22,7 @@ const { links, class: className } = Astro.props;
       ))
     }
   </ul>
-  <NavHamburger class="hamburger" links={links} />
+  <NavHamburger class="nav-hamburger" links={links} />
 </nav>
 <style>
   nav {
@@ -41,11 +41,11 @@ const { links, class: className } = Astro.props;
   nav > ul {
     margin-bottom: 0;
   }
-  .hamburger {
+  .nav-hamburger {
     display: none;
   }
   @media (--sm-n-below) {
-    .hamburger {
+    .nav-hamburger {
       display: initial;
     }
     ul {
