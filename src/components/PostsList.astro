@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Link from '@/components/Link.astro';
+import { postUrl } from '@/lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  showPublished?: boolean;
+}
+const { posts, showPublished = true } = Astro.props;
+---
+
+<ul>
+  {
+    posts.map(({ slug, data: { title, added } }) => (
+      <li>
+        <>
+          <Link href={postUrl(slug)}>{title}</Link>
+          {showPublished && (
+            <span class="added-date">{added.toLocaleDateString()}</span>
+          )}
+        </>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .added-date {
+    font-size: var(--font-size-0);
+  }
+  ul {
+    list-style: none;
+    padding-inline-start: 0;
+  }
+</style>

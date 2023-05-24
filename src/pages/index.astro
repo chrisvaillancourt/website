@@ -1,11 +1,19 @@
 ---
+import { publishedPostsByDate } from '@/lib/posts';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PostsList from '@/components/PostsList.astro';
+
+const recentPosts = (await publishedPostsByDate()).slice(0, 3);
 ---
 
 <BaseLayout title="Christopher Vaillancourt">
-  <article>
+  <article class="intro">
     <h1 class="text-gradient">Christopher Vaillancourt</h1>
     <h2>Full stack software engineer</h2>
+  </article>
+  <article>
+    <h3>Recent Posts</h3>
+    <PostsList posts={recentPosts} />
   </article>
 </BaseLayout>
 
@@ -32,5 +40,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     50% {
       background-position-y: 80%;
     }
+  }
+  .intro {
+    margin-bottom: var(--size-8);
   }
 </style>

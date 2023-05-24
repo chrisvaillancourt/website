@@ -25,9 +25,12 @@ ol {
   margin-bottom: var(--size-7);
 }
 
+a[href],
 a[href]:visited {
   color: var(--link);
+  text-decoration-color: var(--link);
 }
+
 .app-grid {
   display: grid;
   grid-template-columns: var(--grid-columns);
