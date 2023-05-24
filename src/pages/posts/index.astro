@@ -1,25 +1,21 @@
 ---
+import { getPublishedPosts, postUrl } from '@/lib/posts';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Link from '@/components/Link.astro';
-import type { PostFrontmatter } from '@/types';
 
-const posts = await getPosts();
-
-const nonDraftPosts = posts.filter((post) => !Object.hasOwn(post, 'draft'));
-
-function getPosts() {
-  return Astro.glob<PostFrontmatter>('./*.md');
-}
+const posts = await getPublishedPosts();
 ---
 
 <BaseLayout title="Christopher Vaillancourt">
-  <h1 class="text-gradient">Posts</h1>
+  <h1>Posts</h1>
   {
-    nonDraftPosts.map((post) => (
+    posts.map(({ slug, data: { title, summary } }) => (
       <article>
-        <h3>{post.frontmatter.title}</h3>
-        <p>{post.frontmatter.summary}</p>
-        <Link href={post.url}>Read more</Link>
+        <Link href={postUrl(slug)}>
+          <h3>{title}</h3>
+        </Link>
+        {summary && <p>{summary}</p>}
+        <Link href={postUrl(slug)}>Read more</Link>
       </article>
     ))
   }
