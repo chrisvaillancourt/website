@@ -1,13 +1,16 @@
 @import 'open-props/normalize' layer(normalize);
+@import './theme.css';
 
 :root {
-  --link: var(--indigo-2);
   --grid-columns: 1fr min(var(--size-content-3), 100%) 1fr;
   --grid-column: 2;
 }
 
 html {
   line-height: var(--font-lineheight-4);
+  background-color: var(--surface-1);
+  color: var(--text-1);
+  accent-color: var(--brand);
 }
 
 h1,
@@ -46,4 +49,23 @@ body {
 
 header {
   margin-bottom: var(--size-7);
+}
+.surface-1 {
+  background-color: var(--surface-1);
+  color: var(--text-2);
+}
+
+.surface-2 {
+  background-color: var(--surface-2);
+  color: var(--text-2);
+}
+
+.surface-3 {
+  background-color: var(--surface-3);
+  color: var(--text-1);
+}
+
+.surface-4 {
+  background-color: var(--surface-4);
+  color: var(--text-1);
 }
