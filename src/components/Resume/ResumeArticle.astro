@@ -4,7 +4,7 @@ interface Props {
   class?: string;
 }
 
-const { headingLevel, class: className }: Props = Astro.props;
+const { headingLevel, class: className = '' }: Props = Astro.props;
 const Heading = `h${headingLevel}`;
 ---
 
