@@ -1,12 +1,17 @@
 ---
 import Nav from '@/components/Nav.astro';
 import '@/styles/global.css';
-export interface Props {
+interface Props {
   title?: string;
   showNav?: boolean;
+  class?: string;
 }
 
-const { title = 'Chris Vaillancourt', showNav = true } = Astro.props;
+const {
+  title = 'Chris Vaillancourt',
+  showNav = true,
+  class: className = '',
+} = Astro.props;
 
 const navLinks = [
   {
@@ -52,7 +57,7 @@ const navLinks = [
         </header>
       )
     }
-    <main>
+    <main class={className}>
       <slot />
     </main>
   </body>
