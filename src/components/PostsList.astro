@@ -9,6 +9,8 @@ interface Props {
   showPublished?: boolean;
 }
 const { posts, showPublished = true } = Astro.props;
+// pass title to the slot
+// https://stackoverflow.com/questions/74976824/can-i-pass-props-from-a-child-component-to-parent-in-astro
 ---
 
 <ul>
