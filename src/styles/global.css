@@ -37,6 +37,9 @@ ol,
 li {
   padding-inline-start: 0;
 }
+a {
+  text-decoration: none;
+}
 a[href],
 a[href]:visited {
   color: var(--link);
