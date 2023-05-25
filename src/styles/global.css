@@ -27,7 +27,14 @@ ul,
 ol {
   margin-bottom: var(--size-7);
 }
-
+ul {
+  list-style: none;
+}
+ul,
+ol,
+li {
+  padding-inline-start: 0;
+}
 a[href],
 a[href]:visited {
   color: var(--link);

@@ -35,8 +35,10 @@ const { links, class: className } = Astro.props;
     margin-inline-end: 0;
   }
   ul {
-    list-style: none;
     display: flex;
+  }
+  li {
+    padding-inline-start: var(--size-2);
   }
   nav > ul {
     margin-bottom: 0;
