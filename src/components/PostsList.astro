@@ -14,12 +14,12 @@ const { posts, showPublished = true } = Astro.props;
   {
     posts.map(({ slug, data: { title, added } }) => (
       <li>
-        <>
-          <Link href={postUrl(slug)}>{title}</Link>
+        <Link href={postUrl(slug)}>
+          {title}{' '}
           {showPublished && (
             <span class="added-date">{added.toLocaleDateString()}</span>
           )}
-        </>
+        </Link>
       </li>
     ))
   }
@@ -27,10 +27,7 @@ const { posts, showPublished = true } = Astro.props;
 
 <style>
   .added-date {
-    font-size: var(--font-size-0);
-  }
-  ul {
-    list-style: none;
-    padding-inline-start: 0;
+    font-size: var(--font-size-1);
+    color: var(--text-2);
   }
 </style>
