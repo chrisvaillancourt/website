@@ -6,7 +6,7 @@ interface Props {
   experiences: Set<Experience> | Experience[];
   class?: string;
 }
-const { experiences, class: className }: Props = Astro.props;
+const { experiences, class: className = '' }: Props = Astro.props;
 ---
 
 <article class={`${className} article`}>

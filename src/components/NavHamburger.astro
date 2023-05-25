@@ -6,7 +6,7 @@ export interface Props {
   }[];
   class?: string;
 }
-const { links, class: className } = Astro.props;
+const { links, class: className = '' } = Astro.props;
 ---
 
 <div class={`hamburger-container ${className}`}>
