@@ -12,14 +12,16 @@ html {
   color: var(--text-1);
   accent-color: var(--brand);
 }
-
-h1,
+h1 {
+  max-inline-size: var(--size-header-2);
+  margin-block-end: var(--size-8);
+}
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-bottom: var(--size-3);
+  margin-block-end: var(--size-3);
 }
 
 p,
