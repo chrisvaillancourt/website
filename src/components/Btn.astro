@@ -1,3 +1,16 @@
-<button>
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<button class={className}>
   <slot />
+  <slot name="icon" />
+  <slot name="text" />
 </button>
+
+<style>
+  @import 'open-props/buttons';
+</style>
