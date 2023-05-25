@@ -6,17 +6,52 @@ import Link from '@/components/Link.astro';
 const posts = await getPublishedPosts();
 ---
 
-<BaseLayout title="Christopher Vaillancourt">
+<BaseLayout title="Christopher Vaillancourt" class="posts">
   <h1>Posts</h1>
-  {
-    posts.map(({ slug, data: { title, summary } }) => (
-      <article>
-        <Link href={postUrl(slug)}>
-          <h3>{title}</h3>
-        </Link>
-        {summary && <p>{summary}</p>}
-        <Link href={postUrl(slug)}>Read more</Link>
-      </article>
-    ))
-  }
+
+  <ul>
+    {
+      posts.map(({ slug, data: { title, summary, added, tags } }) => (
+        <li>
+          <Link class="post-link" href={postUrl(slug)}>
+            <h3>{title}</h3>
+            {summary && <p>{summary}</p>}
+            <div class="post-metadata">
+              <span class="post-date">{added.toLocaleDateString()}</span>
+              {tags?.map((tag) => (
+                <span class="post-tag">#{tag}</span>
+              ))}
+            </div>
+          </Link>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>
+
+<style>
+  ul,
+  li {
+    padding: 0;
+    margin-block-end: var(--size-7);
+  }
+  h3,
+  p {
+    margin-block-end: var(--size-2);
+  }
+  .post-link {
+    margin: 0;
+    padding: 0;
+  }
+  .post-metadata {
+    font-size: var(--font-size-1);
+  }
+  .post-date {
+    color: var(--text-2);
+  }
+  .post-tag {
+    color: var(--text-2);
+    background: var(--brand-bg-gradient) fixed;
+    padding-inline: var(--size-1);
+  }
+</style>
