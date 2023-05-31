@@ -1,10 +1,30 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 
-interface Props extends HTMLAttributes<'time'> {}
-const { ...attrs } = Astro.props;
+interface Props extends Omit<HTMLAttributes<'time'>, 'datetime'> {
+  datetime: string | Date;
+}
+const { datetime: _dateTime, ...attrs } = Astro.props;
+
+const datetime = dateFormatter(_dateTime);
+
+/**
+ * Apply date formatting.
+ */
+function dateFormatter(date: Date | string): string {
+  return typeof date == 'string' ? date : dateToString(date);
+}
+/**
+ * Transform the provided date to a string.
+ * Used to render a date in the UI.
+ */
+function dateToString(date: Date): string {
+  return date.toLocaleDateString();
+}
 ---
 
-<time {...attrs}>
-  <slot />
+<time {...attrs} datetime={datetime}>
+  <slot>
+    {datetime}
+  </slot>
 </time>
