@@ -1,6 +1,5 @@
 ---
 title: 100vh hack
-layout: ../../layouts/PostLayout.astro
 summary: Fixing 100vh on mobile
 added: 09-02-2022
 tags: [CSS]

@@ -1,5 +1,7 @@
 ---
+import type { BlogPost } from '@/types';
 import { getPublishedPosts } from '@/lib/posts';
+import PostLayout from '@/layouts/PostLayout.astro';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -8,9 +10,14 @@ export async function getStaticPaths() {
     props: { post },
   }));
 }
+interface Props {
+  post: BlogPost;
+}
 
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Content />
+<PostLayout post={post}>
+  <Content />
+</PostLayout>
