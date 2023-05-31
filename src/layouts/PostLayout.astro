@@ -1,26 +1,80 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import type { MarkdownLayoutProps } from 'astro';
-import type { PostFrontmatter } from '@/types';
+import DateTime from '@/components/DateTime.astro';
+import Tag from '@/components/Tag.astro';
 
-type PostLayoutProps = MarkdownLayoutProps<PostFrontmatter>;
+/* 
+TODO consolidate type definition
+* Look into https://zod.dev/?id=type-inference.
+* We can't use the `BlogPost` type from blog collection
+* because it has different types than what's passed as props.
+* For example, the type of BlogPost's `added` property is Date
+* but it's passed in as a string to this component.
+*/
+
+type Props = MarkdownLayoutProps<{
+  draft?: boolean;
+  title: string;
+  summary?: string;
+  added: string;
+  updated?: string;
+  edited?: string;
+  tags?: string[];
+}>;
 
 // TODO open new links in a new tab
 // add a PostContent component that taks the result of `compiledContent()`
 // and modifies the anchor tag as needed
 
 const {
-  frontmatter: { title, summary, added },
+  frontmatter: { title, summary, added, edited, tags },
   // @ts-expect-error TODO add custom parser to configure how links open in new tab
   // eslint-disable-next-line no-unused-vars
   compiledContent,
-} = Astro.props as PostLayoutProps;
+} = Astro.props;
+
+const isTagged = tags && tags.filter(Boolean).length > 0;
 ---
 
 <BaseLayout>
-  <h2>{title}</h2>
-  <time>{added}</time>
-  <p>{summary}</p>
+  <header>
+    <h1>{title}</h1>
+    {
+      added && (
+        <p class:list={[{ 'post-added': Boolean(edited) }]}>
+          Added:
+          <DateTime datetime={added}>{added}</DateTime>
+        </p>
+      )
+    }
+    {
+      edited && (
+        <p class="post-updated">
+          Updated: <DateTime datetime={edited}>{edited}</DateTime>
+        </p>
+      )
+    }
 
+    {
+      isTagged && (
+        <p>
+          {tags.map((tag) => (
+            <Tag>{tag}</Tag>
+          ))}
+        </p>
+      )
+    }
+    {summary && <p>TLDR: {summary}</p>}
+  </header>
   <slot />
 </BaseLayout>
+
+<style>
+  .post-added {
+    margin-block-end: 0;
+  }
+  :where(header > p) {
+    margin-block-end: var(--size-1);
+  }
+</style>
