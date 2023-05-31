@@ -1,0 +1,10 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'time'> {}
+const { ...attrs } = Astro.props;
+---
+
+<time {...attrs}>
+  <slot />
+</time>
