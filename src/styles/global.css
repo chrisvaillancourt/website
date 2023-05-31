@@ -4,6 +4,13 @@
 :root {
   --grid-columns: 1fr min(var(--size-content-3), 100%) 1fr;
   --grid-column: 2;
+  --link: var(--brand);
+  --link-visited: var(--brand);
+}
+
+*::selection {
+  background-color: var(--brand);
+  color: var(--surface-1);
 }
 
 html {
@@ -37,13 +44,18 @@ ol,
 li {
   padding-inline-start: 0;
 }
+/* TODO move link styles to link component */
 a {
   text-decoration: none;
 }
 a[href],
 a[href]:visited {
   color: var(--link);
-  text-decoration-color: var(--link);
+}
+a[href]:hover {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  background-color: hsl(var(--brand-hsl) / 20%);
 }
 
 .app-grid {
