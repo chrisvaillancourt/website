@@ -42,15 +42,14 @@ const isTagged = tags && tags.filter(Boolean).length > 0;
     {
       added && (
         <p class:list={[{ 'post-added': Boolean(updated) }]}>
-          Added:
-          <DateTime datetime={added}>{added}</DateTime>
+          Added: <DateTime datetime={added} />
         </p>
       )
     }
     {
       updated && (
         <p class="post-updated">
-          Updated: <DateTime datetime={updated}>{updated}</DateTime>
+          Updated: <DateTime datetime={updated} />
         </p>
       )
     }

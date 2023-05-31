@@ -18,10 +18,7 @@ const posts = await getPublishedPosts();
             <h3>{title}</h3>
             {summary && <p>{summary}</p>}
             <div class="post-metadata">
-              <DateTime datetime={added.toLocaleDateString()} class="post-date">
-                {added.toLocaleDateString()}
-              </DateTime>
-
+              <DateTime datetime={added} class="post-date" />
               {tags?.map((tag) => (
                 <Tag>{tag}</Tag>
               ))}
