@@ -1,36 +1,17 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import type { MarkdownLayoutProps } from 'astro';
+import type { BlogPost } from '@/types';
 import DateTime from '@/components/DateTime.astro';
 import Tag from '@/components/Tag.astro';
 
-/* 
-TODO consolidate type definition
-* Look into https://zod.dev/?id=type-inference.
-* We can't use the `BlogPost` type from blog collection
-* because it has different types than what's passed as props.
-* For example, the type of BlogPost's `added` property is Date
-* but it's passed in as a string to this component.
-*/
-
-type Props = MarkdownLayoutProps<{
-  draft?: boolean;
-  title: string;
-  summary?: string;
-  added: string;
-  updated?: string;
-  tags?: string[];
-}>;
-
-// TODO open new links in a new tab
-// add a PostContent component that taks the result of `compiledContent()`
-// and modifies the anchor tag as needed
+interface Props {
+  post: BlogPost;
+}
 
 const {
-  frontmatter: { title, summary, added, updated, tags },
-  // @ts-expect-error TODO add custom parser to configure how links open in new tab
-  // eslint-disable-next-line no-unused-vars
-  compiledContent,
+  post: {
+    data: { title, summary, added, updated, tags },
+  },
 } = Astro.props;
 
 const isTagged = tags && tags.filter(Boolean).length > 0;
