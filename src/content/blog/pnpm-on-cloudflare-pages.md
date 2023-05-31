@@ -3,7 +3,7 @@ title: Using pnpm with Cloudflare Pages
 layout: ../../layouts/PostLayout.astro
 summary: How to setup a Cloudflare Pages deployment with pnpm.
 added: 09-4-2022
-tags: [pnpm, cloudflare, CI/CD]
+tags: [pnpm, Cloudflare, CI/CD]
 ---
 
 ## TLDR
