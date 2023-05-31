@@ -1,11 +1,11 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { BlogPost } from '@/types';
 import Link from '@/components/Link.astro';
 import { postUrl } from '@/lib/posts';
 import PostListItemDate from '@/components/PostListItemDate.astro';
 
 interface Props {
-  posts: CollectionEntry<'blog'>[];
+  posts: BlogPost[];
   showPublished?: boolean;
 }
 const { posts, showPublished = true } = Astro.props;
