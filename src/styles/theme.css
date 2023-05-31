@@ -1,7 +1,7 @@
-/* TODO update brand color */
 :root {
   /* light */
-  --brand-light: var(--orange-6);
+  --brand-light: var(--indigo-10);
+  --brand-light-hsl: var(--indigo-10-hsl);
   --text-1-light: var(--gray-8);
   --text-2-light: var(--gray-7);
   --surface-1-light: var(--gray-0);
@@ -12,7 +12,8 @@
   --shadow-strength-light: 2%;
 
   /* dark */
-  --brand-dark: var(--orange-3);
+  --brand-dark: var(--teal-4);
+  --brand-dark-hsl: var(--teal-4-hsl);
   --text-1-dark: var(--gray-3);
   --text-2-dark: var(--gray-5);
   --surface-1-dark: var(--gray-12);
@@ -23,7 +24,8 @@
   --shadow-strength-dark: 80%;
 
   /* dim */
-  --brand-dim: var(--orange-4);
+  --brand-dim: var(--teal-4);
+  --brand-dim-hsl: var(--teal-4-hsl);
   --text-1-dim: var(--gray-3);
   --text-2-dim: var(--gray-4);
   --surface-1-dim: var(--gray-8);
@@ -38,6 +40,7 @@
   color-scheme: light;
   /* set defaults */
   --brand: var(--brand-light);
+  --brand-hsl: var(--brand-light-hsl);
   --text-1: var(--text-1-light);
   --text-2: var(--text-2-light);
   --surface-1: var(--surface-1-light);
@@ -52,6 +55,7 @@
   :root {
     color-scheme: dark;
     --brand: var(--brand-dark);
+    --brand-hsl: var(--brand-dark-hsl);
     --text-1: var(--text-1-dark);
     --text-2: var(--text-2-dark);
     --surface-1: var(--surface-1-dark);
@@ -66,6 +70,7 @@
   :root {
     color-scheme: dark;
     --brand: var(--brand-dim);
+    --brand-hsl: var(--brand-dim-hsl);
     --text-1: var(--text-1-dim);
     --text-2: var(--text-2-dim);
     --surface-1: var(--surface-1-dim);

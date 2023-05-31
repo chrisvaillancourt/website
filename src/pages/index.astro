@@ -8,7 +8,7 @@ const recentPosts = (await publishedPostsByDate()).slice(0, 3);
 
 <BaseLayout title="Christopher Vaillancourt">
   <article class="intro">
-    <h1 class="text-gradient">Christopher Vaillancourt</h1>
+    <h1>Christopher Vaillancourt</h1>
     <h2>Full stack software engineer</h2>
   </article>
   <article>
@@ -22,7 +22,7 @@ const recentPosts = (await publishedPostsByDate()).slice(0, 3);
     --gradient: linear-gradient(0deg, #4f39fa, #da62c4);
   }
 
-  .text-gradient {
+  h1 {
     background-image: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -30,6 +30,9 @@ const recentPosts = (await publishedPostsByDate()).slice(0, 3);
     background-position-y: 100%;
     border-radius: 0.4rem;
     animation: pulse 4s ease-in-out infinite;
+  }
+  h1::selection {
+    -webkit-text-fill-color: initial;
   }
 
   @keyframes pulse {
