@@ -19,7 +19,6 @@ type Props = MarkdownLayoutProps<{
   summary?: string;
   added: string;
   updated?: string;
-  edited?: string;
   tags?: string[];
 }>;
 
@@ -28,7 +27,7 @@ type Props = MarkdownLayoutProps<{
 // and modifies the anchor tag as needed
 
 const {
-  frontmatter: { title, summary, added, edited, tags },
+  frontmatter: { title, summary, added, updated, tags },
   // @ts-expect-error TODO add custom parser to configure how links open in new tab
   // eslint-disable-next-line no-unused-vars
   compiledContent,
@@ -42,16 +41,16 @@ const isTagged = tags && tags.filter(Boolean).length > 0;
     <h1>{title}</h1>
     {
       added && (
-        <p class:list={[{ 'post-added': Boolean(edited) }]}>
+        <p class:list={[{ 'post-added': Boolean(updated) }]}>
           Added:
           <DateTime datetime={added}>{added}</DateTime>
         </p>
       )
     }
     {
-      edited && (
+      updated && (
         <p class="post-updated">
-          Updated: <DateTime datetime={edited}>{edited}</DateTime>
+          Updated: <DateTime datetime={updated}>{updated}</DateTime>
         </p>
       )
     }

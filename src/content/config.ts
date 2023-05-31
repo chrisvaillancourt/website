@@ -8,7 +8,7 @@ const blogCollection = defineCollection({
     title: z.string(),
     summary: z.string().optional(),
     added: z.string().transform((str) => new Date(str)),
-    edited: z
+    updated: z
       .string()
       .optional()
       .transform((str) => str && new Date(str)),
