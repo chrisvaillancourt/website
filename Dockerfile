@@ -5,7 +5,7 @@
 FROM node:18-alpine
 
 RUN corepack enable
-RUN corepack prepare pnpm@8.5.1 --activate
+RUN corepack prepare pnpm@8.6.0 --activate
 
 WORKDIR /usr/src/app
 
