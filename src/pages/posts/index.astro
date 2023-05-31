@@ -2,13 +2,14 @@
 import { getPublishedPosts, postUrl } from '@/lib/posts';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Link from '@/components/Link.astro';
+import Tag from '@/components/Tag.astro';
+import DateTime from '@/components/DateTime.astro';
 
 const posts = await getPublishedPosts();
 ---
 
 <BaseLayout title="Christopher Vaillancourt" class="posts">
   <h1>Posts</h1>
-
   <ul>
     {
       posts.map(({ slug, data: { title, summary, added, tags } }) => (
@@ -17,9 +18,12 @@ const posts = await getPublishedPosts();
             <h3>{title}</h3>
             {summary && <p>{summary}</p>}
             <div class="post-metadata">
-              <span class="post-date">{added.toLocaleDateString()}</span>
+              <DateTime datetime={added.toLocaleDateString()} class="post-date">
+                {added.toLocaleDateString()}
+              </DateTime>
+
               {tags?.map((tag) => (
-                <span class="post-tag">#{tag}</span>
+                <Tag>{tag}</Tag>
               ))}
             </div>
           </Link>
@@ -48,10 +52,5 @@ const posts = await getPublishedPosts();
   }
   .post-date {
     color: var(--text-2);
-  }
-  .post-tag {
-    color: var(--text-2);
-    background: var(--brand-bg-gradient) fixed;
-    padding-inline: var(--size-1);
   }
 </style>
