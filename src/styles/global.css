@@ -62,6 +62,9 @@ a[href]:hover {
 a[href] *:hover {
   text-decoration: underline solid var(--link) 0;
 }
+a[href] > code:hover {
+  background-color: transparent;
+}
 
 .app-grid {
   display: grid;
