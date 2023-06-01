@@ -46,8 +46,16 @@ const posts = await getPublishedPosts();
   }
   .post-metadata {
     font-size: var(--font-size-1);
+    font-family: var(--font-mono);
+    display: flex;
+    gap: var(--size-2);
   }
   .post-date {
     color: var(--text-2);
+    /* 
+      Set consistent width so the tags always align horizontally.
+      10ch matches the max number of expected characters.
+    */
+    width: 10ch;
   }
 </style>
