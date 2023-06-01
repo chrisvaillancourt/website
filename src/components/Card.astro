@@ -4,10 +4,10 @@ import type { HTMLTag, Polymorphic } from 'astro/types';
 type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag; class?: string }>;
 // ! Not getting any type info via intellisense but tsc isn't reporting errors
 // https://docs.astro.build/en/guides/typescript/#polymorphic-type
-const { as: Tag = 'div', class: className = '', ...props } = Astro.props;
+const { as: Tag = 'div', class: className, ...props } = Astro.props;
 ---
 
-<Tag {...props} class={`card ${className}`}>
+<Tag {...props} class={`card ${className ?? ''}`}>
   <slot>
     <slot name="title" />
     <slot name="subtitle" />
