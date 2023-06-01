@@ -44,5 +44,5 @@
       "~/assets/*": ["src/assets/*"]
     }
   },
-  "include": [".eslintrc.cjs", "src/**/*.ts", "src/**/*.astro"]
+  "include": ["src/**/*.ts", "src/**/*.astro", "./*.*js"]
 }
