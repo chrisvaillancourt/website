@@ -45,7 +45,10 @@ li {
   padding-inline-start: 0;
 }
 /* TODO move link styles to link component */
-a {
+/* TODO fix link styles when wrapping  <code> element */
+/* TODO fix background color when hovering links that contain more than just text */
+a,
+a * {
   text-decoration: none;
 }
 a[href],
@@ -53,9 +56,11 @@ a[href]:visited {
   color: var(--link);
 }
 a[href]:hover {
-  text-decoration: underline;
-  text-decoration-color: currentColor;
+  text-decoration: underline solid var(--link);
   background-color: hsl(var(--brand-hsl) / 20%);
+}
+a[href] *:hover {
+  text-decoration: underline solid var(--link) 0;
 }
 
 .app-grid {
