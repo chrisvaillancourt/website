@@ -47,8 +47,8 @@ li {
 /* TODO move link styles to link component */
 /* TODO fix link styles when wrapping  <code> element */
 /* TODO fix background color when hovering links that contain more than just text */
-a,
-a * {
+a[href],
+a[href] * {
   text-decoration: none;
 }
 a[href],
