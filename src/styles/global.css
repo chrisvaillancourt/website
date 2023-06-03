@@ -1,69 +1,11 @@
-@import 'open-props/normalize' layer(normalize);
-@import './theme.css';
+@import './normalize.css' layer(normalize);
+@import './theme.css' layer(theme);
 
 :root {
   --grid-columns: 1fr min(var(--size-content-3), 100%) 1fr;
   --grid-column: 2;
   --link: var(--brand);
   --link-visited: var(--brand);
-}
-
-*::selection {
-  background-color: var(--brand);
-  color: var(--surface-1);
-}
-
-html {
-  line-height: var(--font-lineheight-4);
-  background-color: var(--surface-1);
-  color: var(--text-1);
-  accent-color: var(--brand);
-}
-h1 {
-  max-inline-size: var(--size-header-2);
-  margin-block-end: var(--size-8);
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-block-end: var(--size-3);
-}
-
-p,
-ul,
-ol {
-  margin-bottom: var(--size-7);
-}
-ul {
-  list-style: none;
-}
-ul,
-ol,
-li {
-  padding-inline-start: 0;
-}
-/* TODO move link styles to link component */
-/* TODO fix link styles when wrapping  <code> element */
-/* TODO fix background color when hovering links that contain more than just text */
-a[href],
-a[href] * {
-  text-decoration: none;
-}
-a[href],
-a[href]:visited {
-  color: var(--link);
-}
-a[href]:hover {
-  text-decoration: underline solid var(--link);
-  background-color: hsl(var(--brand-hsl) / 20%);
-}
-a[href] *:hover {
-  text-decoration: underline solid var(--link) 0;
-}
-a[href] > code:hover {
-  background-color: transparent;
 }
 
 .app-grid {
@@ -75,13 +17,6 @@ a[href] > code:hover {
   grid-column: var(--grid-column);
 }
 
-body {
-  overflow-y: scroll;
-}
-
-header {
-  margin-bottom: var(--size-7);
-}
 .surface-1 {
   background-color: var(--surface-1);
   color: var(--text-2);
