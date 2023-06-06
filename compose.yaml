@@ -12,7 +12,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PNPM_VERSION: 8.6.0
+        PNPM_VERSION: 8.6.1
     environment:
       NODE_ENV: development
     ports:
