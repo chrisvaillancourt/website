@@ -71,8 +71,7 @@ import { linkedIn, github } from '@/lib/icons';
         stack solutions at scale.
       </p>
     </section>
-
-    <footer class="icons">
+    <footer>
       <Link href="https://github.com/chrisvaillancourt">
         <Icon name="GitHub" path={github} />
       </Link>
@@ -87,9 +86,10 @@ import { linkedIn, github } from '@/lib/icons';
   .d-inline-flex {
     display: inline-flex;
   }
-  .icons {
+  footer {
     display: flex;
     justify-content: center;
     gap: var(--size-3);
+    padding-block: var(--size-8);
   }
 </style>
