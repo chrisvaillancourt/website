@@ -1,7 +1,89 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '@/components/Icon.astro';
+import Link from '@/components/Link.astro';
+import { linkedIn, github } from '@/lib/icons';
 ---
 
 <BaseLayout title="About">
-  <h1>About</h1>
+  <article>
+    <h1>About</h1>
+    <section>
+      <h2>What I do</h2>
+      <p>
+        I'm a full stack software engineer, proficient in TypeScript and Python.
+        I love building interactive data-driven applications, backend services,
+        and developer tools.
+      </p>
+      <p>
+        I primarily build user interfaces with Vue.js but am experienced in
+        other frameworks including React, Solid.js, Svelte, and vanilla
+        JavaScript.
+      </p>
+      <p>
+        I currently develop API's in Python using FastAPI and Node.js using
+        Fastify.
+      </p>
+    </section>
+    <section>
+      <h2>What I've done</h2>
+      <p>
+        I started my career as a cartographer building maps for journalists and
+        large media outlets. During that time, I learned to use HTML, CSS, and
+        JavaScript to create custom visualizations for a variety of media
+        clients.
+      </p>
+      <p>
+        After going deep on data visualization, I joined Denovium as a user
+        interface software engineer. During this time I developed the Denovium
+        Gateway, a web application that used AI models create and explore entire
+        genomes. The platform we developed ultimately led to our
+        <span class="d-inline-flex">
+          <Link
+            href="https://www.prnewswire.com/news-releases/absci-announces-acquisition-of-deep-learning-company-denovium-301206116.html"
+          >
+            acquisition by Absci
+          </Link>.
+        </span>
+      </p>
+      <p>
+        Today I work at the intersection of AI and software engineering at
+        Absci. As part of the AI engineering team, I'm focused on scaling our AI
+        platform and building AI powered tools that expedite workflows and
+        reveal novel insights.
+      </p>
+    </section>
+    <section>
+      <h2>What I'm interested in</h2>
+      <p>
+        I'm passionate about clean code and empathetic collaboration. I thrive
+        in cross-functional environments and have extensive experience
+        partnering with technical and non-technical colleagues.
+      </p>
+      <p>
+        I love solving problems on both sides of the stack and am currently
+        focused on growing my back-end skills.
+      </p>
+    </section>
+
+    <div class="icons">
+      <Link href="https://github.com/chrisvaillancourt">
+        <Icon name="GitHub" path={github} />
+      </Link>
+      <Link href="https://www.linkedin.com/in/chrisdvaillancourt">
+        <Icon name="LinkedIn" path={linkedIn} />
+      </Link>
+    </div>
+  </article>
 </BaseLayout>
+
+<style>
+  .d-inline-flex {
+    display: inline-flex;
+  }
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: var(--size-3);
+  }
+</style>
