@@ -65,8 +65,4 @@
   body {
     overflow-y: scroll;
   }
-
-  header {
-    margin-bottom: var(--size-7);
-  }
 }
