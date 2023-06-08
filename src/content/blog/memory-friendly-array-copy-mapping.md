@@ -1,5 +1,5 @@
 ---
-title: Memory Friendly Array mapping with `Array.from()`
+title: Memory Friendly Array Mapping With `Array.from()`
 summary: Improve memory efficiency when copying & mapping JavaScript arrays.
 added: 9-20-22
 updated: 5-31-23
