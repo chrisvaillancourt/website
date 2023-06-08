@@ -14,7 +14,7 @@ const posts = await getPublishedPosts();
     {
       posts.map(({ slug, data: { title, summary, added, tags } }) => (
         <li>
-          <Link class="post-link" href={postUrl(slug)}>
+          <Link class="post-link" href={postUrl(slug)} target="_self">
             <h3>{title}</h3>
             {summary && <p>{summary}</p>}
             <div class="post-metadata">
