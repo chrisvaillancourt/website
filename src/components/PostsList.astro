@@ -17,7 +17,7 @@ const { posts, showPublished = true } = Astro.props;
   {
     posts.map(({ slug, data: { title, added } }) => (
       <li>
-        <Link href={postUrl(slug)}>
+        <Link href={postUrl(slug)} target="_self">
           {title}{' '}
           {showPublished && <DateTime datetime={added} class="added-date" />}
         </Link>
