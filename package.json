@@ -19,9 +19,9 @@
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^1.0.3",
-    "@types/node": "^18.16.16",
-    "@typescript-eslint/eslint-plugin": "^5.59.9",
-    "@typescript-eslint/parser": "^5.59.9",
+    "@types/node": "^18.16.18",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-astro": "^0.27.1",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.2.96",
-    "astro": "^2.6.1",
+    "astro": "^2.6.3",
     "open-props": "^1.5.8"
   }
 }
