@@ -1,4 +1,4 @@
-@layer normalize, theme, components-btn, components-link;
+@layer normalize, theme;
 @import './normalize.css' layer(normalize);
 @import './theme.css' layer(theme);
 
