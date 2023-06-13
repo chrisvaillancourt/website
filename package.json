@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.2.96",
-    "astro": "^2.6.3",
+    "astro": "^2.6.4",
     "open-props": "^1.5.8"
   }
 }
