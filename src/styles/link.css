@@ -1,0 +1,18 @@
+a[href],
+a[href] * {
+  text-decoration: none;
+}
+a[href],
+a[href]:visited {
+  color: var(--link);
+}
+a[href]:hover {
+  text-decoration: underline solid var(--link);
+  background-color: hsl(var(--brand-hsl) / 20%);
+}
+a[href] *:hover {
+  text-decoration: underline solid var(--link) 0;
+}
+a[href] > code:hover {
+  background-color: transparent;
+}
