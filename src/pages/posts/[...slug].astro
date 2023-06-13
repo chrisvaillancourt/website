@@ -22,6 +22,7 @@ const { Content } = await post.render();
   <Content />
 </PostLayout>
 
-<style>
+<style is:global>
+  /* Needs to be global to apply link styles */
   @import '@/styles/link.css';
 </style>
