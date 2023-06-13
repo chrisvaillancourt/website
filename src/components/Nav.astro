@@ -1,6 +1,6 @@
 ---
 import NavHamburger from '@/components/NavHamburger.astro';
-
+import Link from '@/components/Link.astro';
 interface Props {
   links: {
     href: string;
@@ -17,7 +17,9 @@ const { links, class: className = '' } = Astro.props;
     {
       links?.map(({ href, text }) => (
         <li>
-          <a href={href}>{text}</a>
+          <Link href={href} target="_self">
+            {text}
+          </Link>
         </li>
       ))
     }
@@ -29,10 +31,6 @@ const { links, class: className = '' } = Astro.props;
     display: flex;
     justify-content: flex-end;
     gap: var(--size-2);
-  }
-  nav > a:last-child {
-    padding-inline-end: 0;
-    margin-inline-end: 0;
   }
   ul {
     display: flex;
