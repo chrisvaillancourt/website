@@ -16,7 +16,7 @@ One workaround is to set the height of the HTML and body to `height: 100%`:
 ```css
 html,
 body {
-  height: 100%;
+	height: 100%;
 }
 ```
 
@@ -46,9 +46,9 @@ Syntax suggests using `100vh` ass a fallback for the new units:
 ```css
 html,
 body {
-  /* fallback to 100vh if dvh isn't supported */
-  height: 100vh;
-  /* use dynamic viewport height if available */
-  height: 100dvh;
+	/* fallback to 100vh if dvh isn't supported */
+	height: 100vh;
+	/* use dynamic viewport height if available */
+	height: 100dvh;
 }
 ```
