@@ -1,10 +1,36 @@
 import { defineConfig } from 'astro/config';
+import mdx from '@astrojs/mdx';
+import tailwind from '@astrojs/tailwind';
+import image from '@astrojs/image';
+import sitemap from '@astrojs/sitemap';
+import prefetch from '@astrojs/prefetch';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [],
-  // ! using 'class' breaks components that import styles into separate cascade layer
-  // https://github.com/withastro/astro/issues/7282
-  scopedStyleStrategy: 'where',
+  site: 'https://chrisvaillancourt.io/',
+  markdown: {
+    shikiConfig: {
+      theme: 'dracula',
+      wrap: true,
+    },
+  },
+  integrations: [
+    mdx({}),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    image({
+      serviceEntryPoint: '@astrojs/image/sharp',
+    }),
+    sitemap(),
+    prefetch(),
+  ],
   compressHTML: true,
+  vite: {
+    optimizeDeps: {
+      exclude: ['@resvg/resvg-js'],
+    },
+  },
 });
