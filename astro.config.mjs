@@ -7,30 +7,30 @@ import prefetch from '@astrojs/prefetch';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://chrisvaillancourt.io/',
-  markdown: {
-    shikiConfig: {
-      theme: 'dracula',
-      wrap: true,
-    },
-  },
-  integrations: [
-    mdx({}),
-    tailwind({
-      config: {
-        applyBaseStyles: false,
-      },
-    }),
-    image({
-      serviceEntryPoint: '@astrojs/image/sharp',
-    }),
-    sitemap(),
-    prefetch(),
-  ],
-  compressHTML: true,
-  vite: {
-    optimizeDeps: {
-      exclude: ['@resvg/resvg-js'],
-    },
-  },
+	site: 'https://chrisvaillancourt.io/',
+	markdown: {
+		shikiConfig: {
+			theme: 'dracula',
+			wrap: true,
+		},
+	},
+	integrations: [
+		mdx({}),
+		tailwind({
+			config: {
+				applyBaseStyles: false,
+			},
+		}),
+		image({
+			serviceEntryPoint: '@astrojs/image/sharp',
+		}),
+		sitemap(),
+		prefetch(),
+	],
+	compressHTML: true,
+	vite: {
+		optimizeDeps: {
+			exclude: ['@resvg/resvg-js'],
+		},
+	},
 });

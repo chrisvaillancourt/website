@@ -1,10 +1,10 @@
-import type { Config } from "tailwindcss";
-import { fontFamily } from "tailwindcss/defaultTheme";
-import plugin from "tailwindcss/plugin";
+import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 export default {
-	content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
-	darkMode: "class",
+	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
+	darkMode: 'class',
 	corePlugins: {
 		// disable aspect ratio as per docs -> @tailwindcss/aspect-ratio
 		aspectRatio: false,
@@ -20,11 +20,11 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				bgColor: "var(--theme-bg)",
-				textColor: "var(--theme-text)",
-				link: "var(--theme-link)",
-				accent: "var(--theme-accent)",
-				"accent-2": "var(--theme-accent-2)",
+				bgColor: 'var(--theme-bg)',
+				textColor: 'var(--theme-text)',
+				link: 'var(--theme-link)',
+				accent: 'var(--theme-accent)',
+				'accent-2': 'var(--theme-accent-2)',
 			},
 			fontFamily: {
 				// Add any custom fonts here
@@ -32,7 +32,7 @@ export default {
 				serif: [...fontFamily.serif],
 			},
 			transitionProperty: {
-				height: "height",
+				height: 'height',
 			},
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
@@ -40,55 +40,55 @@ export default {
 			typography: (theme) => ({
 				cactus: {
 					css: {
-						"--tw-prose-body": "var(--theme-text)",
-						"--tw-prose-headings": "var(--theme-accent-2)",
-						"--tw-prose-links": "var(--theme-text)",
-						"--tw-prose-bold": "var(--theme-text)",
-						"--tw-prose-bullets": "var(--theme-text)",
-						"--tw-prose-quotes": "var(--theme-quote)",
-						"--tw-prose-code": "var(--theme-text)",
-						"--tw-prose-hr": "0.5px dashed #666",
-						"--tw-prose-th-borders": "#666",
+						'--tw-prose-body': 'var(--theme-text)',
+						'--tw-prose-headings': 'var(--theme-accent-2)',
+						'--tw-prose-links': 'var(--theme-text)',
+						'--tw-prose-bold': 'var(--theme-text)',
+						'--tw-prose-bullets': 'var(--theme-text)',
+						'--tw-prose-quotes': 'var(--theme-quote)',
+						'--tw-prose-code': 'var(--theme-text)',
+						'--tw-prose-hr': '0.5px dashed #666',
+						'--tw-prose-th-borders': '#666',
 					},
 				},
 				DEFAULT: {
 					css: {
 						a: {
-							"@apply cactus-link no-underline": "",
+							'@apply cactus-link no-underline': '',
 						},
 						strong: {
-							fontWeight: "700",
+							fontWeight: '700',
 						},
 						code: {
-							border: "1px dotted #666",
-							borderRadius: "2px",
+							border: '1px dotted #666',
+							borderRadius: '2px',
 						},
 						blockquote: {
-							borderLeftWidth: "none",
+							borderLeftWidth: 'none',
 						},
 						hr: {
-							borderTopStyle: "dashed",
+							borderTopStyle: 'dashed',
 						},
 						thead: {
-							borderBottomWidth: "none",
+							borderBottomWidth: 'none',
 						},
-						"thead th": {
-							fontWeight: "700",
-							borderBottom: "1px dashed #666",
+						'thead th': {
+							fontWeight: '700',
+							borderBottom: '1px dashed #666',
 						},
-						"tbody tr": {
-							borderBottomWidth: "none",
+						'tbody tr': {
+							borderBottomWidth: 'none',
 						},
 						tfoot: {
-							borderTop: "1px dashed #666",
+							borderTop: '1px dashed #666',
 						},
 					},
 				},
 				sm: {
 					css: {
 						code: {
-							fontSize: theme("fontSize.sm")[0],
-							fontWeight: "400",
+							fontSize: theme('fontSize.sm')[0],
+							fontWeight: '400',
 						},
 					},
 				},
@@ -96,21 +96,21 @@ export default {
 		},
 	},
 	plugins: [
-		require("@tailwindcss/typography"),
-		require("@tailwindcss/aspect-ratio"),
+		require('@tailwindcss/typography'),
+		require('@tailwindcss/aspect-ratio'),
 		plugin(function ({ addComponents }) {
 			addComponents({
-				".cactus-link": {
-					"@apply bg-[size:100%_6px] bg-bottom bg-repeat-x": {},
+				'.cactus-link': {
+					'@apply bg-[size:100%_6px] bg-bottom bg-repeat-x': {},
 					backgroundImage:
-						"linear-gradient(transparent,transparent 5px,var(--theme-text) 5px,var(--theme-text))",
-					"&:hover": {
+						'linear-gradient(transparent,transparent 5px,var(--theme-text) 5px,var(--theme-text))',
+					'&:hover': {
 						backgroundImage:
-							"linear-gradient(transparent,transparent 4px,var(--theme-link) 4px,var(--theme-link))",
+							'linear-gradient(transparent,transparent 4px,var(--theme-link) 4px,var(--theme-link))',
 					},
 				},
-				".title": {
-					"@apply text-2xl font-semibold text-accent-2": {},
+				'.title': {
+					'@apply text-2xl font-semibold text-accent-2': {},
 				},
 			});
 		}),

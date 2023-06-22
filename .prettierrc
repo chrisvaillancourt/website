@@ -1,20 +1,19 @@
 {
-  "plugins": [
-    "./node_modules/prettier-plugin-astro",
-    "./node_modules/prettier-plugin-tailwindcss"
-  ],
-  "overrides": [
-    {
-      "files": "*.astro",
-      "options": {
-        "parser": "astro"
-      }
-    }
-  ],
-  "semi": true,
-  "singleQuote": true,
-  "bracketSameLine": false,
-  "trailingComma": "all",
-  "proseWrap": "always",
-  "endOfLine": "lf"
+	"plugins": [
+		"./node_modules/prettier-plugin-astro",
+		"./node_modules/prettier-plugin-tailwindcss"
+	],
+	"overrides": [
+		{
+			"files": "*.astro",
+			"options": {
+				"parser": "astro"
+			}
+		}
+	],
+	"bracketSameLine": false,
+	"proseWrap": "always",
+	"semi": true,
+	"singleQuote": true,
+	"trailingComma": "all"
 }

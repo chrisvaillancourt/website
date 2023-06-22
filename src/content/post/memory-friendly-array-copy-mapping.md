@@ -17,8 +17,8 @@ const elements = document.querySelectorAll('*');
 const elementClasses = Array.from(elements, getNodeClasses);
 
 function getNodeClasses(node: Element) {
-  const { classList } = node;
-  return classList;
+	const { classList } = node;
+	return classList;
 }
 ```
 
@@ -29,8 +29,8 @@ const elements = document.querySelectorAll('*');
 const elementClasses = [...elements].map(getNodeClasses); // creates intermediate array
 
 function getNodeClasses(node: Element) {
-  const { classList } = node;
-  return classList;
+	const { classList } = node;
+	return classList;
 }
 ```
 

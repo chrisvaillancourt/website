@@ -1,14 +1,14 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import type { IElement } from "@/data/shared";
-import { getFormattedDate } from "@/utils";
+import type { CollectionEntry } from 'astro:content';
+import type { IElement } from '@/data/shared';
+import { getFormattedDate } from '@/utils';
 
 interface Props extends IElement {
-	post: CollectionEntry<"post">;
+	post: CollectionEntry<'post'>;
 	withDesc?: boolean;
 }
 
-const { post, as: Element = "div", withDesc = false } = Astro.props;
+const { post, as: Element = 'div', withDesc = false } = Astro.props;
 const date = new Date(post.data.publishDate);
 const datetime = date.toISOString();
 const postDate = getFormattedDate(date);
