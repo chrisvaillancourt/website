@@ -1,28 +1,26 @@
 import { defineCollection, z } from 'astro:content';
 
-// Each collection needs to be defined with `defineCollection()`
-const blogCollection = defineCollection({
+function removeDupsAndLowerCase(array: readonly string[]) {
+  if (!array.length) return array;
+  const lowercaseItems = array.map((str) => str.toLowerCase());
+  const distinctItems = new Set(lowercaseItems);
+  return Array.from(distinctItems);
+}
+
+const post = defineCollection({
   type: 'content',
   schema: z.object({
+    title: z.string().max(60),
     draft: z.boolean().default(false),
-    title: z.string(),
-    summary: z.string().optional(),
-    added: z.string().transform((str) => new Date(str)),
-    updated: z
+    description: z.string().min(10).max(160),
+    publishDate: z.string().transform((str) => new Date(str)),
+    updatedDate: z
       .string()
       .optional()
       .transform((str) => str && new Date(str)),
-    tags: z.array(z.string()).optional(),
-    image: z.string().optional(),
+    tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+    ogImage: z.string().optional(),
   }),
 });
 
-const blogCollectionName = 'blog';
-
-// exporting the collections object registers it
-// Each key needs to match the collection directory structure in "src/content"
-const collections = {
-  [blogCollectionName]: blogCollection,
-};
-
-export { blogCollectionName, collections };
+export const collections = { post };

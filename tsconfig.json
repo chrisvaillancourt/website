@@ -40,9 +40,11 @@
     "allowUnusedLabels": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "~/assets/*": ["src/assets/*"]
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*.astro"],
+      "@/layouts/*": ["src/layouts/*.astro"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.astro", "./*.*js"]
+  "include": ["src/**/*.ts", "src/**/*.astro", "./*.*js"],
+  "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
 }
