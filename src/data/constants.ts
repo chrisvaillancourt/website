@@ -1,4 +1,4 @@
-const MENU_LINKS = [
+const NAV_LINKS = [
 	{
 		title: 'Home',
 		path: '/',
@@ -19,4 +19,4 @@ const SOCIAL_LINKS = {
 	email: 'chris.d.vaillancourt@gmail.com',
 } as const;
 
-export { MENU_LINKS, SOCIAL_LINKS };
+export { NAV_LINKS, SOCIAL_LINKS };
