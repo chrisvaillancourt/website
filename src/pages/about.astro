@@ -2,6 +2,8 @@
 import PageLayout from '@/layouts/Base';
 import Icon from '@/components/Icon';
 import Link from '@/components/Link';
+import Heading from '@/components/Heading';
+import Paragraph from '@/components/Paragraph';
 import { github, linkedIn } from '@/lib/icons';
 
 const meta = {
@@ -11,18 +13,19 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<article class="prose">
+	<article>
+		<Heading level="1">About</Heading>
 		<section>
-			<h2>What I do</h2>
-			<p>
+			<Heading level="2">What I do</Heading>
+			<Paragraph>
 				I'm a full stack software engineer, proficient in
 				<Link primary href="https://www.typescriptlang.org/">TypeScript</Link>
 				and
 				<Link primary href="https://www.python.org/">Python</Link>. I love
 				building interactive data-driven applications, backend services, and
 				developer tools.
-			</p>
-			<p>
+			</Paragraph>
+			<Paragraph>
 				I primarily build user interfaces with
 				<Link primary href="https://vuejs.org/">Vue.js</Link>
 				but am experienced in other frameworks including
@@ -31,24 +34,24 @@ const meta = {
 				<Link primary href="https://svelte.dev/">Svelte</Link>,
 				<Link primary href="https://astro.build/">Astro</Link>, and vanilla
 				JavaScript.
-			</p>
-			<p>
+			</Paragraph>
+			<Paragraph>
 				I currently develop back end API's in Python using
 				<Link primary href="https://fastapi.tiangolo.com/">FastAPI</Link>
 				and in Node.js using
 				<Link primary href="https://www.fastify.io/">Fastify</Link>.
-			</p>
+			</Paragraph>
 		</section>
 		<section>
-			<h2>What I've done</h2>
-			<p>
+			<Heading level="2">What I've Done</Heading>
+			<Paragraph>
 				I started my career as a cartographer at
 				<Link href="https://www.esri.com/">Esri</Link>, building maps for
 				journalists and large media outlets. During that time, I learned to use
 				HTML, CSS, and JavaScript to create custom visualizations for a variety
 				of media clients.
-			</p>
-			<p>
+			</Paragraph>
+			<Paragraph>
 				After going deep on data visualization, I joined Denovium as a user
 				interface software engineer. During this time I helped develop the
 				Denovium Gateway, a web application that used AI models to create and
@@ -61,22 +64,22 @@ const meta = {
 						acquisition by Absci
 					</Link>.
 				</span>
-			</p>
-			<p>
+			</Paragraph>
+			<Paragraph>
 				Today, I work at the intersection of AI and software engineering at
 				Absci. As part of the AI engineering team, I'm focused on scaling our AI
 				platform and building AI powered tools that expedite workflows and
 				reveal novel insights.
-			</p>
+			</Paragraph>
 		</section>
 		<section>
-			<h2>What I'm interested in</h2>
-			<p>
+			<Heading level="2">What I'm interested in</Heading>
+			<Paragraph>
 				I'm passionate about clean code and empathetic collaboration. I thrive
 				in cross-functional environments and have extensive experience
 				partnering with technical and non-technical colleagues to deliver full
 				stack solutions at scale.
-			</p>
+			</Paragraph>
 		</section>
 		<footer class="flex justify-center gap-x-4">
 			<Link primary href="https://github.com/chrisvaillancourt">
