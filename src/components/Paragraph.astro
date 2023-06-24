@@ -1,0 +1,17 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = HTMLAttributes<'p'>;
+const { class: className, ...attrs } = Astro.props;
+const _className = [
+	'text-base',
+	'my-5',
+	'max-w-prose',
+	'leading-relaxed',
+	{ [className ?? '']: className },
+];
+---
+
+<p class:list={_className} {...attrs}>
+	<slot />
+</p>
