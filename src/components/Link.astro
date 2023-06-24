@@ -19,8 +19,6 @@ const classes = [
 ];
 ---
 
-<span class="not-prose">
-	<a href={href} target={target} rel={rel} class:list={classes} {...attrs}>
-		<slot />
-	</a>
-</span>
+<a href={href} target={target} rel={rel} class:list={classes} {...attrs}>
+	<slot />
+</a>
