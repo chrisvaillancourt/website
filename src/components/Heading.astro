@@ -1,0 +1,29 @@
+---
+type Level = '1' | '2' | '3';
+type Heading = `h${Level}`;
+interface Props {
+	level: Level;
+	class?: string;
+}
+
+const { level, class: className, ...attrs } = Astro.props;
+
+const HeadingEl: Heading = `h${level}`;
+
+const headingClassMap = {
+	1: 'text-3xl mb-8',
+	2: 'text-2xl mb-6 mt-12',
+	3: 'text-xl mb-4 mt-8',
+} as const;
+
+const _className = [
+	'font-semibold',
+	'text-accent-2',
+	headingClassMap[level],
+	{ [className ?? '']: className },
+];
+---
+
+<HeadingEl class:list={_className} {...attrs}>
+	<slot />
+</HeadingEl>
