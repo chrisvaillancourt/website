@@ -3,7 +3,7 @@ title: Memory Friendly Array Mapping With `Array.from()`
 description: Improve memory efficiency when copying & mapping JavaScript arrays.
 publishDate: 9-20-22
 updatedDate: 5-31-23
-tags: [TIL, JavaScript]
+tags: ['TIL', 'JavaScript']
 ---
 
 ## Memory Efficiency

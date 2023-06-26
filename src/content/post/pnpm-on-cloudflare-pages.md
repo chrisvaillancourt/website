@@ -2,7 +2,7 @@
 title: Using pnpm With Cloudflare Pages
 description: How to setup a Cloudflare Pages deployment with pnpm.
 publishDate: 09-4-2022
-tags: [pnpm, Cloudflare, CI/CD]
+tags: ['pnpm', 'Cloudflare', 'CI/CD']
 ---
 
 ## TLDR

@@ -2,7 +2,7 @@
 title: Hacking 100vh On Mobile
 description: Fixing 100vh on mobile
 publishDate: 09-02-2022
-tags: [CSS]
+tags: ['CSS']
 ---
 
 ## The problem
