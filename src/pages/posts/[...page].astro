@@ -1,6 +1,6 @@
 ---
 import type { Page, GetStaticPaths } from 'astro';
-import type { CollectionEntry } from 'astro:content';
+import type { PostCollectionEntry } from '@/types';
 import { getPostsCollection } from '@/lib/post';
 import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
@@ -18,7 +18,7 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 interface Props {
-	page: Page<CollectionEntry<'post'>>;
+	page: Page<PostCollectionEntry>;
 	uniqueTags: string[];
 }
 

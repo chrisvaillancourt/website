@@ -1,10 +1,9 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import type { IElement } from '@/types';
+import type { IElement, PostCollectionEntry } from '@/types';
 import { getFormattedDate } from '@/utils';
 
 interface Props extends IElement {
-	post: CollectionEntry<'post'>;
+	post: PostCollectionEntry;
 	withDesc?: boolean;
 }
 

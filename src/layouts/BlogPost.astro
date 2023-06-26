@@ -1,11 +1,10 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-
+import type { PostCollectionEntry } from '@/types';
 import BaseLayout from './Base.astro';
 import BlogHero from '@/components/blog/Hero';
 
 interface Props {
-	post: CollectionEntry<'post'>;
+	post: PostCollectionEntry;
 }
 
 const { post } = Astro.props;
