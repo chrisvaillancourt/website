@@ -8,8 +8,7 @@ import Pagination from '@/components/Paginator';
 import Heading from '@/components/Heading';
 import Icon from '@/components/Icon';
 import { tagMultiple } from '@/lib/icons';
-
-import { getUniqueTags, sortMDByDate } from '@/utils';
+import { getUniqueTags, sortMDByDate } from '@/lib/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getPostsCollection();
