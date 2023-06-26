@@ -3,9 +3,9 @@ import PageLayout from '@/layouts/Base';
 import Heading from '@/components/Heading';
 import Link from '@/components/Link';
 import { getUniqueTagsWithCount } from '@/utils';
-import { getCollection } from 'astro:content';
+import { getPostsCollection } from '@/lib/post';
 
-const allPosts = await getCollection('post');
+const allPosts = await getPostsCollection();
 const allTags = getUniqueTagsWithCount(allPosts);
 
 const meta = {

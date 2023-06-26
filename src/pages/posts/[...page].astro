@@ -1,14 +1,14 @@
 ---
 import type { Page, GetStaticPaths } from 'astro';
 import type { CollectionEntry } from 'astro:content';
-import { getCollection } from 'astro:content';
+import { getPostsCollection } from '@/lib/post';
 import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import Pagination from '@/components/Paginator';
 import { getUniqueTags, sortMDByDate } from '@/utils';
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const allPosts = await getCollection('post');
+	const allPosts = await getPostsCollection();
 	const allPostsByDate = sortMDByDate(allPosts);
 	const uniqueTags = getUniqueTags(allPosts);
 	return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: 10 });

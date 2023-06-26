@@ -1,3 +1,5 @@
+const POSTS_PATH = '/posts/';
+
 const NAV_LINKS = [
 	{
 		title: 'Home',
@@ -5,7 +7,7 @@ const NAV_LINKS = [
 	},
 	{
 		title: 'Posts',
-		path: '/posts/',
+		path: POSTS_PATH,
 	},
 	{
 		title: 'About',
@@ -19,4 +21,4 @@ const SOCIAL_LINKS = {
 	linkedin: 'https://www.linkedin.com/in/chrisdvaillancourt',
 } as const;
 
-export { NAV_LINKS, SOCIAL_LINKS };
+export { NAV_LINKS, SOCIAL_LINKS, POSTS_PATH };
