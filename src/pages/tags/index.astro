@@ -1,5 +1,7 @@
 ---
 import PageLayout from '@/layouts/Base';
+import Heading from '@/components/Heading';
+import Link from '@/components/Link';
 import { getUniqueTagsWithCount } from '@/utils';
 import { getCollection } from 'astro:content';
 
@@ -13,21 +15,20 @@ const meta = {
 ---
 
 <PageLayout meta={meta}>
-	<h1 class="title mb-6">Tags</h1>
+	<Heading level="1">Tags</Heading>
 	<ul class="space-y-4">
 		{
-			Object.entries(allTags).map(([tag, val]) => (
+			Object.entries(allTags).map(([tag, count]) => (
 				<li class="flex items-center gap-x-2">
-					<a
-						class="cactus-link inline-block"
+					<Link
 						href={`/tags/${tag}/`}
 						title={`View posts with the tag: ${tag}`}
 						rel="prefetch"
 					>
 						&#35;{tag}
-					</a>
-					<span class="inline-block">
-						- {val} Post{val > 1 && 's'}
+					</Link>
+					<span>
+						- {count} Post{count > 1 && 's'}
 					</span>
 				</li>
 			))
