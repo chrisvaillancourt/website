@@ -1,10 +1,9 @@
 ---
 import PageLayout from '@/layouts/Base';
-import Icon from '@/components/Icon';
 import Link from '@/components/Link';
 import Heading from '@/components/Heading';
 import Paragraph from '@/components/Paragraph';
-import { github, linkedIn } from '@/lib/icons';
+import SocialList from '@/components/SocialList';
 
 const meta = {
 	title: 'About',
@@ -81,13 +80,8 @@ const meta = {
 				stack solutions at scale.
 			</Paragraph>
 		</section>
-		<footer class="flex justify-center gap-x-4">
-			<Link primary href="https://github.com/chrisvaillancourt">
-				<Icon name="Chris Vaillancourt's GitHub Profile" path={github} />
-			</Link>
-			<Link primary href="https://www.linkedin.com/in/chrisdvaillancourt">
-				<Icon name="Chris Vaillancourt's LinkedIn Profile" path={linkedIn} />
-			</Link>
+		<footer class="flex justify-center">
+			<SocialList />
 		</footer>
 	</article>
 </PageLayout>

@@ -13,10 +13,12 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
-	<section class="prose">
+	<section>
 		<Heading level="1">Chris Vaillancourt</Heading>
 		<Paragraph>Full Stack Software Engineer</Paragraph>
-		<SocialList />
+		<SocialList>
+			<Paragraph slot="prefix">Find me on:</Paragraph>
+		</SocialList>
 	</section>
 	<section aria-label="Blog post list" class="mt-16">
 		<Heading level="2">Posts</Heading>
