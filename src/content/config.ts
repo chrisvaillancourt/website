@@ -7,7 +7,7 @@ function removeDupsAndLowerCase(array: readonly string[]) {
 	return Array.from(distinctItems);
 }
 
-const post = defineCollection({
+const postCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string().max(60),
@@ -23,4 +23,8 @@ const post = defineCollection({
 	}),
 });
 
-export const collections = { post };
+const postCollectionName = 'post';
+
+const collections = { [postCollectionName]: postCollection };
+
+export { postCollectionName, collections };

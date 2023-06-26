@@ -1,5 +1,5 @@
 import type { APIContext, GetStaticPaths } from 'astro';
-import { getCollection, getEntryBySlug } from 'astro:content';
+import { getEntryBySlug } from 'astro:content';
 import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import satori, { type SatoriOptions } from 'satori';
@@ -7,6 +7,7 @@ import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import { siteConfig } from '@/site.config';
 import { getFormattedDate } from '@/utils';
+import { getPostsCollection } from '@/lib/post';
 
 const AssetDir = resolve('src', 'assets');
 const RobotoMonoPath = join(AssetDir, 'roboto-mono-regular.ttf');
@@ -91,7 +92,7 @@ export async function get({ params: { slug } }: APIContext) {
 }
 
 export const getStaticPaths = (async () => {
-	const posts = await getCollection('post');
+	const posts = await getPostsCollection();
 	return posts
 		.filter(({ data }) => !data.ogImage)
 		.map(({ slug }) => ({ params: { slug } }));
