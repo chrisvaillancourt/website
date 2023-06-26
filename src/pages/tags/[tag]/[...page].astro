@@ -5,7 +5,7 @@ import { getPostsCollection } from '@/lib/post';
 import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import Pagination from '@/components/Paginator';
-import { getUniqueTags, sortMDByDate } from '@/utils';
+import { getUniqueTags, sortMDByDate } from '@/lib/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getPostsCollection();

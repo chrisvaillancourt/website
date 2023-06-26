@@ -2,7 +2,7 @@
 import PageLayout from '@/layouts/Base';
 import Heading from '@/components/Heading';
 import Link from '@/components/Link';
-import { getUniqueTagsWithCount } from '@/utils';
+import { getUniqueTagsWithCount } from '@/lib/post';
 import { getPostsCollection } from '@/lib/post';
 
 const allPosts = await getPostsCollection();
@@ -10,7 +10,7 @@ const allTags = getUniqueTagsWithCount(allPosts);
 
 const meta = {
 	title: 'All Tags',
-	description: 'All Tags from my blogs',
+	description: 'All Tags from my posts',
 };
 ---
 

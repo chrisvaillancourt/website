@@ -1,3 +1,8 @@
+import type { CollectionEntry } from 'astro:content';
+import type { postCollectionName } from '@/content/config';
+
+type PostCollectionEntry = CollectionEntry<typeof postCollectionName>;
+
 interface IElement {
 	readonly as?: keyof HTMLElementTagNameMap;
 }
@@ -15,4 +20,4 @@ interface SiteMeta {
 	articleDate?: string | undefined;
 }
 
-export type { IElement, PaginationLink, SiteMeta };
+export type { IElement, PaginationLink, SiteMeta, PostCollectionEntry };
