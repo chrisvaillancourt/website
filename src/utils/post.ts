@@ -9,11 +9,9 @@ export function sortMDByDate(posts: CollectionEntry<'post'>[] = []) {
 }
 
 export function getUniqueTags(posts: CollectionEntry<'post'>[] = []) {
-	const uniqueTags = new Set<string>();
-	posts.forEach((post) => {
-		post.data.tags.map((tag) => uniqueTags.add(tag));
-	});
-	return Array.from(uniqueTags);
+	const tags = posts.map((post) => post.data.tags);
+	const uniqueTags = new Set(...tags);
+	return [...uniqueTags] as const;
 }
 
 export function getUniqueTagsWithCount(posts: CollectionEntry<'post'>[] = []): {
