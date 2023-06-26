@@ -16,7 +16,7 @@ const NAV_LINKS = [
 const SOCIAL_LINKS = {
 	github: 'https://github.com/chrisvaillancourt',
 	twitter: 'https://twitter.com/christopher__v',
-	email: 'chris.d.vaillancourt@gmail.com',
+	linkedin: 'https://www.linkedin.com/in/chrisdvaillancourt',
 } as const;
 
 export { NAV_LINKS, SOCIAL_LINKS };
