@@ -1,9 +1,9 @@
 ---
 import { getFormattedDate } from '@/utils';
-import type { CollectionEntry } from 'astro:content';
+import type { PostCollectionEntry } from '@/types';
 
 interface Props {
-	content: CollectionEntry<'post'>;
+	content: PostCollectionEntry;
 }
 
 const { content } = Astro.props;
