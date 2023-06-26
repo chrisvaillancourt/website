@@ -4,7 +4,7 @@ const NAV_LINKS = [
 		path: '/',
 	},
 	{
-		title: 'Blog',
+		title: 'Posts',
 		path: '/posts/',
 	},
 	{
