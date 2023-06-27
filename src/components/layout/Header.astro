@@ -6,7 +6,7 @@ const url = new URL(Astro.request.url);
 ---
 
 <script>
-	import { toggleClass } from '@/utils';
+	import { toggleClass } from '@/lib/dom';
 
 	document.addEventListener('DOMContentLoaded', () => {
 		const header = document.getElementById('main-header') as HTMLElement;
