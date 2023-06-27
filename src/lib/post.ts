@@ -6,7 +6,7 @@ import type { PostCollectionEntry } from '@/types';
 export {
 	getPostsCollection,
 	postUrl,
-	sortMDByDate,
+	postsByDate,
 	getUniqueTags,
 	getUniqueTagsWithCount,
 };
@@ -27,7 +27,7 @@ function postUrl(slug: string) {
 	return `${routePrefix}/${slug}`;
 }
 
-function sortMDByDate(posts: PostCollectionEntry[] = []) {
+function postsByDate(posts: PostCollectionEntry[] = []) {
 	return posts.sort(
 		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 	);

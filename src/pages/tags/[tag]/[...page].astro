@@ -5,11 +5,11 @@ import { getPostsCollection } from '@/lib/post';
 import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import Pagination from '@/components/Paginator';
-import { getUniqueTags, sortMDByDate } from '@/lib/post';
+import { getUniqueTags, postsByDate } from '@/lib/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getPostsCollection();
-	const allPostsByDate = sortMDByDate(allPosts);
+	const allPostsByDate = postsByDate(allPosts);
 	const uniqueTags = getUniqueTags(allPostsByDate);
 
 	return uniqueTags.map((tag) => {
