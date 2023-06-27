@@ -3,7 +3,7 @@ import type { postCollectionName } from '@/content/config';
 
 type PostCollectionEntry = CollectionEntry<typeof postCollectionName>;
 
-type Posts = ReadonlyArray<PostCollectionEntry>;
+type Posts = readonly PostCollectionEntry[];
 
 interface IElement {
 	readonly as?: keyof HTMLElementTagNameMap;
