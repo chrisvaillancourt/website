@@ -8,11 +8,11 @@ import Pagination from '@/components/Paginator';
 import Heading from '@/components/Heading';
 import Icon from '@/components/Icon';
 import { tagMultiple } from '@/lib/icons';
-import { getUniqueTags, sortMDByDate } from '@/lib/post';
+import { getUniqueTags, postsByDate } from '@/lib/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allPosts = await getPostsCollection();
-	const allPostsByDate = sortMDByDate(allPosts);
+	const allPostsByDate = postsByDate(allPosts);
 	const uniqueTags = getUniqueTags(allPosts);
 	return paginate(allPostsByDate, { props: { uniqueTags }, pageSize: 10 });
 }) satisfies GetStaticPaths;

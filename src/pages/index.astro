@@ -4,12 +4,12 @@ import PostPreview from '@/components/blog/PostPreview';
 import SocialList from '@/components/SocialList';
 import Heading from '@/components/Heading';
 import Paragraph from '@/components/Paragraph';
-import { sortMDByDate } from '@/lib/post';
+import { postsByDate } from '@/lib/post';
 import { getPostsCollection } from '@/lib/post';
 
 const MAX_POSTS = 10;
 const allPosts = await getPostsCollection();
-const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
+const allPostsByDate = postsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
