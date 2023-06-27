@@ -27,8 +27,8 @@ function postUrl(slug: string) {
 	return `${routePrefix}/${slug}`;
 }
 
-function postsByDate(posts: PostCollectionEntry[] = []) {
-	return posts.sort(
+function postsByDate(posts: ReadonlyArray<PostCollectionEntry>) {
+	return [...posts].sort(
 		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 	);
 }
