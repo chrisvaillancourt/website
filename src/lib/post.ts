@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import { postCollectionName } from '@/content/config';
 import { POSTS_PATH } from '@/lib/constants';
-import type { PostCollectionEntry } from '@/types';
+import type { Posts } from '@/types';
 
 export {
 	getPostsCollection,
@@ -27,19 +27,19 @@ function postUrl(slug: string) {
 	return `${routePrefix}/${slug}`;
 }
 
-function postsByDate(posts: ReadonlyArray<PostCollectionEntry>) {
+function postsByDate(posts: Posts) {
 	return [...posts].sort(
 		(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 	);
 }
 
-function getUniqueTags(posts: PostCollectionEntry[] = []) {
+function getUniqueTags(posts: Posts) {
 	const tags = posts.flatMap((post) => post.data.tags);
 	const uniqueTags = new Set(tags);
 	return [...uniqueTags] as const;
 }
 
-function getUniqueTagsWithCount(posts: PostCollectionEntry[] = []): {
+function getUniqueTagsWithCount(posts: Posts): {
 	[key: string]: number;
 } {
 	return posts.reduce((prev, post) => {

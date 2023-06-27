@@ -3,6 +3,8 @@ import type { postCollectionName } from '@/content/config';
 
 type PostCollectionEntry = CollectionEntry<typeof postCollectionName>;
 
+type Posts = ReadonlyArray<PostCollectionEntry>;
+
 interface IElement {
 	readonly as?: keyof HTMLElementTagNameMap;
 }
@@ -20,4 +22,4 @@ interface SiteMeta {
 	articleDate?: string | undefined;
 }
 
-export type { IElement, PaginationLink, SiteMeta, PostCollectionEntry };
+export type { IElement, PaginationLink, SiteMeta, PostCollectionEntry, Posts };
