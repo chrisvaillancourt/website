@@ -6,7 +6,7 @@ import satori, { type SatoriOptions } from 'satori';
 import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import { siteConfig } from '@/site.config';
-import { getFormattedDate } from '@/utils';
+import { getFormattedDate } from '@/lib/date';
 import { getPostsCollection } from '@/lib/post';
 
 const AssetDir = resolve('src', 'assets');
