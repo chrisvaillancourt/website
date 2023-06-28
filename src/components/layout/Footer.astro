@@ -1,5 +1,6 @@
 ---
 import { NAV_LINKS } from '@/lib/constants';
+import Link from '@/components/Link';
 
 // We only need the date it was first published but keeping it current looks nice
 // see: https://hynek.me/til/copyright-years/
@@ -20,12 +21,12 @@ const year = new Date().getFullYear();
 	>
 		{
 			NAV_LINKS.map((link) => (
-				<a
+				<Link
 					href={link.path}
 					class="px-4 py-2 sm:px-2 sm:py-0 sm:hover:text-textColor sm:hover:underline"
 				>
 					{link.title}
-				</a>
+				</Link>
 			))
 		}
 	</nav>
