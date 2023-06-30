@@ -6,27 +6,48 @@ const url = new URL(Astro.request.url);
 ---
 
 <script>
-	import { toggleClass } from '@/lib/dom';
+	import { toggleClass, idle } from '@/lib/client';
+	import { isNode } from '@/lib/guards';
 
-	document.addEventListener('DOMContentLoaded', () => {
-		const header = document.getElementById('main-header') as HTMLElement;
-		const toggleMenuButton = document.getElementById(
-			'toggle-navigation-menu',
-		) as HTMLButtonElement;
+	idle(initMenuToggle);
+
+	function initMenuToggle() {
+		const header = document.querySelector('header');
+		const toggleMenuButton = document.getElementById('toggle-navigation-menu');
+		const nav = document.getElementById('navigation-menu');
+
+		if (!header || !toggleMenuButton || !nav) {
+			if (!header) console.error('The header is missing');
+			if (!toggleMenuButton) console.error('The header menu toggle is missing');
+			if (!nav) console.error('The nav is missing');
+			return;
+		}
+
 		let menuOpen = false;
 
-		toggleMenuButton.addEventListener('click', () => {
+		document.addEventListener('pointerup', handleClickOutside);
+		toggleMenuButton.addEventListener('pointerup', toggleMenu);
+
+		function toggleMenu() {
+			if (!header || !toggleMenuButton) return;
 			toggleClass(header, 'menu-open');
 			menuOpen = !menuOpen;
 			toggleMenuButton.setAttribute('aria-expanded', menuOpen.toString());
-		});
-	});
+		}
+		function handleClickOutside({ target }) {
+			if (!isNode(target)) return;
+
+			const outsideNav = !nav.contains(target);
+			const outsideBtn = !toggleMenuButton.contains(target);
+
+			if (menuOpen && outsideNav && outsideBtn) {
+				toggleMenu();
+			}
+		}
+	}
 </script>
 
-<header
-	id="main-header"
-	class="group relative mb-28 flex items-center sm:ps-[4.5rem]"
->
+<header class="group relative mb-28 flex items-center sm:ps-[4.5rem]">
 	<div class="flex sm:flex-col">
 		<a
 			href="/"
