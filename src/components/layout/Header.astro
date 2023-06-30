@@ -30,12 +30,13 @@ const url = new URL(Astro.request.url);
 
 		function toggleMenu() {
 			if (!header || !toggleMenuButton) return;
+
 			toggleClass(header, 'menu-open');
 			menuOpen = !menuOpen;
 			toggleMenuButton.setAttribute('aria-expanded', menuOpen.toString());
 		}
-		function handleClickOutside({ target }) {
-			if (!isNode(target)) return;
+		function handleClickOutside({ target }: Event) {
+			if (!isNode(target) || !nav || !toggleMenuButton) return;
 
 			const outsideNav = !nav.contains(target);
 			const outsideBtn = !toggleMenuButton.contains(target);
@@ -109,7 +110,7 @@ const url = new URL(Astro.request.url);
 	>
 		<svg
 			id="line-svg"
-			class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
+			class="pointer-events-none absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
 			aria-hidden="true"
 			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
