@@ -2,6 +2,7 @@
 title: Combining TypeScript satisfies operator and const assertion
 description: Use satisfies operator with const assertions to get the best of type inference, type safety, and immutability.
 publishDate: 07-06-2023
+updatedDate: 07-07-23
 tags: ['TypeScript', 'immutability']
 ---
 
@@ -93,11 +94,12 @@ const profile = {
  } as Profile;
 ```
 
-This introduces a new problem because TypeScript assumes you know what you're doing and [treats the assertion as valid, even when it may not be](https://github.com/microsoft/TypeScript/issues/49436).
+This method has the same downside as using an explicit type annotation (i.e. we
+lose type inference) and exposes us to potential runtime errors. This happens because TypeScript [treats the assertion as valid, even when it may not be](https://github.com/microsoft/TypeScript/issues/49436).
 
 ## Using `satisfies` operator
 
-`satisfies` gives us a new way to add types:
+We can instead use `satisfies` to add types:
 
 ```ts
 const profile = {
