@@ -2,10 +2,9 @@
 	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
 		// Enable top-level await, and other modern ESM features.
-		"target": "ESNext",
-		"module": "ESNext",
-		// Enable node-style module resolution, for things like npm package imports.
-		"moduleResolution": "node",
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		// Enable JSON imports.
 		"resolveJsonModule": true,
 		// Enable stricter transpilation for better output.
@@ -19,7 +18,6 @@
 		// Skip typechecking libraries and .d.ts files
 		"skipLibCheck": true,
 		"strict": true,
-
 		// Report errors for fallthrough cases in switch statements
 		"noFallthroughCasesInSwitch": true,
 		// Force functions designed to override their parent class to be specified as `override`.
