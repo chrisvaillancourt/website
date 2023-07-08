@@ -6,14 +6,15 @@
 	"scripts": {
 		"dev": "astro check --watch & astro dev --host",
 		"start": "astro dev",
-		"build": "astro check && tsc --noEmit && pnpm lint && astro build",
+		"build": "astro check && tsc --noEmit && pnpm lint && pnpm format && astro build",
 		"wrangler": "wrangler",
 		"deploy": "wrangler pages deploy dist",
 		"preview": "astro preview",
 		"preview:wrangler": "wrangler pages dev ./dist",
 		"astro": "astro",
 		"tsc": "tsc",
-		"format": "prettier --write --plugin-search-dir=. .",
+		"format": "prettier . --check --plugin-search-dir=.",
+		"format:fix": "prettier . --write --plugin-search-dir=.",
 		"lint": "eslint src/**/*.{ts,astro} --ignore-path .gitignore",
 		"lint:fix": "pnpm lint --fix"
 	},
