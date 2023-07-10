@@ -19,7 +19,6 @@
 		"lint:fix": "pnpm lint --fix"
 	},
 	"devDependencies": {
-		"@astrojs/image": "^0.17.2",
 		"@astrojs/mdx": "^0.19.7",
 		"@astrojs/sitemap": "^1.3.3",
 		"@astrojs/tailwind": "^4.0.0",
@@ -50,7 +49,6 @@
 		"@mdi/js": "^7.2.96",
 		"astro": "^2.8.0",
 		"satori": "^0.10.1",
-		"satori-html": "^0.3.2",
-		"sharp": "^0.32.1"
+		"satori-html": "^0.3.2"
 	}
 }
