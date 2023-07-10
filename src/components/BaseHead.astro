@@ -1,6 +1,7 @@
 ---
 import type { SiteMeta } from '@/types';
 import { siteConfig } from '@/site.config';
+import { METADATA_NAME } from '@/lib/theme';
 import '../styles/global.css';
 
 type Props = SiteMeta;
@@ -36,8 +37,8 @@ const socialImageURL = new URL(
 <meta name="description" content={description} />
 <meta name="author" content={siteConfig.author} />
 
-<!-- Theme Colour -->
-<meta name="theme-color" content={siteConfig.themeColorLight} />
+<!-- Theme metadata -->
+<meta name={METADATA_NAME} content={siteConfig.themeColorLight} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={articleDate ? 'article' : 'website'} />
