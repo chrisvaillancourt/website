@@ -8,6 +8,7 @@ import { Resvg } from '@resvg/resvg-js';
 import { siteConfig } from '@/site.config';
 import { getFormattedDate } from '@/lib/date';
 import { getPostsCollection } from '@/lib/post';
+import { DARK_THEME_VALUE } from '@/lib/theme';
 
 const AssetDir = resolve('src', 'assets');
 const RobotoMonoPath = join(AssetDir, 'roboto-mono-regular.ttf');
@@ -37,7 +38,7 @@ const ogOptions: SatoriOptions = {
 };
 
 const markup = (title: string, pubDate: string) => html`<div
-	tw="flex flex-col w-full h-full bg-[#1d1f21] text-[#c9cacc]"
+	tw="flex flex-col w-full h-full bg-[${DARK_THEME_VALUE}] text-[#c9cacc]"
 >
 	<div tw="flex flex-col flex-1 w-full p-10 justify-center">
 		<p tw="text-2xl mb-6">${pubDate}</p>

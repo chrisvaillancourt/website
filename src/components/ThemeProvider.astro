@@ -1,33 +1,60 @@
 ---
-import { siteConfig } from '@/site.config';
-
-const { themeColorDark, themeColorLight } = siteConfig;
+import {
+	THEME_CHANGE_EVENT_TYPE,
+	LIGHT_THEME_NAME,
+	LIGHT_THEME_VALUE,
+	DARK_THEME_NAME,
+	DARK_THEME_VALUE,
+	METADATA_NAME,
+} from '@/lib/theme';
 ---
 
-<script define:vars={{ themeColorDark, themeColorLight }}>
+<script
+	define:vars={{
+		THEME_CHANGE_EVENT_TYPE,
+		LIGHT_THEME_NAME,
+		LIGHT_THEME_VALUE,
+		DARK_THEME_NAME,
+		DARK_THEME_VALUE,
+		METADATA_NAME,
+	}}
+>
 	// Inlined to avoid FOUC.
 	const root = document.documentElement;
-	const colorThemeMetaTag = document.querySelector("meta[name='theme-color']");
+	const colorThemeMetaTag = document.querySelector(
+		`meta[name='${METADATA_NAME}']`,
+	);
+
+	/**
+	 * The key used in local storage to save the user's theme
+	 */
+	const THEME_STORAGE_KEY = 'theme';
 
 	const storedTheme =
-		typeof localStorage !== 'undefined' && localStorage.getItem('theme');
+		typeof localStorage !== 'undefined' &&
+		localStorage.getItem(THEME_STORAGE_KEY);
+
 	const userTheme =
 		storedTheme ||
-		(window.matchMedia('(prefers-color-scheme: light)').matches
-			? 'light'
-			: 'dark');
+		(window.matchMedia(`(prefers-color-scheme: ${LIGHT_THEME_NAME})`).matches
+			? LIGHT_THEME_NAME
+			: DARK_THEME_NAME);
+
+	setTheme(userTheme);
+
+	// theme-change is a custom event from ThemeProvider
+	root.addEventListener(THEME_CHANGE_EVENT_TYPE, (e) => {
+		setTheme(e.detail.theme);
+	});
+
 	function setTheme(theme) {
 		root.classList.toggle('dark', theme === 'dark');
 		colorThemeMetaTag.setAttribute(
 			'content',
-			theme === 'dark' ? themeColorDark : themeColorLight,
+			theme === 'dark' ? DARK_THEME_VALUE : LIGHT_THEME_VALUE,
 		);
 		if (typeof localStorage !== 'undefined') {
-			localStorage.setItem('theme', theme);
+			localStorage.setItem(THEME_STORAGE_KEY, theme);
 		}
 	}
-	setTheme(userTheme);
-	root.addEventListener('theme-change', (e) => {
-		setTheme(e.detail.theme);
-	});
 </script>

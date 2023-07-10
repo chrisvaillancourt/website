@@ -3,6 +3,7 @@
 @layer base {
 	:root {
 		color-scheme: light;
+		/* same as LIGHT_THEME_VALUE in lib/theme.ts */
 		--theme-bg: #fafafa;
 		--theme-link: #567c77;
 		--theme-text: #22272a;
@@ -14,6 +15,7 @@
 
 	:root.dark {
 		color-scheme: dark;
+		/* same as DARK_THEME_VALUE in lib/theme.ts */
 		--theme-bg: #1d1f21;
 		--theme-link: #d480aa;
 		--theme-text: #c9cacc;
