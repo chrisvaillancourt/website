@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'button'> {
+	ghost?: boolean;
+	circle?: boolean;
+}
+
+const { class: className, ghost, circle, ...attrs } = Astro.props;
+
+const _className = [
+	'btn',
+	{ 'btn-ghost': ghost },
+	{ 'btn-circle': circle },
+	{ [className ?? '']: className },
+];
+---
+
+<button class:list={_className} {...attrs}>
+	<slot />
+</button>
