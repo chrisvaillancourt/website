@@ -6,6 +6,7 @@ import Footer from '@/components/layout/Footer';
 import SkipLink from '@/components/SkipLink';
 import ThemeProvider from '@/components/ThemeProvider';
 import { siteConfig } from '@/site.config';
+import { DARK_THEME_NAME } from '@/lib/theme';
 
 interface Props {
 	meta: SiteMeta;
@@ -16,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<html lang={siteConfig.lang}>
+<html lang={siteConfig.lang} data-theme={DARK_THEME_NAME}>
 	<head>
 		<BaseHead
 			title={title}

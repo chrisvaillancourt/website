@@ -60,6 +60,7 @@ const paginationProps = {
 			</ul>
 			<Pagination {...paginationProps} />
 		</section>
+		<!-- TODO use Link and style appropriately -->
 		{
 			uniqueTags.length && (
 				<aside>
@@ -67,11 +68,11 @@ const paginationProps = {
 						<Icon name="tags" aria-hidden="true" path={tagMultiple} />
 						Tags
 					</Heading>
-					<ul class="flex flex-wrap gap-2 text-bgColor">
+					<ul class="flex flex-wrap gap-2 ">
 						{uniqueTags.map((tag) => (
 							<li>
 								<a
-									class="flex items-center justify-center rounded-lg bg-accent p-1"
+									class="badge flex items-center justify-center rounded-lg p-1"
 									href={`/tags/${tag}/`}
 									aria-label={`View all posts with the tag: ${tag}`}
 								>
