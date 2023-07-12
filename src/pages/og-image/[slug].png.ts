@@ -11,6 +11,10 @@ import { getPostsCollection } from '@/lib/post';
 import { DARK_THEME_VALUE } from '@/lib/theme';
 
 const AssetDir = resolve('src', 'assets');
+// TODO remove roboto font
+// need to use font from site.config.ts
+// but don't have a data option
+
 const RobotoMonoPath = join(AssetDir, 'roboto-mono-regular.ttf');
 const RobotoMonoBoldPath = join(AssetDir, 'roboto-mono-700.ttf');
 
