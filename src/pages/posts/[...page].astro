@@ -6,6 +6,7 @@ import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import Pagination from '@/components/Paginator';
 import Heading from '@/components/Heading';
+import Link from '@/components/Link';
 import Icon from '@/components/Icon';
 import { tagMultiple } from '@/lib/icons';
 import { getUniqueTags, postsByDate } from '@/lib/post';
@@ -60,7 +61,6 @@ const paginationProps = {
 			</ul>
 			<Pagination {...paginationProps} />
 		</section>
-		<!-- TODO use Link and style appropriately -->
 		{
 			uniqueTags.length && (
 				<aside>
@@ -71,13 +71,15 @@ const paginationProps = {
 					<ul class="flex flex-wrap gap-2 ">
 						{uniqueTags.map((tag) => (
 							<li>
-								<a
-									class="badge flex items-center justify-center rounded-lg p-1"
+								<Link
+									badge-success
+									hover-underline
+									link-hover
 									href={`/tags/${tag}/`}
 									aria-label={`View all posts with the tag: ${tag}`}
 								>
 									{tag}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>
