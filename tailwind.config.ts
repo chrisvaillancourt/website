@@ -1,8 +1,8 @@
 import type { Config } from 'tailwindcss';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 import tailwindTypography from '@tailwindcss/typography';
 import tailwindAspectRatio from '@tailwindcss/aspect-ratio';
 import daisyui from 'daisyui';
+import { fonts } from './src/site.config';
 import { LIGHT_THEME_NAME, DARK_THEME_NAME } from './src/lib/theme';
 
 export default {
@@ -22,11 +22,7 @@ export default {
 	},
 	theme: {
 		extend: {
-			fontFamily: {
-				// Add any custom fonts here
-				sans: [...fontFamily.sans],
-				serif: [...fontFamily.serif],
-			},
+			fontFamily: fonts,
 			transitionProperty: {
 				height: 'height',
 			},

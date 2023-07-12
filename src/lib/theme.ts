@@ -1,3 +1,4 @@
+// TODO consolidate config in one location / move to src/site.config.ts
 /** The name attribute of the theme meta element. */
 const METADATA_NAME = 'theme-color';
 /** The emitted event type when the user changes the theme. */
