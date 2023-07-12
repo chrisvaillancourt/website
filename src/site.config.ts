@@ -1,6 +1,5 @@
 import { LIGHT_THEME_VALUE, DARK_THEME_VALUE } from '@/lib/theme';
 
-
 const siteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro) & the generated satori png (src/pages/og-image/[slug].png.ts)
 	author: 'Chris Vaillancourt',
