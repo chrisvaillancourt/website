@@ -3,6 +3,9 @@ import type { HTMLAttributes } from 'astro/types';
 interface Props extends HTMLAttributes<'a'> {
 	primary?: boolean;
 	secondary?: boolean;
+	'hover-underline'?: boolean;
+	badge?: boolean;
+	'badge-success'?: boolean;
 }
 
 const {
@@ -12,6 +15,9 @@ const {
 	class: className,
 	primary,
 	secondary,
+	'hover-underline': hoverUnderline,
+	badge,
+	'badge-success': badgeSuccess,
 	...attrs
 } = Astro.props;
 
@@ -19,7 +25,10 @@ const classes = [
 	'link',
 	{
 		'link-primary': primary,
+		'link-hover': hoverUnderline,
 		'link-secondary': secondary,
+		badge: badge || badgeSuccess,
+		'badge-success': badgeSuccess,
 		[className ?? '']: className,
 	},
 ];
