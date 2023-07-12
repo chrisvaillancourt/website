@@ -2,8 +2,36 @@ import type { Config } from 'tailwindcss';
 import tailwindTypography from '@tailwindcss/typography';
 import tailwindAspectRatio from '@tailwindcss/aspect-ratio';
 import daisyui from 'daisyui';
-import { fonts } from './src/site.config';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 import { LIGHT_THEME_NAME, DARK_THEME_NAME } from './src/lib/theme';
+
+const fonts = Object.freeze({
+	sans: [
+		'system-ui',
+		'-apple-system',
+		'Segoe UI',
+		'Roboto',
+		'Ubuntu',
+		'Cantarell',
+		'Noto Sans',
+		'sans-serif',
+		...fontFamily.sans,
+	],
+	serif: ['ui-serif', 'serif', ...fontFamily.serif],
+	mono: [
+		'Dank Mono',
+		'Operator Mono',
+		'Inconsolata',
+		'Fira Mono',
+		'ui-monospace',
+		'SF Mono',
+		'Monaco',
+		'Droid Sans Mono',
+		'Source Code Pro',
+		'monospace',
+		...fontFamily.mono,
+	],
+});
 
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],

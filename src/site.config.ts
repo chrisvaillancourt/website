@@ -1,33 +1,5 @@
 import { LIGHT_THEME_VALUE, DARK_THEME_VALUE } from '@/lib/theme';
-import { fontFamily } from 'tailwindcss/defaultTheme';
 
-const fonts = Object.freeze({
-	sans: [
-		'system-ui',
-		'-apple-system',
-		'Segoe UI',
-		'Roboto',
-		'Ubuntu',
-		'Cantarell',
-		'Noto Sans',
-		'sans-serif',
-		...fontFamily.sans,
-	],
-	serif: ['ui-serif', 'serif', ...fontFamily.serif],
-	mono: [
-		'Dank Mono',
-		'Operator Mono',
-		'Inconsolata',
-		'Fira Mono',
-		'ui-monospace',
-		'SF Mono',
-		'Monaco',
-		'Droid Sans Mono',
-		'Source Code Pro',
-		'monospace',
-		...fontFamily.mono,
-	],
-});
 
 const siteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro) & the generated satori png (src/pages/og-image/[slug].png.ts)
@@ -54,4 +26,4 @@ const siteConfig = {
 	},
 } as const;
 
-export { siteConfig, fonts };
+export { siteConfig };
