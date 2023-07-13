@@ -6,20 +6,32 @@ interface Props extends HTMLAttributes<'a'> {
 	'hover-underline'?: boolean;
 	badge?: boolean;
 	'badge-success'?: boolean;
+	/**
+	 * Load the link before navigating.
+	 */
+	prefetch?: boolean;
+	/**
+	 * Only load the link when hovered or focused.
+	 */
+	'prefetch-intent'?: boolean;
 }
 
 const {
 	href = '#',
 	target = '_blank',
-	rel = 'noreferrer',
+	rel,
 	class: className,
 	primary,
 	secondary,
 	'hover-underline': hoverUnderline,
 	badge,
 	'badge-success': badgeSuccess,
+	prefetch: prefetch,
+	'prefetch-intent': prefetchIntent,
 	...attrs
 } = Astro.props;
+
+const _rel = createRel(rel, prefetch, prefetchIntent);
 
 const classes = [
 	'link',
@@ -32,8 +44,28 @@ const classes = [
 		[className ?? '']: className,
 	},
 ];
+
+function createRel(
+	rel?: string | null | undefined,
+	prefetch?: boolean,
+	prefetchIntent?: boolean,
+): string {
+	const defaultRel = 'noreferrer';
+
+	if (!rel || rel.trim() === '') rel = defaultRel;
+	rel = rel.trim();
+
+	return [
+		rel,
+		// we don't want to add 'prefetch' and 'prefetch-intent' if both are specified
+		prefetch && !prefetchIntent ? 'prefetch' : '',
+		prefetchIntent ? 'prefetch-intent' : '',
+	]
+		.filter((option) => Boolean(option) && option.trim() !== '')
+		.join(' ');
+}
 ---
 
-<a href={href} target={target} rel={rel} class:list={classes} {...attrs}>
+<a href={href} target={target} rel={_rel} class:list={classes} {...attrs}>
 	<slot />
 </a>
