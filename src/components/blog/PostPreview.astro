@@ -16,7 +16,7 @@ const postDate = getFormattedDate(date);
 
 <time datetime={datetime} class="min-w-[120px] text-gray-500">{postDate}</time>
 <Element>
-	<Link href={`/posts/${post.slug}/`} rel="prefetch">
+	<Link href={`/posts/${post.slug}/`} prefetch>
 		{post.data.title}
 	</Link>
 </Element>

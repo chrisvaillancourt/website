@@ -34,6 +34,7 @@ const postDate = getFormattedDate(content.data.publishDate, { month: 'long' });
 						class="inline-block before:content-['#']"
 						aria-label={`View more blogs with the tag ${tag}`}
 						href={`/tags/${tag}/`}
+						prefetch
 					>
 						{tag}
 					</Link>
