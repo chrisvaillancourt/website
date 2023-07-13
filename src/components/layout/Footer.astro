@@ -13,7 +13,7 @@ const year = new Date().getFullYear();
 	<div class="me-0 sm:me-4">
 		Copyright &copy; {year}
 		<span class="ml-2" aria-label="cactus emoji">🌵</span>
-		Chris Vaillancourt
+		 Chris Vaillancourt
 	</div>
 	<nav
 		aria-label="More on this site"
@@ -22,6 +22,7 @@ const year = new Date().getFullYear();
 		{
 			NAV_LINKS.map((link) => (
 				<Link
+					prefetch
 					href={link.path}
 					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
 				>
