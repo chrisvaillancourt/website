@@ -23,7 +23,10 @@ export default defineConfig({
 		}),
 
 		sitemap(),
-		prefetch(),
+		prefetch({
+			// Allow up to three links to be prefetched concurrently
+			throttle: 3,
+		}),
 	],
 	compressHTML: true,
 	vite: {
