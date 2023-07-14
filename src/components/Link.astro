@@ -3,8 +3,11 @@ import type { HTMLAttributes } from 'astro/types';
 interface Props extends HTMLAttributes<'a'> {
 	primary?: boolean;
 	secondary?: boolean;
+	/** Remove underline text decoration.  */
+	'no-underline'?: boolean;
 	'hover-underline'?: boolean;
 	badge?: boolean;
+	/** Make the link appear as a success badge. */
 	'badge-success'?: boolean;
 	/**
 	 * Load the link before navigating.
@@ -23,6 +26,7 @@ const {
 	class: className,
 	primary,
 	secondary,
+	'no-underline': noUnderline,
 	'hover-underline': hoverUnderline,
 	badge,
 	'badge-success': badgeSuccess,
@@ -33,6 +37,9 @@ const {
 
 const _rel = createRel(rel, prefetch, prefetchIntent);
 
+type ClassObj = Record<string, string | null | undefined | boolean>;
+type Classes = (string | ClassObj)[];
+
 const classes = [
 	'link',
 	{
@@ -41,10 +48,36 @@ const classes = [
 		'link-secondary': secondary,
 		badge: badge || badgeSuccess,
 		'badge-success': badgeSuccess,
+		// TODO refactor adding className;
+		// removeLinkKeys() has extra logic to remove the empty string which is leaky
 		[className ?? '']: className,
 	},
-];
+].reduce<Classes>((accum, curr) => {
+	if (!noUnderline) {
+		// keep classes as is
+		accum.push(curr);
+		return accum;
+	}
+	if (typeof curr == 'string' && !isLinkClass(curr)) accum.push(curr);
+	else if (typeof curr == 'object') accum.push(removeLinkKeys(curr));
+	return accum;
+}, []);
+/** Create a new object with link keys removed. */
+function removeLinkKeys(clsObj: ClassObj): ClassObj {
+	return Object.entries(clsObj).reduce<ClassObj>((accum, curr) => {
+		const [key, val] = curr;
+		const keyIsLinkClass = isLinkClass(key);
 
+		if (!keyIsLinkClass && key !== '') accum[key] = val;
+		return accum;
+	}, {});
+}
+
+/** Check if a class string is prefixed with `'link'`. */
+function isLinkClass(clsStr: string): boolean {
+	const linkClsPrefix = 'link';
+	return clsStr.startsWith(linkClsPrefix);
+}
 function createRel(
 	rel?: string | null | undefined,
 	prefetch?: boolean,
