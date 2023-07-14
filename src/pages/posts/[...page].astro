@@ -75,7 +75,6 @@ const paginationProps = {
 									prefetch
 									badge-success
 									hover-underline
-									link-hover
 									href={`/tags/${tag}/`}
 									aria-label={`View all posts with the tag: ${tag}`}
 								>
@@ -85,13 +84,14 @@ const paginationProps = {
 						))}
 					</ul>
 					<span class="mt-4 block sm:text-end">
-						<a
+						<Link
+							prefetch
 							class="sm:hover:text-accent"
 							href="/tags/"
 							aria-label="View all blog categories"
 						>
 							View all →
-						</a>
+						</Link>
 					</span>
 				</aside>
 			)

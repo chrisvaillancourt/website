@@ -5,6 +5,7 @@ import { getPostsCollection } from '@/lib/post';
 import PageLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import Pagination from '@/components/Paginator';
+import Link from '@/components/Link';
 import { getUniqueTags, postsByDate } from '@/lib/post';
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -53,7 +54,7 @@ const paginationProps = {
 
 <PageLayout meta={meta}>
 	<h1 class="mb-6 flex items-center">
-		<a href="/tags/" class="text-accent sm:hover:underline">Tags</a>
+		<Link hover-underline prefetch href="/tags/" class="text-accent">Tags</Link>
 		<span class="me-3 ms-2">→</span>
 		<span class="text-xl">#{tag}</span>
 	</h1>
