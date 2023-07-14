@@ -4,11 +4,14 @@ const METADATA_NAME = 'theme-color';
 /** The emitted event type when the user changes the theme. */
 const THEME_CHANGE_EVENT_TYPE = 'theme-change';
 
-const LIGHT_THEME_NAME = 'light';
-const LIGHT_THEME_VALUE = '#fafafa';
+// ! NEED TO MANUALLY SYNC THEME COLOR IN `public/manifest.webmanifest
 
-const DARK_THEME_NAME = 'dark';
-const DARK_THEME_VALUE = '#1d1f21';
+const LIGHT_THEME_NAME = 'winter';
+const LIGHT_THEME_VALUE = '#fff';
+
+const DARK_THEME_NAME = 'night';
+// dark theme value based on background color
+const DARK_THEME_VALUE = '#3abff8';
 
 export {
 	METADATA_NAME,
