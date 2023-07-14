@@ -1,5 +1,6 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
+
 interface Props extends HTMLAttributes<'a'> {
 	primary?: boolean;
 	secondary?: boolean;
@@ -21,7 +22,7 @@ interface Props extends HTMLAttributes<'a'> {
 
 const {
 	href = '#',
-	target = '_blank',
+	target,
 	rel,
 	class: className,
 	primary,
@@ -35,6 +36,7 @@ const {
 	...attrs
 } = Astro.props;
 
+const _target = createTarget(target, href);
 const _rel = createRel(rel, prefetch, prefetchIntent);
 
 type ClassObj = Record<string, string | null | undefined | boolean>;
@@ -97,8 +99,29 @@ function createRel(
 		.filter((option) => Boolean(option) && option.trim() !== '')
 		.join(' ');
 }
+
+type Href = Pick<HTMLAttributes<'a'>, 'href'>['href'];
+
+function createTarget(target: string | null | undefined, url: Href) {
+	// if target provided, use it
+	if (target) return target;
+	// use same browser context for internal links
+	// otherwise, open in a new tab
+	const defaultTarget = '_blank';
+	const internalTarget = '_self';
+
+	if (isInternalUrl(url)) return internalTarget;
+
+	return defaultTarget;
+
+	function isInternalUrl(url: Href) {
+		if (!url) return false;
+		if (url instanceof URL) url = url.href;
+		return url.startsWith('/') || url.startsWith('#');
+	}
+}
 ---
 
-<a href={href} target={target} rel={_rel} class:list={classes} {...attrs}>
+<a href={href} target={_target} rel={_rel} class:list={classes} {...attrs}>
 	<slot />
 </a>
