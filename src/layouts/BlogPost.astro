@@ -1,6 +1,7 @@
 ---
 import type { PostCollectionEntry } from '@/types';
 import BaseLayout from './Base.astro';
+import Link from '@/components/Link';
 import BlogHero from '@/components/blog/Hero';
 
 interface Props {
@@ -45,7 +46,8 @@ const { headings } = await post.render();
 					<ul class="mt-4 text-xs">
 						{headings.map(({ depth, slug, text }) => (
 							<li class="line-clamp-2 hover:text-accent">
-								<a
+								<Link
+									no-underline
 									class={`block ${
 										depth <= 2 ? 'mt-3' : 'mt-2 ps-3 text-[0.6875rem]'
 									}`}
@@ -54,7 +56,7 @@ const { headings } = await post.render();
 								>
 									<span class="mr-1">{'#'.repeat(depth)}</span>
 									{text}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>
