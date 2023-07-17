@@ -24,9 +24,9 @@ const allPostsByDate = postsByDate(allPosts).slice(0, MAX_POSTS);
 		<Heading level="2">Posts</Heading>
 		<ul class="space-y-4 sm:space-y-2">
 			{
-				allPostsByDate.map((p) => (
+				allPostsByDate.map((post) => (
 					<li class="flex flex-col gap-x-2 sm:flex-row">
-						<PostPreview post={p} />
+						<PostPreview post={post} />
 					</li>
 				))
 			}
