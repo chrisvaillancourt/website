@@ -4,15 +4,21 @@ import daisyuiThemes from 'daisyui/src/theming/themes';
 
 // ! NEED TO MANUALLY SYNC THEME COLOR IN `public/manifest.webmanifest
 
+// We need to modify some of the light theme colors to improve contrast with background colors.
+// Modifications based on default colors from daisyuiThemes
+// and tweaking the lightness value to get sufficient contrast.
+// Then convert the modified HSL to hex b/c that's what the config expects.
 const LIGHT_THEME_NAME = 'winter';
-// The default light theme accent is slightly too light.
-// darking it slightly makes it pass accessibility checks
-// created by dropping default lightness by 1 then converting from hsl to hex
+
+// Default HSL to modified HSL: hsl(310 49% 52%) --> hsl(310 49% 51%)
 const LIGHT_THEME_ACCENT = '#bf45ab';
+// Default HSL to modified HSL: hsl(212 100% 51%) --> hsl(212 100% 47%)
+const LIGHT_THEME_PRIMARY = '#0071F0';
 
 const LIGHT_THEME = Object.freeze({
 	...daisyuiThemes[`[data-theme=${LIGHT_THEME_NAME}]`],
 	accent: LIGHT_THEME_ACCENT,
+	primary: LIGHT_THEME_PRIMARY,
 });
 const LIGHT_THEME_VALUE = LIGHT_THEME['base-100'];
 
