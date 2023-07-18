@@ -3,7 +3,7 @@ import tailwindTypography from '@tailwindcss/typography';
 import tailwindAspectRatio from '@tailwindcss/aspect-ratio';
 import daisyui from 'daisyui';
 import { fontFamily } from 'tailwindcss/defaultTheme';
-import { LIGHT_THEME_NAME, DARK_THEME_NAME } from './src/lib/theme';
+import { THEMES, DARK_THEME_NAME } from './src/lib/theme';
 
 const fonts = Object.freeze({
 	sans: [
@@ -116,8 +116,8 @@ export default {
 	plugins: [tailwindTypography, tailwindAspectRatio, daisyui],
 	daisyui: {
 		// * see https://daisyui.com/docs/config/
-		themes: [LIGHT_THEME_NAME, DARK_THEME_NAME], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
-		darkTheme: DARK_THEME_NAME, // name of one of the included themes for dark mode
+		themes: THEMES,
+		darkTheme: DARK_THEME_NAME,
 		base: true, // applies background color and foreground color for root element by default
 		styled: true, // include daisyUI colors and design decisions for all components
 		utils: true, // adds responsive and modifier utility classes
