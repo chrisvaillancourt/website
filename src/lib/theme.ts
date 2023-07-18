@@ -8,6 +8,7 @@ import daisyuiThemes from 'daisyui/src/theming/themes';
 // Modifications based on default colors from daisyuiThemes
 // and tweaking the lightness value to get sufficient contrast.
 // Then convert the modified HSL to hex b/c that's what the config expects.
+// See https://color.review/ for help picking accessible colors.
 const LIGHT_THEME_NAME = 'winter';
 
 // Default HSL to modified HSL: hsl(310 49% 52%) --> hsl(310 49% 51%)
