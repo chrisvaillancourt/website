@@ -2,7 +2,7 @@
 // @ts-expect-error there's no type provided for the theme
 import daisyuiThemes from 'daisyui/src/theming/themes';
 
-// ! NEED TO MANUALLY SYNC THEME COLOR IN `public/manifest.webmanifest
+// ! NEED TO MANUALLY SYNC THEME `background_color` and `theme_color` IN `public/manifest.webmanifest
 
 // We need to modify some of the light theme colors to improve contrast with background colors.
 // Modifications based on default colors from daisyuiThemes
