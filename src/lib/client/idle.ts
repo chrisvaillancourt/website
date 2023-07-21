@@ -1,6 +1,6 @@
 /**
  * Defer a function until the browser is idle.
- * Must only be called client-side.
+ * Only available in a browser context (i.e. not server side).
  * @throws Throws an error if called outside of a browser context.
  */
 export function idle<T extends (...args: Parameters<T>) => ReturnType<T>>(
