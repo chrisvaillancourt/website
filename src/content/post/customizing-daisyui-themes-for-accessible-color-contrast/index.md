@@ -1,5 +1,5 @@
 ---
-title: Customizing DaisyUI themes for accessible color contrast
+title: Customizing daisyUI themes for accessible color contrast
 description:
   How to use Color.review to create accessible color themes based on daisyUI.
 publishDate: 07-20-2023
