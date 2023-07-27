@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import { z } from 'zod';
 
-/**Immutable object of environment variables. */
+/** Immutable object of environment variables. */
 const ENV = Object.freeze(validateEnv(readEnv()));
 
 /**
