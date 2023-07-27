@@ -21,6 +21,7 @@ pnpm-debug.log*
 
 # Astro content collection metadata
 .astro
+
 /test-results/
 /playwright-report/
 /playwright/.cache/
