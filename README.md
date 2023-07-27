@@ -5,6 +5,14 @@
 View the deployed app at
 [chrisvaillancourt.io](https://www.chrisvaillancourt.io/)
 
+## Local development
+
+Running locally requires node v18.17.x and pnpm. You can use pnpm to control
+your node version by running `pnpm env use --global lts`.
+
+Create environment variables by copying the [`.env-example`](./env-example)
+file.
+
 ## Development without docker
 
 This app may be run without using Docker. Run all commands from the root of the
