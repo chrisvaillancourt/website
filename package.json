@@ -52,6 +52,7 @@
 		"@mdi/js": "^7.2.96",
 		"astro": "^2.9.3",
 		"dotenv": "^16.3.1",
+		"dotenv-expand": "^10.0.0",
 		"remark-unwrap-images": "^3.0.1",
 		"satori": "^0.10.1",
 		"satori-html": "^0.3.2",
