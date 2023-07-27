@@ -17,6 +17,9 @@ dependencies:
   astro:
     specifier: ^2.9.3
     version: 2.9.3(@types/node@18.17.1)
+  dotenv:
+    specifier: ^16.3.1
+    version: 16.3.1
   remark-unwrap-images:
     specifier: ^3.0.1
     version: 3.0.1
@@ -26,6 +29,9 @@ dependencies:
   satori-html:
     specifier: ^0.3.2
     version: 0.3.2
+  zod:
+    specifier: ^3.21.4
+    version: 3.21.4
 
 devDependencies:
   '@astrojs/mdx':
@@ -37,6 +43,9 @@ devDependencies:
   '@astrojs/tailwind':
     specifier: ^4.0.0
     version: 4.0.0(astro@2.9.3)(tailwindcss@3.3.3)
+  '@playwright/test':
+    specifier: ^1.36.2
+    version: 1.36.2
   '@resvg/resvg-js':
     specifier: ^2.4.1
     version: 2.4.1
@@ -1235,6 +1244,17 @@ packages:
       open: 9.1.0
       picocolors: 1.0.0
       tslib: 2.6.1
+
+  /@playwright/test@1.36.2:
+    resolution: {integrity: sha512-2rVZeyPRjxfPH6J0oGJqE8YxiM1IBRyM8hyrXYK7eSiAqmbNhxwcLa7dZ7fy9Kj26V7FYia5fh9XJRq4Dqme+g==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      '@types/node': 18.17.1
+      playwright-core: 1.36.2
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
 
   /@resvg/resvg-js-android-arm-eabi@2.4.1:
     resolution: {integrity: sha512-AA6f7hS0FAPpvQMhBCf6f1oD1LdlqNXKCxAAPpKh6tR11kqV0YIB9zOlIYgITM14mq2YooLFl6XIbbvmY+jwUw==}
@@ -2437,6 +2457,11 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
     dev: true
+
+  /dotenv@16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /dset@3.1.2:
     resolution: {integrity: sha512-g/M9sqy3oHe477Ar4voQxWtaPIFw1jTdKZuomOjhCcBx9nHUNn0pu6NopuFFrTh/TRZIKEj+76vLWFu9BNKk+Q==}
@@ -4692,6 +4717,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       find-up: 4.1.0
+
+  /playwright-core@1.36.2:
+    resolution: {integrity: sha512-sQYZt31dwkqxOrP7xy2ggDfEzUxM1lodjhsQ3NMMv5uGTRDsLxU0e4xf4wwMkF2gplIxf17QMBCodSFgm6bFVQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
 
   /postcss-html@1.5.0:
     resolution: {integrity: sha512-kCMRWJRHKicpA166kc2lAVUGxDZL324bkj/pVOb6RhjB0Z5Krl7mN0AsVkBhVIRZZirY0lyQXG38HCVaoKVNoA==}
