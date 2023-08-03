@@ -28,6 +28,11 @@ project, from a terminal:
 | `pnpm astro --help` | Get help using the Astro CLI                         |
 | `pnpm tsc`          | Run the TypeScript compiler with any compiler option |
 
+## Testing
+
+This project uses playwright for e2e testing. To start playwright's codegen
+tool, run: `pnpm exec playwright codegen http://localhost:3000/  `
+
 ## Deployment
 
 To build and deploy, run `pnpm i && pnpm build && pnpm run deploy` and follow
