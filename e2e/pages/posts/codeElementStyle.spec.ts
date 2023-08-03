@@ -12,9 +12,13 @@ test('code element has no padding', async ({ page }) => {
 	).filter((link): link is string => Boolean(link));
 
 	for (const link of postLinks) {
-		// We can't run these concurrently because each needs to use the same
-		// page object and change the navigation.
-		// TODO look into refactoring this so it can run concurrently
+		// We can't run these concurrently because fn invocation uses the same
+		// page object and changes the URL.
+		// Changing the implementation to different pages i.e.:
+		// const page = await context.newPage();
+		// then running concurrently with:
+		// `await Promise.all(postLinks.map((link) => testPostPageCodeElements(link)))`
+		// makes the test run ~60% slower.
 		await testPostPageCodeElements(link);
 	}
 
