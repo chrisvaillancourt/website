@@ -4,6 +4,8 @@ import BlogPostLayout from '@/layouts/BlogPost';
 import { getPostsCollection } from '@/lib/post';
 
 export const getStaticPaths = (async () => {
+	// we have to use an arrow function to leverage `satisfies` operator
+	// see https://github.com/microsoft/TypeScript/issues/51556
 	const blogEntries = await getPostsCollection();
 	return blogEntries.map((entry) => ({
 		params: { slug: entry.slug },
