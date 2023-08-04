@@ -1,6 +1,6 @@
 import type { APIContext, GetStaticPaths } from 'astro';
 import { getEntryBySlug } from 'astro:content';
-import { readFileSync } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import satori, { type SatoriOptions } from 'satori';
 import { html } from 'satori-html';
@@ -18,8 +18,10 @@ const AssetDir = resolve('src', 'assets');
 const RobotoMonoPath = join(AssetDir, 'roboto-mono-regular.ttf');
 const RobotoMonoBoldPath = join(AssetDir, 'roboto-mono-700.ttf');
 
-const RobotoMonoReg = readFileSync(RobotoMonoPath);
-const RobotoMonoBold = readFileSync(RobotoMonoBoldPath);
+const [RobotoMonoReg, RobotoMonoBold] = await Promise.all([
+	readFile(RobotoMonoPath),
+	readFile(RobotoMonoBoldPath),
+]);
 
 const ogOptions: SatoriOptions = {
 	width: 1200,
