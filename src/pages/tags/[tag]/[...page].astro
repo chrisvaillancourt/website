@@ -2,9 +2,9 @@
 import type { Page, GetStaticPaths } from 'astro';
 import type { PostCollectionEntry } from '@/types';
 import { getPostsCollection } from '@/lib/post';
-import PageLayout from '@/layouts/Base';
+import BaseLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
-import Pagination from '@/components/Paginator';
+import Paginator from '@/components/Paginator';
 import Link from '@/components/Link';
 import { getUniqueTags, postsByDate } from '@/lib/post';
 
@@ -52,7 +52,7 @@ const paginationProps = {
 };
 ---
 
-<PageLayout meta={meta}>
+<BaseLayout meta={meta}>
 	<h1 class="mb-6 flex items-center">
 		<Link hover-underline prefetch href="/tags/" class="text-accent">Tags</Link>
 		<span class="me-3 ms-2">→</span>
@@ -68,6 +68,6 @@ const paginationProps = {
 				))
 			}
 		</ul>
-		<Pagination {...paginationProps} />
+		<Paginator {...paginationProps} />
 	</section>
-</PageLayout>
+</BaseLayout>

@@ -2,9 +2,9 @@
 import type { Page, GetStaticPaths } from 'astro';
 import type { PostCollectionEntry } from '@/types';
 import { getPostsCollection } from '@/lib/post';
-import PageLayout from '@/layouts/Base';
+import BaseLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
-import Pagination from '@/components/Paginator';
+import Paginator from '@/components/Paginator';
 import Heading from '@/components/Heading';
 import Link from '@/components/Link';
 import Icon from '@/components/Icon';
@@ -46,7 +46,7 @@ const paginationProps = {
 };
 ---
 
-<PageLayout meta={meta}>
+<BaseLayout meta={meta}>
 	<Heading level="1">Posts</Heading>
 	<div class="grid gap-y-16 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
 		<section aria-label="Blog post list">
@@ -59,7 +59,7 @@ const paginationProps = {
 					))
 				}
 			</ul>
-			<Pagination {...paginationProps} />
+			<Paginator {...paginationProps} />
 		</section>
 		{
 			uniqueTags.length && (
@@ -98,4 +98,4 @@ const paginationProps = {
 			)
 		}
 	</div>
-</PageLayout>
+</BaseLayout>

@@ -1,5 +1,5 @@
 ---
-import PageLayout from '@/layouts/Base';
+import BaseLayout from '@/layouts/Base';
 import PostPreview from '@/components/blog/PostPreview';
 import SocialList from '@/components/SocialList';
 import Heading from '@/components/Heading';
@@ -12,7 +12,7 @@ const allPosts = await getPostsCollection();
 const allPostsByDate = postsByDate(allPosts).slice(0, MAX_POSTS);
 ---
 
-<PageLayout meta={{ title: 'Home' }}>
+<BaseLayout meta={{ title: 'Home' }}>
 	<section>
 		<Heading level="1">Chris Vaillancourt</Heading>
 		<Paragraph>Full Stack Software Engineer</Paragraph>
@@ -32,4 +32,4 @@ const allPostsByDate = postsByDate(allPosts).slice(0, MAX_POSTS);
 			}
 		</ul>
 	</section>
-</PageLayout>
+</BaseLayout>

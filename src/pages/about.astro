@@ -1,5 +1,5 @@
 ---
-import PageLayout from '@/layouts/Base';
+import BaseLayout from '@/layouts/Base';
 import Link from '@/components/Link';
 import Heading from '@/components/Heading';
 import Paragraph from '@/components/Paragraph';
@@ -11,7 +11,7 @@ const meta = {
 };
 ---
 
-<PageLayout meta={meta}>
+<BaseLayout meta={meta}>
 	<article>
 		<Heading level="1">About</Heading>
 		<section>
@@ -19,7 +19,7 @@ const meta = {
 			<Paragraph>
 				I'm a full stack software engineer, proficient in
 				<Link primary href="https://www.typescriptlang.org/">TypeScript</Link>
-				and
+				 and
 				<Link primary href="https://www.python.org/">Python</Link>. I love
 				building interactive data-driven applications, backend services, and
 				developer tools.
@@ -27,7 +27,7 @@ const meta = {
 			<Paragraph>
 				I primarily build user interfaces with
 				<Link primary href="https://vuejs.org/">Vue.js</Link>
-				but am experienced in other frameworks including
+				 but am experienced in other frameworks including
 				<Link primary href="https://react.dev/">React</Link>,
 				<Link primary href="https://www.solidjs.com/">Solid.js</Link>,
 				<Link primary href="https://svelte.dev/">Svelte</Link>,
@@ -36,8 +36,8 @@ const meta = {
 			</Paragraph>
 			<Paragraph>
 				I currently develop back end API's in Python using
-				<Link primary href="https://fastapi.tiangolo.com/">FastAPI</Link>
-				and in Node.js using
+				<Link primary href="https://fastapi.tiangolo.com/">FastAPI</Link> and in
+				Node.js using
 				<Link primary href="https://www.fastify.io/">Fastify</Link>.
 			</Paragraph>
 		</section>
@@ -84,4 +84,4 @@ const meta = {
 			<SocialList />
 		</footer>
 	</article>
-</PageLayout>
+</BaseLayout>

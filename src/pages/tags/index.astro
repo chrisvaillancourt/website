@@ -1,5 +1,5 @@
 ---
-import PageLayout from '@/layouts/Base';
+import BaseLayout from '@/layouts/Base';
 import Heading from '@/components/Heading';
 import Link from '@/components/Link';
 import { getUniqueTagsWithCount } from '@/lib/post';
@@ -14,7 +14,7 @@ const meta = {
 };
 ---
 
-<PageLayout meta={meta}>
+<BaseLayout meta={meta}>
 	<Heading level="1">Tags</Heading>
 	<ul class="space-y-4">
 		{
@@ -34,4 +34,4 @@ const meta = {
 			))
 		}
 	</ul>
-</PageLayout>
+</BaseLayout>
