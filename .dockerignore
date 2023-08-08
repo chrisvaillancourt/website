@@ -8,6 +8,7 @@
 **/.dockerignore
 **/.env
 **/.git
+**/.gitignore
 **/.project
 **/.settings
 **/.toolstarget
@@ -30,4 +31,4 @@
 **/build
 **/dist
 LICENSE
-README.md
+**/.md

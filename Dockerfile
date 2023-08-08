@@ -2,12 +2,16 @@
 # # Dockerfile reference
 # https://docs.docker.com/engine/reference/builder/
 
-FROM node:18-alpine
+FROM node:20-slim
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
 
 RUN corepack enable
-RUN corepack prepare pnpm@8.6.1 --activate
+RUN corepack prepare pnpm@8.6.12 --activate
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY pnpm-lock.yaml ./
 
