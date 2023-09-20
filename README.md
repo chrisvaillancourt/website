@@ -40,6 +40,16 @@ the output instructions.
 
 ## Development with docker
 
+### Building the container
+
+To build, run `docker build . -t website:latest`.
+
+To run and build the compose project: `docker compose up --build`.
+
+To run the image and expose port: `docker run -p 3000:3000 website`
+
+Build with: `docker run website:latest pnpm build`
+
 For local dev, build and run the project by running `docker compose up --build`.
 
 To run a production build, run:
