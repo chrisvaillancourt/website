@@ -2,34 +2,30 @@
 # # Dockerfile reference
 # https://docs.docker.com/engine/reference/builder/
 
-FROM node:20-slim
+ARG NODE_VERSION
+
+FROM node:${NODE_VERSION}-slim
+
+ARG PNPM_VERSION
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
+RUN corepack enable \
+    && corepack prepare pnpm@$PNPM_VERSION --activate
 
-RUN corepack enable
-RUN corepack prepare pnpm@8.6.12 --activate
+USER node
 
-WORKDIR /app
+WORKDIR /home/app
 
-COPY pnpm-lock.yaml ./
+COPY --chown=node:node pnpm-lock.yaml ./
 
 RUN pnpm fetch
 
-COPY package.json ./
+COPY --chown=node:node package.json ./
 
 RUN pnpm install --offline --frozen-lockfile
 
-COPY  . ./
+COPY --chown=node:node  . ./
 
-EXPOSE 3000
-
-# TODO don't run as root user
-# running with node user causes build failure
-# USER node
-# --chown=node:node
-# https://cheatsheetseries.owasp.org/cheatsheets/Docker_Security_Cheat_Sheet.html#rule-2-set-a-user
-# https://docs.docker.com/engine/security/userns-remap/
-
-CMD ["pnpm", "run", "dev"]
+# CMD ["pnpm", "run", "dev"]
