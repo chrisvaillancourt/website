@@ -5,10 +5,7 @@
 
 	// Update the 'dockerComposeFile' list if you have more compose files or use different names.
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
-	"dockerComposeFile": [
-		"../compose.yaml",
-		"docker-compose.yml"
-	],
+	"dockerComposeFile": ["../compose.yaml", "docker-compose.yml"],
 
 	// The 'service' property is the name of the service for the container that VS Code should
 	// use. Update this value and .devcontainer/docker-compose.yml to the real service name.
@@ -21,7 +18,7 @@
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
-		// Use 'portsAttributes' to set default properties for specific forwarded ports. 
+	// Use 'portsAttributes' to set default properties for specific forwarded ports.
 	// More info: https://containers.dev/implementors/json_reference/#port-attributes
 	"portsAttributes": {
 		"3000": {
@@ -46,7 +43,25 @@
 	"postCreateCommand": "pnpm i",
 
 	// Configure tool-specific properties.
-	// "customizations": {},
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"streetsidesoftware.code-spell-checker",
+				"astro-build.astro-vscode",
+				"phoenisx.cssvar",
+				"wix.vscode-import-cost",
+				"yzhang.markdown-all-in-one",
+				"esbenp.prettier-vscode",
+				"yoavbls.pretty-ts-errors",
+				"robbowen.synthwave-vscode",
+				"bradlc.vscode-tailwindcss",
+				"gruntfuggly.todo-tree",
+				"travisthetechie.write-good-linter"
+			]
+		}
+	},
 
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	"remoteUser": "node"
