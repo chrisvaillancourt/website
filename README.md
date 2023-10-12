@@ -21,7 +21,7 @@ project, from a terminal:
 | Command             | Action                                               |
 | :------------------ | :--------------------------------------------------- |
 | `pnpm install`      | Installs dependencies                                |
-| `pnpm dev`          | Starts local dev server at `localhost:3000`          |
+| `pnpm dev`          | Starts local dev server at `localhost:4321`          |
 | `pnpm build`        | Build your production site to `./dist/`              |
 | `pnpm preview`      | Preview your build locally, before deploying         |
 | `pnpm astro ...`    | Run CLI commands like `astro add`, `astro preview`   |
@@ -31,7 +31,15 @@ project, from a terminal:
 ## Testing
 
 This project uses playwright for e2e testing. To start playwright's codegen
-tool, run: `pnpm exec playwright codegen http://localhost:3000/  `
+tool, run: `pnpm exec playwright codegen http://localhost:4321/`
+
+### Downloading playwright browsers
+
+Playwright doesn't automatically download browsers for running tests. To
+download browsers:
+
+1. install project dependencies: `pnpm i`
+2. install playwright browsers: `pnpm dlx playwright install`
 
 ## Deployment
 
@@ -43,7 +51,7 @@ the output instructions.
 ### Misc. docker commands
 
 To build the container, run `docker build . -t website:latest`. To run the image
-and expose port: `docker run -p 3000:3000 website` Run the built container with:
+and expose port: `docker run -p 4321:4321 website` Run the built container with:
 `docker run website:latest pnpm build` To run and build the compose project:
 `docker compose up --build`. To run a production build, run:
 `docker build -t website . && docker run website pnpm run build`. To run a
@@ -60,3 +68,6 @@ _Note_: the container automatically installs dependencies after it's created but
 may run into an error copying files from the PNPM store. If the initial install
 throws an error, re-run the install with `pnpm i`. Rerunning the install command
 typically resolves the issue.
+
+After the dev container starts and installs dependencies, run the local dev
+server by running `pnpm dev` from the dev container.
