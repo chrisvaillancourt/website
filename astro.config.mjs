@@ -8,9 +8,6 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://chrisvaillancourt.io/',
-	experimental: {
-		assets: true,
-	},
 	markdown: {
 		shikiConfig: {
 			theme: 'dracula',
@@ -30,7 +27,6 @@ export default defineConfig({
 			throttle: 3,
 		}),
 	],
-	compressHTML: true,
 	vite: {
 		optimizeDeps: {
 			exclude: ['@resvg/resvg-js'],
