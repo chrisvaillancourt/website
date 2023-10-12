@@ -1,5 +1,5 @@
 // TODO consolidate config in one location / move to src/site.config.ts
-// @ts-expect-error there's no type provided for the theme
+
 import daisyuiThemes from 'daisyui/src/theming/themes';
 
 // ! NEED TO MANUALLY SYNC THEME `background_color` and `theme_color` IN `public/manifest.webmanifest
@@ -21,14 +21,23 @@ const LIGHT_THEME = Object.freeze({
 	accent: LIGHT_THEME_ACCENT,
 	primary: LIGHT_THEME_PRIMARY,
 });
-const LIGHT_THEME_VALUE = LIGHT_THEME['base-100'];
+
+const base100 = 'base-100';
+
+if (!(base100 in LIGHT_THEME)) throw new Error('missing required property');
+if (typeof LIGHT_THEME[base100] != 'string')
+	throw new TypeError(`${base100} theme property must be a string`);
+
+const LIGHT_THEME_VALUE = LIGHT_THEME[base100];
 
 const DARK_THEME_NAME = 'night';
 const DARK_THEME = Object.freeze({
 	...daisyuiThemes[`[data-theme=${DARK_THEME_NAME}]`],
 });
 
-const DARK_THEME_VALUE = DARK_THEME['base-100'];
+if (DARK_THEME[base100] === undefined)
+	throw new TypeError(`${base100} theme property must be a string`);
+const DARK_THEME_VALUE = DARK_THEME[base100];
 
 /** The name attribute of the theme meta element. */
 
