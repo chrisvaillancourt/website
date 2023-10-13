@@ -10,7 +10,7 @@
 		"build": "astro check && tsc --noEmit && pnpm format && astro build",
 		"wrangler": "wrangler",
 		"deploy": "wrangler pages deploy dist",
-		"preview": "astro preview",
+		"preview": "astro preview --host",
 		"preview:wrangler": "wrangler pages dev ./dist",
 		"astro": "astro",
 		"tsc": "tsc",
