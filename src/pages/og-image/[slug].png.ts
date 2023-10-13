@@ -93,10 +93,13 @@ export async function GET({ params: { slug } }: APIContext) {
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);
 	const png = new Resvg(svg).render().asPng();
-	return {
-		body: png,
-		encoding: 'binary',
-	};
+
+	return new Response(png, {
+		headers: {
+			'Content-Type': 'image/png',
+			'Cache-Control': 'public, max-age=31536000, immutable',
+		},
+	});
 }
 
 export const getStaticPaths = (async () => {
