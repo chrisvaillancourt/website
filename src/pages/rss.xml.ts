@@ -2,7 +2,7 @@ import rss from '@astrojs/rss';
 import { getPostsCollection } from '@/lib/post';
 import { siteConfig } from '@/site.config';
 
-export const get = async () => {
+export async function GET() {
 	const posts = await getPostsCollection();
 
 	return rss({
@@ -16,4 +16,4 @@ export const get = async () => {
 			link: `posts/${post.slug}`,
 		})),
 	});
-};
+}
