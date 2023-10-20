@@ -2,8 +2,12 @@ import dotenv from 'dotenv';
 import dotenvExpand from 'dotenv-expand';
 import { z } from 'zod';
 
-/** Immutable object of environment variables. */
-const ENV = Object.freeze(validateEnv(readEnv()));
+/**
+ * The app's environment variables.
+ */
+function env() {
+	return validateEnv(readEnv());
+}
 
 /**
  * Get an object of all environment variables.
@@ -13,7 +17,31 @@ function readEnv() {
 	dotenvExpand.expand(_env);
 	const { parsed, error } = _env;
 	if (error) throw error;
+	if (!parsed) throw new Error('No environment variables exist.');
 	return parsed;
+}
+/**
+ * Get the mode the app is running in.
+ */
+function appMode() {
+	// see https://docs.astro.build/en/guides/environment-variables/#default-environment-variables
+	// can't use `import.meta.env.PROD` or `import.meta.env.DEV`
+	// import.meta.env.DEV is true during production build
+	return import.meta.env.MODE;
+}
+/**
+ * Check if the app is running in development mode.
+ */
+function isDev() {
+	const devModeString = 'development';
+	return appMode() === devModeString;
+}
+/**
+ * Check if the app is running in production mode.
+ */
+function isProd() {
+	const productionModeString = 'production';
+	return appMode() === productionModeString;
 }
 
 /**
@@ -27,4 +55,4 @@ function validateEnv(env: ReturnType<typeof readEnv>) {
 	return envSchema.parse(env);
 }
 
-export { ENV };
+export { isDev, isProd, env };
