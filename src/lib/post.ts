@@ -2,6 +2,7 @@ import { getCollection } from 'astro:content';
 import { postCollectionName } from '@/content/config';
 import { POSTS_PATH } from '@/lib/constants';
 import type { Posts } from '@/types';
+import { isProd } from '@/lib/env';
 
 export {
 	getPostsCollection,
@@ -15,7 +16,10 @@ export {
  * Blog posts from the blog content collection.
  */
 function getPostsCollection() {
-	return getCollection(postCollectionName);
+	return getCollection(postCollectionName, ({ data }) =>
+		// only show draft posts during dev
+		isProd() ? data.draft !== true : true,
+	);
 }
 
 /**
