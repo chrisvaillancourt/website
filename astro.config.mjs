@@ -2,12 +2,14 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import prefetch from '@astrojs/prefetch';
 import remarkUnwrapImages from 'remark-unwrap-images';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://chrisvaillancourt.io/',
+	prefetch: {
+		defaultStrategy: 'viewport',
+	},
 	markdown: {
 		shikiConfig: {
 			theme: 'dracula',
@@ -22,10 +24,6 @@ export default defineConfig({
 		}),
 
 		sitemap(),
-		prefetch({
-			// Allow up to three links to be prefetched concurrently
-			throttle: 3,
-		}),
 	],
 	vite: {
 		optimizeDeps: {
