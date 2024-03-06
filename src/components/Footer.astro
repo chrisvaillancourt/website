@@ -8,7 +8,7 @@ const year = new Date().getFullYear();
 ---
 
 <footer
-	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top sm:flex-row sm:justify-between sm:text-xs opacity-80"
+	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top opacity-80 sm:flex-row sm:justify-between sm:text-xs"
 >
 	<div class="me-0 sm:me-4">
 		Copyright &copy; {year}
@@ -22,7 +22,6 @@ const year = new Date().getFullYear();
 		{
 			NAV_LINKS.map((link) => (
 				<Link
-					prefetch
 					href={link.path}
 					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
 				>
