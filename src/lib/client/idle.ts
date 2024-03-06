@@ -12,9 +12,9 @@ export function idle<T extends (...args: Parameters<T>) => ReturnType<T>>(
 		Object.hasOwn(window, 'requestIdleCallback')
 			? window.requestIdleCallback(() => {
 					resolve(cb(...args));
-			  })
+				})
 			: window.addEventListener('load', () => {
 					resolve(cb(...args));
-			  });
+				});
 	});
 }
