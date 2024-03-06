@@ -52,7 +52,6 @@ const url = new URL(Astro.request.url);
 		<Link
 			href="/"
 			no-underline
-			prefetch
 			class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
 			aria-current={url.pathname === '/' ? 'page' : false}
 		>
@@ -93,7 +92,6 @@ const url = new URL(Astro.request.url);
 						no-underline
 						class="px-4 py-4 sm:py-0 sm:hover:underline"
 						aria-current={url.pathname === link.path ? 'page' : false}
-						prefetch
 					>
 						{link.title}
 					</Link>
