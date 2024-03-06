@@ -14,10 +14,6 @@ interface Props extends HTMLAttributes<'a'> {
 	 * Load the link before navigating.
 	 */
 	prefetch?: boolean;
-	/**
-	 * Only load the link when hovered or focused.
-	 */
-	'prefetch-intent'?: boolean;
 }
 
 const {
@@ -32,12 +28,11 @@ const {
 	badge,
 	'badge-success': badgeSuccess,
 	prefetch: prefetch,
-	'prefetch-intent': prefetchIntent,
 	...attrs
 } = Astro.props;
 
 const _target = createTarget(target, href);
-const _rel = createRel(rel, prefetch, prefetchIntent);
+const _rel = createRel(rel);
 
 type ClassObj = Record<string, string | null | undefined | boolean>;
 type Classes = (string | ClassObj)[];
@@ -80,11 +75,7 @@ function isLinkClass(clsStr: string): boolean {
 	const linkClsPrefix = 'link';
 	return clsStr.startsWith(linkClsPrefix);
 }
-function createRel(
-	rel?: string | null | undefined,
-	prefetch?: boolean,
-	prefetchIntent?: boolean,
-): string {
+function createRel(rel?: string | null | undefined): string {
 	const defaultRel = 'noreferrer';
 
 	if (!rel || rel.trim() === '') rel = defaultRel;
@@ -92,9 +83,6 @@ function createRel(
 
 	return [
 		rel,
-		// we don't want to add 'prefetch' and 'prefetch-intent' if both are specified
-		prefetch && !prefetchIntent ? 'prefetch' : '',
-		prefetchIntent ? 'prefetch-intent' : '',
 	]
 		.filter((option) => Boolean(option) && option.trim() !== '')
 		.join(' ');
@@ -122,6 +110,13 @@ function createTarget(target: string | null | undefined, url: Href) {
 }
 ---
 
-<a href={href} target={_target} rel={_rel} class:list={classes} {...attrs}>
+<a 
+	href={href} 
+	target={_target} 
+	rel={_rel} 
+	class:list={classes}
+ 	data-astro-prefetch={prefetch}
+  {...attrs}
+>
 	<slot />
 </a>
