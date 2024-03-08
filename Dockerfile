@@ -18,11 +18,12 @@ USER node
 
 WORKDIR /home/app
 
-COPY --chown=node:node pnpm-lock.yaml ./
-
 # Need to change the default store location to avoid permission errors
 # https://github.com/pnpm/pnpm/issues/5803#issuecomment-1974820613
 RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
+
+COPY --chown=node:node pnpm-lock.yaml ./
+
 
 RUN pnpm fetch
 
