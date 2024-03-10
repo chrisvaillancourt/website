@@ -24,7 +24,6 @@ RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
 
 COPY --chown=node:node pnpm-lock.yaml ./
 
-
 RUN pnpm fetch
 
 COPY --chown=node:node package.json ./
