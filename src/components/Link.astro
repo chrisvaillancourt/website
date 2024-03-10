@@ -106,6 +106,7 @@ function createTarget(target: string | null | undefined, url: Href) {
 		return url.startsWith('/') || url.startsWith('#');
 	}
 }
+// * Need to keep slot on same line as opening and closing tag to prevent extra space around text
 ---
 
 <a
@@ -114,7 +115,5 @@ function createTarget(target: string | null | undefined, url: Href) {
 	rel={_rel}
 	class:list={classes}
 	data-astro-prefetch={prefetch}
-	{...attrs}
+	{...attrs}><slot /></a
 >
-	<slot />
-</a>
