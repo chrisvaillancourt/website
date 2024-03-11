@@ -12,7 +12,12 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable \
-    && corepack prepare pnpm@$PNPM_VERSION --activate
+    && corepack prepare pnpm@$PNPM_VERSION --activate \
+    && apt-get update \
+    # need to add ability to use sudo to node user so we can install playwright dependencies in dev container
+    && apt-get install -y sudo \
+    && echo node ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/node \
+    && chmod 0440 /etc/sudoers.d/node
 
 USER node
 
