@@ -33,7 +33,8 @@ RUN pnpm fetch
 
 COPY --chown=node:node package.json ./
 
-RUN pnpm install --offline --frozen-lockfile
+RUN pnpm install --offline --frozen-lockfile \
+    && pnpm dlx playwright install --with-deps
 
 COPY --chown=node:node  . ./
 
