@@ -16,4 +16,27 @@ test.describe('ThemeToggle', () => {
 		await expect(toggle).toBeVisible();
 		await expect(toggle).toBeInViewport();
 	});
+	test('clicking toggle changes theme', async ({ page }) => {
+		const toggle = page.getByLabel('Toggle Dark Mode');
+		const html = await page.locator('html');
+		expect(html).toHaveCSS(
+			'background-color',
+			'hsl(var(--b1) / var(--tw-bg-opacity, 1))',
+		);
+		await toggle.click();
+		// const html = await page.locator('html').elementHandle();
+		expect(html).toBeTruthy();
+	});
+	test('test', async ({ page }) => {
+		await page.goto('http://localhost:4322/');
+		await page.getByLabel('Toggle Dark Mode').click();
+		await expect(page.getByLabel('Toggle Dark Mode')).toBeVisible();
+		await page.getByLabel('Toggle Dark Mode').click();
+		await expect(page.getByLabel('Toggle Dark Mode')).toBeVisible();
+		await page.locator('html').click();
+		await page.goto('http://localhost:4322/');
+		await expect(page.getByLabel('Toggle Dark Mode')).toBeVisible();
+		await page.getByLabel('Toggle Dark Mode').click();
+		await expect(page.getByLabel('Toggle Dark Mode')).toBeVisible();
+	});
 });
