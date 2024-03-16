@@ -31,7 +31,11 @@ project, from a terminal:
 ## Testing
 
 This project uses playwright for e2e testing. To start playwright's codegen
-tool, run: `pnpm exec playwright codegen http://localhost:4321/`
+tool, run: `pnpm playwright codegen http://localhost:4321/`
+
+To run a specific test, pass the path to the test file:
+`pnpm playwright test <path_to_test>`. For example,
+`pnpm playwright test e2e/components/ThemeToggle.spec.ts`
 
 ### Downloading playwright browsers
 
