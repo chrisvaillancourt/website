@@ -19,13 +19,8 @@ test.describe('ThemeToggle', () => {
 	test('clicking toggle changes theme', async ({ page }) => {
 		const toggle = page.getByLabel('Toggle Dark Mode');
 		const html = await page.locator('html');
-		expect(html).toHaveCSS(
-			'background-color',
-			'hsl(var(--b1) / var(--tw-bg-opacity, 1))',
-		);
+		expect(html).toHaveCSS('background-color', 'rgb(15, 23, 41)');
 		await toggle.click();
-		// const html = await page.locator('html').elementHandle();
-		expect(html).toBeTruthy();
 	});
 	test('test', async ({ page }) => {
 		await page.goto('http://localhost:4322/');
