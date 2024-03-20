@@ -13,7 +13,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PNPM_VERSION: 8.15.4
+        PNPM_VERSION: 8.15.5
         NODE_VERSION: 20
     environment:
       NODE_ENV: development
