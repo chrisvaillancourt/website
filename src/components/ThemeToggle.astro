@@ -37,13 +37,13 @@ import { weatherSunny, weatherNight } from '@/lib/icons';
 		}
 	}
 </script>
-<!-- TODO fix Toggle dark / light Mode aria-label -->
+
 <Btn
 	circle
 	ghost
 	id="toggle-theme"
 	class="group ms-auto transition-all"
-	aria-label="Toggle Dark Mode"
+	aria-label="Toggle Theme"
 >
 	<Icon
 		name="theme icon"
@@ -61,11 +61,8 @@ import { weatherSunny, weatherNight } from '@/lib/icons';
 	/>
 </Btn>
 
-<!-- 
-	TODO fix inline script; will now only be run once per page 
-see https://github.com/chrisvaillancourt/website/issues/163
--->
 <script
+	is:inline
 	define:vars={{
 		DARK_THEME_NAME,
 	}}
@@ -73,6 +70,6 @@ see https://github.com/chrisvaillancourt/website/issues/163
 	// * Inlined to avoid FOUC
 	const bodyThemeIsDark =
 		document.documentElement.dataset.theme == DARK_THEME_NAME;
-	const button = document.querySelector('button');
+	const button = document.getElementById('toggle-theme');
 	button.setAttribute('aria-pressed', String(bodyThemeIsDark));
 </script>

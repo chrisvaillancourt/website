@@ -38,5 +38,5 @@ test.describe('ThemeToggle', () => {
 });
 
 function getToggle(page: Page) {
-	return page.getByLabel('Toggle Dark Mode');
+	return page.getByLabel('Toggle Theme');
 }
