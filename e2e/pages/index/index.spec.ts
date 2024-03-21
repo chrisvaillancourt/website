@@ -54,4 +54,17 @@ test.describe('home page', () => {
 		]);
 		await expect(errors).toMatchObject([]);
 	});
+	test('no uncaught errors', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('pageerror', (exception) => {
+			errors.push(exception);
+		});
+		await page.goto('/');
+		await Promise.allSettled([
+			page.waitForLoadState('load'),
+			page.waitForLoadState('domcontentloaded'),
+			page.waitForLoadState('networkidle'),
+		]);
+		await expect(errors).toMatchObject([]);
+	});
 });
