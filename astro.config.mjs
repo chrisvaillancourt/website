@@ -30,4 +30,7 @@ export default defineConfig({
 			exclude: ['@resvg/resvg-js'],
 		},
 	},
+	// the toolbar throws an uncaught exception in webkit during e2e tests
+	// see https://github.com/chrisvaillancourt/website/issues/181
+	devToolbar: { enabled: false },
 });
