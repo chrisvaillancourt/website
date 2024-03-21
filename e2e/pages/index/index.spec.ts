@@ -39,4 +39,19 @@ test.describe('home page', () => {
 			expect(posts).toBeVisible(),
 		]);
 	});
+	test('no console errors', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('console', (msg) => {
+			if (msg.type() === 'error') {
+				errors.push(msg);
+			}
+		});
+		await page.goto('/');
+		await Promise.allSettled([
+			page.waitForLoadState('load'),
+			page.waitForLoadState('domcontentloaded'),
+			page.waitForLoadState('networkidle'),
+		]);
+		await expect(errors).toMatchObject([]);
+	});
 });
