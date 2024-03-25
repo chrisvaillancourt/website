@@ -44,10 +44,12 @@ async function getPageLinks({
 	for (const link of pageLinks) {
 		const href = await link.getAttribute('href');
 
-		if (linkPrefix) {
+		if (!linkPrefix) {
 			href && routesToVisit.add(href);
-		} else if (href) {
-			routesToVisit.add(href);
+		} else {
+			if (href && href.startsWith(linkPrefix)) {
+				routesToVisit.add(href);
+			}
 		}
 	}
 	return routesToVisit;
