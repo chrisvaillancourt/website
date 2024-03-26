@@ -1,6 +1,12 @@
-import { type Page } from '@playwright/test';
+import type { Page, ConsoleMessage } from '@playwright/test';
 
-export { waitForAllLoadStates, waitForUrlsToLoad, getPageLinks };
+export {
+	waitForAllLoadStates,
+	waitForUrlsToLoad,
+	getPageLinks,
+	collectPageErrors,
+	collectPageConsoleErrors,
+};
 
 /**
  * Wait for all page loading states to resolve.
@@ -62,4 +68,20 @@ async function getPageLinks({
 		}
 	}
 	return routesToVisit;
+}
+function collectPageErrors(page: Page): Error[] {
+	const errors: Error[] = [];
+	page.on('pageerror', (exception) => {
+		errors.push(exception);
+	});
+	return errors;
+}
+function collectPageConsoleErrors(page: Page): ConsoleMessage[] {
+	const errorMessages: ConsoleMessage[] = [];
+	page.on('console', (msg) => {
+		if (msg.type() === 'error') {
+			errorMessages.push(msg);
+		}
+	});
+	return errorMessages;
 }
