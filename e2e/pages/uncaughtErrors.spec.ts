@@ -1,27 +1,21 @@
 import { test, expect } from '@playwright/test';
-import { getPageLinks, waitForUrlsToLoad } from '../utils';
+import {
+	getPageLinks,
+	waitForUrlsToLoad,
+	collectPageErrors,
+	collectPageConsoleErrors,
+} from '../utils';
 
 test.describe('no console errors', () => {
 	test('top level routes', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('console', (msg) => {
-			if (msg.type() === 'error') {
-				errors.push(msg);
-			}
-		});
-
+		const errors = collectPageConsoleErrors(page);
 		const routes = ['/', '/posts', '/about', '/tags'];
 		await waitForUrlsToLoad(page, routes);
 		await expect(errors).toMatchObject([]);
 	});
 
 	test('posts routes ', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('console', (msg) => {
-			if (msg.type() === 'error') {
-				errors.push(msg);
-			}
-		});
+		const errors = collectPageConsoleErrors(page);
 		const postUrls = await getPageLinks({
 			page,
 			url: '/posts',
@@ -31,12 +25,7 @@ test.describe('no console errors', () => {
 		await expect(errors).toMatchObject([]);
 	});
 	test('tag routes ', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('console', (msg) => {
-			if (msg.type() === 'error') {
-				errors.push(msg);
-			}
-		});
+		const errors = collectPageConsoleErrors(page);
 		const tagRoutes = await getPageLinks({
 			page,
 			url: '/tags',
@@ -50,21 +39,14 @@ test.describe('no console errors', () => {
 
 test.describe('no uncaught errors', () => {
 	test('top level routes', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('pageerror', (exception) => {
-			errors.push(exception);
-		});
-
+		const errors = collectPageErrors(page);
 		const routes = ['/', '/posts', '/about', '/tags'];
 		await waitForUrlsToLoad(page, routes);
 		await expect(errors).toMatchObject([]);
 	});
 
 	test('posts routes ', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('pageerror', (exception) => {
-			errors.push(exception);
-		});
+		const errors = collectPageErrors(page);
 		const postUrls = await getPageLinks({
 			page,
 			url: '/posts',
@@ -74,10 +56,7 @@ test.describe('no uncaught errors', () => {
 		await expect(errors).toMatchObject([]);
 	});
 	test('tag routes ', async ({ page }) => {
-		const errors: unknown[] = [];
-		page.on('pageerror', (exception) => {
-			errors.push(exception);
-		});
+		const errors = collectPageErrors(page);
 		const tagRoutes = await getPageLinks({
 			page,
 			url: '/tags',
