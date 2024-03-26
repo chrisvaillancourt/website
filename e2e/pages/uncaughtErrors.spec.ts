@@ -1,37 +1,90 @@
 import { test, expect } from '@playwright/test';
-import { waitForAllLoadStates, getPageLinks } from '../utils';
+import { getPageLinks, waitForUrlsToLoad } from '../utils';
 
-test('no console errors', async ({ page }) => {
-	const errors: unknown[] = [];
-	page.on('console', (msg) => {
-		if (msg.type() === 'error') {
-			errors.push(msg);
-		}
+test.describe('no console errors', () => {
+	test('top level routes', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('console', (msg) => {
+			if (msg.type() === 'error') {
+				errors.push(msg);
+			}
+		});
+
+		const routes = ['/', '/posts', '/about', '/tags'];
+		await waitForUrlsToLoad(page, routes);
+		await expect(errors).toMatchObject([]);
 	});
 
-	const routes = ['/', '/posts', '/about', '/tags'];
+	test('posts routes ', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('console', (msg) => {
+			if (msg.type() === 'error') {
+				errors.push(msg);
+			}
+		});
+		const postUrls = await getPageLinks({
+			page,
+			url: '/posts',
+			linkPrefix: '/posts/',
+		});
+		await waitForUrlsToLoad(page, postUrls);
+		await expect(errors).toMatchObject([]);
+	});
+	test('tag routes ', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('console', (msg) => {
+			if (msg.type() === 'error') {
+				errors.push(msg);
+			}
+		});
+		const tagRoutes = await getPageLinks({
+			page,
+			url: '/tags',
+			linkPrefix: '/tags/',
+		});
 
-	for (const route of routes) {
-		await page.goto(route);
-		await waitForAllLoadStates(page);
-	}
+		await waitForUrlsToLoad(page, tagRoutes);
+		await expect(errors).toMatchObject([]);
+	});
+});
 
-	const postRoutes = await getPageLinks({
-		page,
-		url: '/posts',
-		linkPrefix: '/posts/',
+test.describe('no uncaught errors', () => {
+	test('top level routes', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('pageerror', (exception) => {
+			errors.push(exception);
+		});
+
+		const routes = ['/', '/posts', '/about', '/tags'];
+		await waitForUrlsToLoad(page, routes);
+		await expect(errors).toMatchObject([]);
 	});
 
-	for (const postRoute of postRoutes) {
-		await page.goto(postRoute);
-		await waitForAllLoadStates(page);
-	}
-
-	const tagRoutes = await getPageLinks({
-		page,
-		url: '/tags',
-		linkPrefix: '/tags/',
+	test('posts routes ', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('pageerror', (exception) => {
+			errors.push(exception);
+		});
+		const postUrls = await getPageLinks({
+			page,
+			url: '/posts',
+			linkPrefix: '/posts/',
+		});
+		await waitForUrlsToLoad(page, postUrls);
+		await expect(errors).toMatchObject([]);
 	});
+	test('tag routes ', async ({ page }) => {
+		const errors: unknown[] = [];
+		page.on('pageerror', (exception) => {
+			errors.push(exception);
+		});
+		const tagRoutes = await getPageLinks({
+			page,
+			url: '/tags',
+			linkPrefix: '/tags/',
+		});
 
-	await expect(errors).toMatchObject([]);
+		await waitForUrlsToLoad(page, tagRoutes);
+		await expect(errors).toMatchObject([]);
+	});
 });

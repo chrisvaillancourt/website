@@ -1,6 +1,6 @@
 import { type Page } from '@playwright/test';
 
-export { waitForAllLoadStates, getPageLinks };
+export { waitForAllLoadStates, waitForUrlsToLoad, getPageLinks };
 
 /**
  * Wait for all page loading states to resolve.
@@ -19,6 +19,16 @@ function waitForAllLoadStates(
 		page.waitForLoadState('domcontentloaded'),
 		page.waitForLoadState('networkidle'),
 	]);
+}
+/**
+ * Go to each url in URL's collection and wait for each URL to completely load.
+ */
+async function waitForUrlsToLoad(page: Page, urls: Iterable<string>) {
+	for (const url of urls) {
+		await page.goto(url);
+		// need to block so we guarantee page loads before loading the next page
+		await waitForAllLoadStates(page);
+	}
 }
 
 /**
