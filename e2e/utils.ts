@@ -43,7 +43,6 @@ async function getPageLinks({
 	const routesToVisit: Set<string> = new Set();
 	for (const link of pageLinks) {
 		const href = await link.getAttribute('href');
-
 		if (!linkPrefix) {
 			href && routesToVisit.add(href);
 		} else {

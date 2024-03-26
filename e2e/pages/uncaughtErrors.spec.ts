@@ -16,20 +16,22 @@ test('no console errors', async ({ page }) => {
 		await waitForAllLoadStates(page);
 	}
 
-	await page.goto('/posts');
-	const links = await page.getByRole('link').all();
+	const postRoutes = await getPageLinks({
+		page,
+		url: '/posts',
+		linkPrefix: '/posts/',
+	});
 
-	const postRoutes: Set<string> = new Set();
-	for (const link of links) {
-		const href = await link.getAttribute('href');
-		if (href?.startsWith('/posts/')) {
-			postRoutes.add(href);
-		}
-	}
 	for (const postRoute of postRoutes) {
 		await page.goto(postRoute);
 		await waitForAllLoadStates(page);
 	}
+
+	const tagRoutes = await getPageLinks({
+		page,
+		url: '/tags',
+		linkPrefix: '/tags/',
+	});
 
 	await expect(errors).toMatchObject([]);
 });
