@@ -24,6 +24,7 @@ test.describe('no console errors', () => {
 		await waitForUrlsToLoad(page, postUrls);
 		await expect(errors).toMatchObject([]);
 	});
+
 	test('tag routes ', async ({ page }) => {
 		const errors = collectPageConsoleErrors(page);
 		const tagRoutes = await getPageLinks({
@@ -55,6 +56,7 @@ test.describe('no uncaught errors', () => {
 		await waitForUrlsToLoad(page, postUrls);
 		await expect(errors).toMatchObject([]);
 	});
+
 	test('tag routes ', async ({ page }) => {
 		const errors = collectPageErrors(page);
 		const tagRoutes = await getPageLinks({
@@ -62,7 +64,6 @@ test.describe('no uncaught errors', () => {
 			url: '/tags',
 			linkPrefix: '/tags/',
 		});
-
 		await waitForUrlsToLoad(page, tagRoutes);
 		await expect(errors).toMatchObject([]);
 	});

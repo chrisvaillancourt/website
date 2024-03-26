@@ -69,14 +69,22 @@ async function getPageLinks({
 	}
 	return routesToVisit;
 }
-function collectPageErrors(page: Page): Error[] {
+/**
+ * Listens for uncaught exceptions in the provided page and returns an array of
+ * all exceptions.
+ */
+function collectPageErrors(page: Page): readonly Error[] {
 	const errors: Error[] = [];
 	page.on('pageerror', (exception) => {
 		errors.push(exception);
 	});
 	return errors;
 }
-function collectPageConsoleErrors(page: Page): ConsoleMessage[] {
+/**
+ * Listens for console.error() messages in the provided page and returns an array of
+ * all error messages.
+ */
+function collectPageConsoleErrors(page: Page): readonly ConsoleMessage[] {
 	const errorMessages: ConsoleMessage[] = [];
 	page.on('console', (msg) => {
 		if (msg.type() === 'error') {
