@@ -15,8 +15,8 @@ file.
 
 ## Development without docker
 
-This app may be run without using Docker. Run all commands from the root of the
-project, from a terminal:
+It's possible to run this app without Docker. Run all commands from the root of
+the project, from a terminal:
 
 | Command             | Action                                               |
 | :------------------ | :--------------------------------------------------- |
