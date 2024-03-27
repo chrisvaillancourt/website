@@ -57,8 +57,16 @@ download browsers:
 
 ## Deployment
 
-To build and deploy, run `pnpm i && pnpm build && pnpm run deploy` and follow
-the output instructions.
+First, build the site and preview it so we can run e2e tests against the
+production build. To do this:
+
+1. Install dependencies by running `pnpm i`
+2. Build the site by running `pnpm build`
+3. Start the preview server by running `pnpm preview`
+4. Run the e2e test suite with `pnpm test:e2e`
+
+If all tests pass, stop the preview server and deploy the built site by running
+`pnpm run deploy`. Follow the CLI instructions to finish the deployment.
 
 ## Development with docker
 
