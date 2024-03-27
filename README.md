@@ -45,7 +45,7 @@ By default, playwright sets the base URL for tests using the environment
 variable `APP_URL`. We set this from the `.env` file but we can override
 variables by passing them in at runtime with `VARIABLE_NAME=VALUE` syntax. To
 run e2e tests against the production site, we can run
-`https://chrisvaillancourt.io/ pnpm test:e2e`.
+`APP_URL=https://chrisvaillancourt.io/ pnpm test:e2e`.
 
 ### Downloading playwright browsers
 
