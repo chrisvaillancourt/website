@@ -53,7 +53,7 @@ Playwright doesn't automatically download browsers for running tests. To
 download browsers:
 
 1. install project dependencies: `pnpm i`
-2. install playwright browsers: `pnpm dlx playwright install`
+2. install playwright browsers: `pnpm dlx playwright install --with-deps`
 
 ## Deployment
 
