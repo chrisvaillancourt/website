@@ -42,7 +42,7 @@
 	"dependencies": {
 		"@astrojs/rss": "^4.0.5",
 		"@mdi/js": "^7.4.47",
-		"astro": "^4.5.10",
+		"astro": "^4.5.12",
 		"dotenv": "^16.4.5",
 		"dotenv-expand": "^10.0.0",
 		"remark-unwrap-images": "^4.0.0",
