@@ -42,7 +42,8 @@
 			"@/*": ["src/*"],
 			"@/components/*": ["src/components/*.astro"],
 			"@/layouts/*": ["src/layouts/*.astro"]
-		}
+		},
+		"types": ["vitest/importMeta"]
 	},
 	"include": ["src/**/*.ts", "src/**/*.astro", "./*.*js"],
 	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]

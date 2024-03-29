@@ -14,6 +14,7 @@
 		"preview:wrangler": "wrangler pages dev ./dist",
 		"astro": "astro",
 		"tsc": "tsc",
+		"test": "vitest",
 		"test:e2e": "playwright test",
 		"format": "prettier . --check --ignore-path=.prettierignore --ignore-path=.gitignore --plugin=prettier-plugin-astro",
 		"format:fix": "pnpm format --write"
@@ -37,6 +38,7 @@
 		"prettier-plugin-tailwindcss": "^0.5.13",
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.3",
+		"vitest": "^1.4.0",
 		"wrangler": "^3.39.0"
 	},
 	"dependencies": {
