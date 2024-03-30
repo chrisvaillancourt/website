@@ -39,7 +39,7 @@
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.3",
 		"vitest": "^1.4.0",
-		"wrangler": "^3.39.0"
+		"wrangler": "^3.41.0"
 	},
 	"dependencies": {
 		"@astrojs/rss": "^4.0.5",
