@@ -44,6 +44,12 @@ function isProd() {
 	return appMode() === productionModeString;
 }
 
+function isSSR(): boolean {
+	// Vite specific
+	// https://vitejs.dev/guide/env-and-mode.html#env-variables
+	return import.meta.env.SSR;
+}
+
 /**
  * Validate the environment variable object.
  */
@@ -55,4 +61,4 @@ function validateEnv(env: ReturnType<typeof readEnv>) {
 	return envSchema.parse(env);
 }
 
-export { isDev, isProd, env };
+export { isDev, isProd, isSSR, env };
