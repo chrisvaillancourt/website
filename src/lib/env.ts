@@ -44,10 +44,17 @@ function isProd() {
 	return appMode() === productionModeString;
 }
 
+/**
+ * Check if currently running server side.
+ */
 function isSSR(): boolean {
 	// Vite specific
 	// https://vitejs.dev/guide/env-and-mode.html#env-variables
-	return import.meta.env.SSR;
+	// ! can't use vite specific env var in playwright b/c not processed by vite
+	// TODO find a way to use vite env vars in playwright
+	// return import.meta.env.SSR;
+	// https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
+	return typeof process !== 'undefined' && process.release.name === 'node';
 }
 
 /**
@@ -62,3 +69,11 @@ function validateEnv(env: ReturnType<typeof readEnv>) {
 }
 
 export { isDev, isProd, isSSR, env };
+
+if (import.meta.vitest) {
+	const { it, expect } = import.meta.vitest;
+	it('isSSR', () => {
+		const result = isSSR();
+		expect(result).toBe(true);
+	});
+}
