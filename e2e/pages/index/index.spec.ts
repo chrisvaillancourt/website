@@ -27,38 +27,37 @@ test.describe('home page', () => {
 		const postsText = await posts.allTextContents();
 		expect(postsText.length).toBeGreaterThan(6);
 	});
-	test('nav menu links', async ({ page, isMobile }) => {
-		// we should refactor this test / break it apart to smaller tests
-		async function testMobile() {
-			const navHamburger = await page.getByLabel('Open main menu');
-			await expect(navHamburger).toBeVisible();
+	test('nav menu links are visible on mobile', async ({ page, isMobile }) => {
+		if (!isMobile) return;
 
-			await navHamburger.click();
-			const mainMenu = await page.getByLabel('Main menu', { exact: true });
-			await expect(mainMenu).toBeVisible();
+		const navHamburger = await page.getByLabel('Open main menu');
+		await expect(navHamburger).toBeVisible();
 
-			const homeLink = await mainMenu.getByRole('link', { name: 'Home' });
-			await expect(homeLink).toBeVisible();
+		await navHamburger.click();
+		const mainMenu = await page.getByLabel('Main menu', { exact: true });
+		await expect(mainMenu).toBeVisible();
 
-			const postsLink = await mainMenu.getByRole('link', { name: 'Posts' });
-			await expect(postsLink).toBeVisible();
+		const homeLink = await mainMenu.getByRole('link', { name: 'Home' });
+		await expect(homeLink).toBeVisible();
 
-			const aboutLink = await mainMenu.getByRole('link', { name: 'About' });
-			await expect(aboutLink).toBeVisible();
-		}
-		async function testDesktop() {
-			const nav = await page.getByLabel('Main menu', { exact: true });
-			await expect(nav).toBeVisible();
-			const home = nav.getByText('home');
-			const posts = nav.getByText('posts');
-			const about = nav.getByText('about');
-			await Promise.all([
-				expect(home).toBeVisible(),
-				expect(about).toBeVisible(),
-				expect(posts).toBeVisible(),
-			]);
-		}
-		if (isMobile) await testMobile();
-		else await testDesktop();
+		const postsLink = await mainMenu.getByRole('link', { name: 'Posts' });
+		await expect(postsLink).toBeVisible();
+
+		const aboutLink = await mainMenu.getByRole('link', { name: 'About' });
+		await expect(aboutLink).toBeVisible();
+	});
+	test('nav menu links are visible on desktop', async ({ page, isMobile }) => {
+		if (isMobile) return;
+
+		const nav = await page.getByLabel('Main menu', { exact: true });
+		await expect(nav).toBeVisible();
+		const home = nav.getByText('home');
+		const posts = nav.getByText('posts');
+		const about = nav.getByText('about');
+		await Promise.all([
+			expect(home).toBeVisible(),
+			expect(about).toBeVisible(),
+			expect(posts).toBeVisible(),
+		]);
 	});
 });
