@@ -17,7 +17,7 @@ const LIGHT_THEME_ACCENT = '#bf45ab';
 const LIGHT_THEME_PRIMARY = '#0071F0';
 
 const LIGHT_THEME = Object.freeze({
-	...daisyuiThemes[`[data-theme=${LIGHT_THEME_NAME}]`],
+	...daisyuiThemes[LIGHT_THEME_NAME],
 	accent: LIGHT_THEME_ACCENT,
 	primary: LIGHT_THEME_PRIMARY,
 });
@@ -32,7 +32,7 @@ const LIGHT_THEME_VALUE = LIGHT_THEME[base100];
 
 const DARK_THEME_NAME = 'night';
 const DARK_THEME = Object.freeze({
-	...daisyuiThemes[`[data-theme=${DARK_THEME_NAME}]`],
+	...daisyuiThemes[DARK_THEME_NAME],
 });
 
 if (DARK_THEME[base100] === undefined)
