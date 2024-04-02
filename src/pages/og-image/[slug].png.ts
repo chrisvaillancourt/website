@@ -78,7 +78,7 @@ const markup = (title: string, pubDate: string) =>
 						fill="#B04304"
 					></path>
 				</svg>
-				<p tw="ml-3 font-semibold">${siteConfig.title}</p>
+				<p tw="ms-3 font-semibold">${siteConfig.title}</p>
 			</div>
 			<p>by ${siteConfig.author}</p>
 		</div>
