@@ -33,6 +33,10 @@ const LIGHT_THEME_VALUE = LIGHT_THEME[base100];
 const DARK_THEME_NAME = 'night';
 const DARK_THEME = Object.freeze({
 	...daisyuiThemes[DARK_THEME_NAME],
+	// ! Need to override b/c the default causes differences in computed
+	// ! value between chrome and safari.
+	// ! Only is an issue in playwright when comparing computed colors to expected color.
+	'base-100': 'oklch(20.77% 0.04 265.75)',
 });
 
 if (DARK_THEME[base100] === undefined)

@@ -1,7 +1,7 @@
 import { test, expect, type Page } from '@playwright/test';
 
-const LIGHT_THEME_BG_COLOR = 'rgb(15, 23, 41)';
-const DARK_THEME_BG_COLOR = 'rgb(255, 255, 255)';
+const LIGHT_THEME_BG_COLOR = 'oklch(1 0 0)';
+const DARK_THEME_BG_COLOR = 'oklch(0.2077 0.04 265.75)';
 
 test.describe('ThemeToggle', () => {
 	test.beforeEach(async ({ page }) => {
@@ -15,28 +15,37 @@ test.describe('ThemeToggle', () => {
 	test('clicking toggle changes theme', async ({ page }) => {
 		const html = await page.locator('html');
 		const toggle = getToggle(page);
-		await expect(html).toHaveCSS('background-color', LIGHT_THEME_BG_COLOR);
-		await toggle.click();
+		const initialBackgroundColor = await html.evaluate(getBackgroundColor);
 		await expect(html).toHaveCSS('background-color', DARK_THEME_BG_COLOR);
+
+		await toggle.click();
+
+		const secondBackgroundColor = await html.evaluate(getBackgroundColor);
+		await expect(initialBackgroundColor).not.toEqual(secondBackgroundColor);
+		await expect(html).toHaveCSS('background-color', LIGHT_THEME_BG_COLOR);
 	});
 	test('theme persists across page loads', async ({ page }) => {
 		const html = await page.locator('html');
 		const toggle = getToggle(page);
-		await expect(html).toHaveCSS('background-color', LIGHT_THEME_BG_COLOR);
 
-		await toggle.click();
-		await expect(html).toHaveCSS('background-color', DARK_THEME_BG_COLOR);
-
-		await page.reload();
 		await expect(html).toHaveCSS('background-color', DARK_THEME_BG_COLOR);
 
 		await toggle.click();
 		await expect(html).toHaveCSS('background-color', LIGHT_THEME_BG_COLOR);
+
 		await page.reload();
 		await expect(html).toHaveCSS('background-color', LIGHT_THEME_BG_COLOR);
+
+		await toggle.click();
+		await expect(html).toHaveCSS('background-color', DARK_THEME_BG_COLOR);
+		await page.reload();
+		await expect(html).toHaveCSS('background-color', DARK_THEME_BG_COLOR);
 	});
 });
 
 function getToggle(page: Page) {
 	return page.getByLabel('Toggle Theme');
+}
+function getBackgroundColor(el: HTMLElement) {
+	return window.getComputedStyle(el).getPropertyValue('background-color');
 }
