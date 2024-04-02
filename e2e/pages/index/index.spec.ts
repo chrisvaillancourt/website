@@ -60,4 +60,14 @@ test.describe('home page', () => {
 			expect(posts).toBeVisible(),
 		]);
 	});
+	test('nav menu toggle is visible on small viewports', async ({
+		page,
+		isMobile,
+	}) => {
+		if (!isMobile) return;
+
+		await page.setViewportSize({ width: 320, height: 600 });
+		const navHamburger = await page.getByLabel('Open main menu');
+		await expect(navHamburger).toBeVisible();
+	});
 });
