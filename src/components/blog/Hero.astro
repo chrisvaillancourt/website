@@ -1,7 +1,7 @@
 ---
 import { getFormattedDate } from '@/lib/date';
 import type { PostCollectionEntry } from '@/types';
-import Link from '@/components/Link';
+import BlogTags from './BlogTags.astro';
 import Icon from '@/components/Icon';
 import Heading from '@/components/Heading';
 import { tagMultiple } from '@/lib/icons';
@@ -10,17 +10,21 @@ interface Props {
 	content: PostCollectionEntry;
 }
 
-const { content } = Astro.props;
+const {
+	content: {
+		data: { publishDate, title, tags, description },
+	},
+} = Astro.props;
 
-const datetime = content.data.publishDate.toISOString();
-const postDate = getFormattedDate(content.data.publishDate, { month: 'long' });
+const datetime = publishDate.toISOString();
+const postDate = getFormattedDate(publishDate, { month: 'long' });
 ---
 
-<Heading level="1" class="mb-3 sm:mb-1">{content.data.title}</Heading>
+<Heading level="1" class="mb-3 sm:mb-1">{title}</Heading>
 <time datetime={datetime}>{postDate}</time>
 {
-	!!content.data.tags?.length && (
-		<div class="mt-1 sm:mt-0 sm:inline sm:before:mx-2 sm:before:content-['|']">
+	!!tags?.length && (
+		<div class="mt-1 flex flex-row sm:mt-0 sm:inline sm:before:mx-2 sm:before:content-['|']">
 			<Icon
 				name="tags"
 				aria-hidden="true"
@@ -28,19 +32,8 @@ const postDate = getFormattedDate(content.data.publishDate, { month: 'long' });
 				class="me-1 inline-block h-6 w-6"
 				path={tagMultiple}
 			/>
-			{content.data.tags.map((tag, i) => (
-				<>
-					<Link
-						class="inline-block before:content-['#']"
-						aria-label={`View more blogs with the tag ${tag}`}
-						href={`/tags/${tag}/`}
-					>
-						{tag}
-					</Link>
-					{i < content.data.tags.length - 1 && ', '}
-				</>
-			))}
+			<BlogTags tags={tags} />
 		</div>
 	)
 }
-<p class="mt-8">{content.data.description}</p>
+<p class="mt-8">{description}</p>
