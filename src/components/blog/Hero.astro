@@ -24,7 +24,7 @@ const postDate = getFormattedDate(publishDate, { month: 'long' });
 <time datetime={datetime}>{postDate}</time>
 {
 	!!tags?.length && (
-		<div class="mt-1 flex flex-row sm:mt-0 sm:inline sm:before:mx-2 sm:before:content-['|']">
+		<div class="mt-1 sm:mt-0 sm:inline sm:before:mx-2 sm:before:content-['|']">
 			<Icon
 				name="tags"
 				aria-hidden="true"
