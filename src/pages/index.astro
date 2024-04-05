@@ -14,8 +14,10 @@ const allPostsByDate = postsByDate(allPosts).slice(0, MAX_POSTS);
 
 <BaseLayout meta={{ title: 'Home' }}>
 	<section>
-		<Heading level="1">Chris Vaillancourt</Heading>
-		<Paragraph>Full Stack Software Engineer</Paragraph>
+		<Heading level="1" class="flex flex-col">
+			<span>Hi! I'm Chris,</span>
+			<span>a full stack software engineer</span>
+		</Heading>
 		<SocialList>
 			<Paragraph slot="prefix">Find me on:</Paragraph>
 		</SocialList>
