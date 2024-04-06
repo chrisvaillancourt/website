@@ -8,14 +8,13 @@ test.describe('home page', () => {
 		// Expect a title "to contain" a substring.
 		await expect(page).toHaveTitle(/Home • Chris Vaillancourt/);
 	});
-	test('has heading with name', async ({ page }) => {
-		const heading = page.getByRole('heading', { name: 'Chris Vaillancourt' });
+	test('has heading with name and title', async ({ page }) => {
+		const heading = page.getByRole('heading', {
+			name: `Hi! I'm Chris, a full stack software engineer`,
+		});
 		await expect(heading).toBeVisible();
 	});
-	test('has heading with professional title ', async ({ page }) => {
-		const title = await page.getByText('Full Stack Software Engineer');
-		await expect(title).toBeVisible();
-	});
+
 	test('has posts heading', async ({ page }) => {
 		const postsHeading = await page.getByRole('heading', { name: 'Posts' });
 		await expect(postsHeading).toBeVisible();
