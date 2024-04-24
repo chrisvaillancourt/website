@@ -21,35 +21,35 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.5.10",
-		"@astrojs/mdx": "^2.2.4",
-		"@astrojs/sitemap": "^3.1.2",
+		"@astrojs/mdx": "^2.3.1",
+		"@astrojs/sitemap": "^3.1.4",
 		"@astrojs/tailwind": "^5.1.0",
-		"@playwright/test": "^1.43.0",
+		"@playwright/test": "^1.43.1",
 		"@resvg/resvg-js": "^2.6.2",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.12",
-		"@types/node": "^20.12.5",
+		"@types/node": "^20.12.7",
 		"autoprefixer": "^10.4.19",
-		"daisyui": "^4.10.1",
+		"daisyui": "^4.10.2",
 		"postcss": "^8.4.38",
 		"postcss-html": "^1.6.0",
 		"prettier": "3.2.5",
 		"prettier-plugin-astro": "^0.13.0",
-		"prettier-plugin-tailwindcss": "^0.5.13",
+		"prettier-plugin-tailwindcss": "^0.5.14",
 		"tailwindcss": "^3.4.3",
-		"typescript": "^5.4.4",
-		"vitest": "^1.4.0",
-		"wrangler": "^3.48.0"
+		"typescript": "^5.4.5",
+		"vitest": "^1.5.1",
+		"wrangler": "^3.52.0"
 	},
 	"dependencies": {
 		"@astrojs/rss": "^4.0.5",
 		"@mdi/js": "^7.4.47",
-		"astro": "^4.5.16",
+		"astro": "^4.6.4",
 		"dotenv": "^16.4.5",
-		"dotenv-expand": "^10.0.0",
+		"dotenv-expand": "^11.0.6",
 		"remark-unwrap-images": "^4.0.0",
 		"satori": "^0.10.13",
 		"satori-html": "^0.3.2",
-		"zod": "^3.22.4"
+		"zod": "^3.23.4"
 	}
 }
