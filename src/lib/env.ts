@@ -76,4 +76,8 @@ if (import.meta.vitest) {
 		const result = isSSR();
 		expect(result).toBe(true);
 	});
+	it('has environment variables', () => {
+		const envVars = env();
+		expect(envVars).toHaveProperty('APP_URL');
+	});
 }
