@@ -39,12 +39,12 @@
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.5",
 		"vitest": "^1.6.0",
-		"wrangler": "^3.55.0"
+		"wrangler": "^3.56.0"
 	},
 	"dependencies": {
-		"@astrojs/rss": "^4.0.5",
+		"@astrojs/rss": "^4.0.6",
 		"@mdi/js": "^7.4.47",
-		"astro": "^4.8.3",
+		"astro": "^4.8.5",
 		"dotenv": "^16.4.5",
 		"dotenv-expand": "^11.0.6",
 		"remark-unwrap-images": "^4.0.0",
