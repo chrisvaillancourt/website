@@ -27,7 +27,9 @@
 		}
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "2.46.0"
+		},
 		"ghcr.io/devcontainers/features/git-lfs:1": {}
 	},
 
