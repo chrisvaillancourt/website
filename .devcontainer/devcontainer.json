@@ -59,7 +59,8 @@
 				"robbowen.synthwave-vscode",
 				"bradlc.vscode-tailwindcss",
 				"gruntfuggly.todo-tree",
-				"travisthetechie.write-good-linter"
+				"travisthetechie.write-good-linter",
+				"Codeium.codeium"
 			]
 		}
 	},
