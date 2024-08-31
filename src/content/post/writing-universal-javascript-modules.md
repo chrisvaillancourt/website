@@ -105,7 +105,8 @@ function universalTextReader(file) {
 }
 ```
 
-You could also refactor the extended `if`/`else` by using an object connecting the runtime name with the implementation:
+You could also refactor the extended `if`/`else` by using an object connecting
+the runtime name with the implementation:
 
 ```js
 const deno = 'deno';
