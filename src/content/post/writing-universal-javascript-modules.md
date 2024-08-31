@@ -105,6 +105,28 @@ function universalTextReader(file) {
 }
 ```
 
+You could also refactor the extended `if`/`else` by using an object connecting the runtime name with the implementation:
+
+```js
+const deno = 'deno';
+const bun = 'bun';
+const node = 'node';
+
+function getRuntime() {
+	return isDeno ? deno : isBun ? bun : isNode ? node : '';
+}
+
+function universalTextReader(file) {
+	const readers = {
+		[deno]: denoTextReader,
+		[bun]: bunTextReader,
+		[node]: nodeTextReader,
+	};
+
+	return readers[getRuntime()](file);
+}
+```
+
 ## Example 2: Node and Browser UUID Generator
 
 Another approach is to change the exported value based on the environment we're
@@ -158,4 +180,5 @@ export { uuid };
 
 ## Third Party Helpers
 
-Shout-out to [std-env](https://github.com/unjs/std-env) for making runtime detection a breeze.
+Shout-out to [std-env](https://github.com/unjs/std-env) for making runtime
+detection a breeze.
