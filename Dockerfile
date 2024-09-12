@@ -10,6 +10,11 @@ ARG PNPM_VERSION
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+# stop corepack from adding packageManager field to package.json
+# we don't need this since we already specify the package manager 
+# and version in the root compose.yaml
+# https://github.com/nodejs/corepack/blob/main/README.md#environment-variables
+ENV COREPACK_ENABLE_AUTO_PIN=0
 
 RUN corepack enable \
     && corepack prepare pnpm@$PNPM_VERSION --activate \
