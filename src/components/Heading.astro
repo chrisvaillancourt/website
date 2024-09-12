@@ -1,7 +1,9 @@
 ---
+import type { HTMLAttributes } from 'astro/types';
 type Level = '1' | '2' | '3';
 type Heading = `h${Level}`;
-interface Props {
+
+interface Props extends HTMLAttributes<'h1'> {
 	level: Level;
 	class?: string;
 }
