@@ -1,0 +1,40 @@
+---
+import Link from '@/components/Link';
+import Logo from '@/components/Logo';
+
+import { NAV_LINKS } from '@/lib/constants';
+
+const url = new URL(Astro.request.url);
+---
+
+<header class="mb-28 flex flex-wrap items-center sm:ps-[4.5rem]">
+	<Link
+		href="/"
+		no-underline
+		class="relative inline-flex items-center"
+		aria-current={url.pathname === '/' ? 'page' : false}
+	>
+		<Logo />
+		<span class="header-title text-xl font-bold sm:text-2xl">
+			<slot name="title" />
+		</span>
+	</Link>
+	<nav class="ms-9">
+		<ul class="flex divide-x divide-dashed divide-accent text-accent">
+			{
+				NAV_LINKS.map((link) => (
+					<li>
+						<Link
+							href={link.path}
+							no-underline
+							class="px-4 py-4 sm:py-0 sm:hover:underline"
+							aria-current={url.pathname === link.path ? 'page' : false}
+						>
+							{link.title}
+						</Link>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</header>
