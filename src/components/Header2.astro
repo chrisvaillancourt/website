@@ -2,6 +2,7 @@
 import Link from '@/components/Link';
 import { NAV_LINKS } from '@/lib/constants';
 
+import ThemeToggle2 from '@/components/ThemeToggle2';
 const url = new URL(Astro.request.url);
 ---
 
@@ -35,4 +36,5 @@ const url = new URL(Astro.request.url);
 			}
 		</ul>
 	</nav>
+	<ThemeToggle2 />
 </header>
