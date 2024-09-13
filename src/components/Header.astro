@@ -1,126 +1,44 @@
 ---
-import ThemeToggle from '@/components/ThemeToggle';
 import Link from '@/components/Link';
-import Logo from '@/components/Logo';
 import { NAV_LINKS } from '@/lib/constants';
+import ThemeToggle2 from '@/components/ThemeToggle2';
 
 const url = new URL(Astro.request.url);
 ---
 
-<script>
-	import { toggleClass, idle } from '@/lib/client';
-	import { isNode } from '@/lib/guards';
-
-	idle(initMenuToggle);
-
-	function initMenuToggle() {
-		const header = document.querySelector('header');
-		const toggleMenuButton = document.getElementById('toggle-navigation-menu');
-		const nav = document.getElementById('navigation-menu');
-
-		if (!header || !toggleMenuButton || !nav) {
-			if (!header) console.error('The header is missing');
-			if (!toggleMenuButton) console.error('The header menu toggle is missing');
-			if (!nav) console.error('The nav is missing');
-			return;
-		}
-
-		let menuOpen = false;
-
-		document.addEventListener('pointerup', handleClickOutside);
-		toggleMenuButton.addEventListener('pointerup', toggleMenu);
-
-		function toggleMenu() {
-			if (!header || !toggleMenuButton) return;
-			toggleClass(header, 'menu-open');
-			menuOpen = !menuOpen;
-			toggleMenuButton.setAttribute('aria-expanded', menuOpen.toString());
-		}
-
-		function handleClickOutside({ target }: Event) {
-			if (!isNode(target) || !nav || !toggleMenuButton) return;
-			const outsideNav = !nav.contains(target);
-			const outsideBtn = !toggleMenuButton.contains(target);
-			if (menuOpen && outsideNav && outsideBtn) {
-				toggleMenu();
-			}
-		}
-	}
-</script>
-
-<header class="group relative mb-28 flex items-center sm:ps-[4.5rem]">
-	<div class="flex sm:flex-col">
-		<Link
-			href="/"
-			no-underline
-			class="inline-flex items-center sm:relative sm:inline-block"
-			aria-current={url.pathname === '/' ? 'page' : false}
-		>
-			<Logo />
-			<span class="header-title text-xl font-bold sm:text-2xl">
-				<slot name="title" />
-			</span>
-		</Link>
-		<nav
-			id="navigation-menu"
-			class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-[--theme-menu-bg] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-x sm:divide-dashed sm:divide-accent sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
-			aria-label="Main menu"
-		>
+<header
+	class="mb-28 grid grid-cols-2 grid-rows-2 justify-center gap-4 md:grid-rows-1"
+>
+	<Link
+		href="/"
+		no-underline
+		class="relative flex items-center"
+		aria-current={url.pathname === '/' ? 'page' : false}
+	>
+		<div class="pe-3 text-3xl">🌵</div>
+		<span class="header-title text-2xl font-bold">
+			<slot name="title" />
+		</span>
+	</Link>
+	<nav
+		class="col-start-1 row-start-2 flex items-center md:col-start-2 md:row-start-1"
+	>
+		<ul class="flex divide-x divide-dashed divide-accent text-accent">
 			{
 				NAV_LINKS.map((link) => (
-					<Link
-						href={link.path}
-						no-underline
-						class="px-4 py-4 sm:py-0 sm:hover:underline"
-						aria-current={url.pathname === link.path ? 'page' : false}
-					>
-						{link.title}
-					</Link>
+					<li>
+						<Link
+							href={link.path}
+							no-underline
+							class="px-4 py-4 sm:py-0 sm:hover:underline"
+							aria-current={url.pathname === link.path ? 'page' : false}
+						>
+							{link.title}
+						</Link>
+					</li>
 				))
 			}
-		</nav>
-	</div>
-	<ThemeToggle />
-	<button
-		id="toggle-navigation-menu"
-		class="group relative ms-8 h-7 w-7 shrink-0 sm:invisible sm:hidden"
-		type="button"
-		aria-label="Open main menu"
-		aria-expanded="false"
-		aria-haspopup="menu"
-	>
-		<svg
-			id="line-svg"
-			class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 transition-all group-aria-expanded:scale-0 group-aria-expanded:opacity-0"
-			aria-hidden="true"
-			focusable="false"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M3.75 9h16.5m-16.5 6.75h16.5"></path>
-		</svg>
-		<svg
-			id="cross-svg"
-			class="absolute start-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2 scale-0 text-accent opacity-0 transition-all group-aria-expanded:scale-100 group-aria-expanded:opacity-100"
-			class="text-accent"
-			aria-hidden="true"
-			focusable="false"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			stroke-width="1.5"
-			stroke="currentColor"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				d="M6 18L18 6M6 6l12 12"></path>
-		</svg>
-	</button>
+		</ul>
+	</nav>
+	<ThemeToggle2 class="justify-self-end md:col-start-3" />
 </header>
