@@ -11,14 +11,14 @@ const { class: className } = Astro.props;
 <label class:list={['swap swap-rotate', className]}>
 	<input type="checkbox" class="theme-controller" value={LIGHT_THEME_NAME} />
 	<Icon
-		name="theme icon"
+		name="theme toggle"
 		path={weatherSunny}
 		class="swap-on h-7 w-7 fill-current"
 		aria-hidden="true"
 		focusable="false"
 	/>
 	<Icon
-		name="theme icon"
+		name="theme toggle"
 		path={weatherNight}
 		class="swap-off h-7 w-7 fill-current"
 		aria-hidden="true"
