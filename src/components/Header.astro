@@ -1,6 +1,6 @@
 ---
 import Link from '@/components/Link';
-import { NAV_LINKS } from '@/lib/constants';
+import { NAV_LINKS, FAVICON } from '@/lib/constants';
 import ThemeToggle2 from '@/components/ThemeToggle2';
 
 const url = new URL(Astro.request.url);
@@ -15,7 +15,7 @@ const url = new URL(Astro.request.url);
 		class="relative flex items-center"
 		aria-current={url.pathname === '/' ? 'page' : false}
 	>
-		<div class="pe-3 text-3xl">🌵</div>
+		<div class="pe-3 text-3xl">{FAVICON}</div>
 		<span class="header-title text-2xl font-bold">
 			<slot name="title" />
 		</span>
