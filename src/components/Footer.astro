@@ -1,5 +1,5 @@
 ---
-import { NAV_LINKS } from '@/lib/constants';
+import { NAV_LINKS, FAVICON } from '@/lib/constants';
 import Link from '@/components/Link';
 
 // We only need the date it was first published but keeping it current looks nice
@@ -12,7 +12,7 @@ const year = new Date().getFullYear();
 >
 	<div class="me-0 sm:me-4">
 		Copyright &copy; {year}
-		<span class="ms-2" aria-label="cactus emoji">🌵</span>
+		<span class="ms-2" aria-label="cactus emoji">{FAVICON}</span>
 		Chris Vaillancourt
 	</div>
 	<nav
