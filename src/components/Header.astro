@@ -5,13 +5,11 @@ import { NAV_LINKS, FAVICON } from '@/lib/constants';
 const url = new URL(Astro.request.url);
 ---
 
-<header
-	class="mb-28 grid grid-cols-2 grid-rows-2 justify-center gap-4 md:grid-rows-1"
->
+<header class="mb-12 block sm:flex sm:gap-10">
 	<Link
 		href="/"
 		no-underline
-		class="relative flex items-center"
+		class="flex items-center"
 		aria-current={url.pathname === '/' ? 'page' : false}
 	>
 		<div class="pe-3 text-3xl">{FAVICON}</div>
@@ -19,9 +17,7 @@ const url = new URL(Astro.request.url);
 			<slot name="title" />
 		</span>
 	</Link>
-	<nav
-		class="col-start-1 row-start-2 flex items-center md:col-start-2 md:row-start-1"
-	>
+	<nav class="ml-8 mt-5 flex items-center sm:ml-0 sm:mt-0">
 		<ul class="flex divide-x divide-dashed divide-accent text-accent">
 			{
 				NAV_LINKS.map((link) => (
