@@ -1,7 +1,6 @@
 ---
 import Link from '@/components/Link';
 import { NAV_LINKS, FAVICON } from '@/lib/constants';
-import ThemeToggle from '@/components/ThemeToggle';
 
 const url = new URL(Astro.request.url);
 ---
@@ -40,5 +39,4 @@ const url = new URL(Astro.request.url);
 			}
 		</ul>
 	</nav>
-	<ThemeToggle class="justify-self-end md:col-start-3" />
 </header>
