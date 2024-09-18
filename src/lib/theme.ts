@@ -54,6 +54,46 @@ const THEMES = [
 		[LIGHT_THEME_NAME]: LIGHT_THEME,
 	},
 ] as const;
+/**
+ * The name of the key in local storage to save the selected theme
+ */
+const THEME_STORAGE_KEY = 'theme';
+
+function localStorageAvailable() {
+	return typeof localStorage !== 'undefined';
+}
+
+type Theme = typeof LIGHT_THEME_NAME | typeof DARK_THEME_NAME;
+
+function getStoredTheme(): string {
+	if (!localStorageAvailable()) {
+		console.warn('local storage is not available');
+		return '';
+	}
+	const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+	return storedTheme || '';
+}
+
+function setStoredTheme(theme: Theme) {
+	if (!localStorageAvailable()) {
+		console.warn('local storage is not available');
+		return;
+	}
+	localStorage.setItem(THEME_STORAGE_KEY, theme);
+}
+
+function emitThemeChange(theme: Theme) {
+	const themeChangeEvent = new CustomEvent(THEME_CHANGE_EVENT_TYPE, {
+		detail: {
+			theme,
+		},
+	});
+	if (!document) {
+		console.warn('document is not defined');
+		return;
+	}
+	document.documentElement.dispatchEvent(themeChangeEvent);
+}
 
 export {
 	THEMES,
@@ -62,4 +102,8 @@ export {
 	LIGHT_THEME_VALUE,
 	DARK_THEME_NAME,
 	DARK_THEME_VALUE,
+	THEME_STORAGE_KEY,
+	getStoredTheme,
+	setStoredTheme,
+	emitThemeChange,
 };

@@ -1,5 +1,5 @@
 ---
-import { LIGHT_THEME_NAME } from '@/lib/theme';
+import { LIGHT_THEME_NAME, DARK_THEME_NAME } from '@/lib/theme';
 import Icon from '@/components/Icon';
 import { weatherSunny, weatherNight } from '@/lib/icons';
 import type { HTMLAttributes } from 'astro/types';
@@ -8,8 +8,58 @@ interface Props extends HTMLAttributes<'label'> {}
 const { class: className } = Astro.props;
 ---
 
+<script>
+	import {
+		LIGHT_THEME_NAME,
+		DARK_THEME_NAME,
+		emitThemeChange,
+		getStoredTheme,
+	} from '@/lib/theme';
+	// document.querySelector("meta[name='theme-color']")?.setAttribute('content', '#ffffff');
+	const inputs = Array.from(
+		document.getElementsByClassName('theme-controller'),
+	);
+
+	function setInitialTheme(input: HTMLInputElement) {
+		const storedTheme = getStoredTheme();
+		if (!storedTheme) return;
+		// if the stored theme is dark, uncheck the checkbox
+		if (storedTheme === DARK_THEME_NAME) {
+			input.checked = false;
+		} else if (storedTheme === LIGHT_THEME_NAME) {
+			input.checked = true;
+		}
+	}
+	function handleInputChange(e: Event) {
+		if (!e.target) {
+			console.warn('theme input not found');
+			return;
+		}
+		if (!('checked' in e.target)) {
+			console.warn('theme input is not a checkbox');
+			return;
+		}
+		const isChecked = Boolean(e.target.checked);
+		const theme = isChecked ? LIGHT_THEME_NAME : DARK_THEME_NAME;
+		emitThemeChange(theme);
+	}
+
+	inputs.forEach((input) => {
+		input.addEventListener('change', handleInputChange);
+		setInitialTheme(input);
+	});
+</script>
+
 <label class:list={['swap swap-rotate', className]}>
-	<input type="checkbox" class="theme-controller" value={LIGHT_THEME_NAME} />
+	<!-- if the checkbox is checked, the page will have
+   the same theme as the checkbox's value  -->
+	<input
+		type="checkbox"
+		class="theme-controller"
+		value={LIGHT_THEME_NAME}
+		data-theme-light={LIGHT_THEME_NAME}
+		data-theme-dark={DARK_THEME_NAME}
+	/>
 	<Icon
 		name="theme toggle"
 		path={weatherSunny}
