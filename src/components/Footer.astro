@@ -1,6 +1,12 @@
 ---
-import { NAV_LINKS, FAVICON } from '@/lib/constants';
 import Link from '@/components/Link';
+
+interface Props {
+	logo: string;
+	links?: readonly { path: string; title: string }[];
+}
+
+const { logo, links = [] } = Astro.props;
 
 // We only need the date it was first published but keeping it current looks nice
 // see: https://hynek.me/til/copyright-years/
@@ -10,24 +16,28 @@ const year = new Date().getFullYear();
 <footer
 	class="mt-auto flex w-full flex-col items-center justify-center gap-y-2 pb-4 pt-20 text-center align-top opacity-80 sm:flex-row sm:justify-between sm:text-xs"
 >
-	<div class="me-0 sm:me-4">
-		Copyright &copy; {year}
-		<span class="ms-2" aria-label="cactus emoji">{FAVICON}</span>
-		Chris Vaillancourt
+	<div class="me-0 flex gap-3 sm:me-4">
+		<p>Copyright &copy; <time datetime={String(year)}>{year}</time></p>
+		<span aria-label="logo">{logo}</span>
+		<p>
+			<slot name="title" />
+		</p>
 	</div>
-	<nav
-		aria-label="More on this site"
-		class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
-	>
-		{
-			NAV_LINKS.map((link) => (
-				<Link
-					href={link.path}
-					class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
-				>
-					{link.title}
-				</Link>
-			))
-		}
-	</nav>
+	{
+		links?.length > 0 && (
+			<nav
+				aria-label="More on this site"
+				class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+			>
+				{links.map((link) => (
+					<Link
+						href={link.path}
+						class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
+					>
+						{link.title}
+					</Link>
+				))}
+			</nav>
+		)
+	}
 </footer>
