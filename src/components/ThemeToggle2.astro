@@ -88,6 +88,10 @@ const { class: className } = Astro.props;
 	define:vars={{ THEME_STORAGE_KEY, LIGHT_THEME_NAME, DARK_THEME_NAME }}
 >
 	'use strict';
+	/* 
+	inlined because the theme icon will swap after initial load
+	if the stored theme is different from default theme
+	*/
 	function getStoredTheme() {
 		if (!(typeof localStorage !== 'undefined')) {
 			console.warn('local storage is not available');
