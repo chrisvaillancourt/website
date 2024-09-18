@@ -1,9 +1,10 @@
 ---
 import Link from '@/components/Link';
+import type { Links } from '@/types';
 
 interface Props {
 	logo: string;
-	links?: readonly { path: string; title: string }[];
+	links?: Links;
 }
 
 const { logo, links = [] } = Astro.props;
