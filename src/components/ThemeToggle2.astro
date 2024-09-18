@@ -1,5 +1,9 @@
 ---
-import { LIGHT_THEME_NAME, DARK_THEME_NAME } from '@/lib/theme';
+import {
+	LIGHT_THEME_NAME,
+	DARK_THEME_NAME,
+	THEME_STORAGE_KEY,
+} from '@/lib/theme';
 import Icon from '@/components/Icon';
 import { weatherSunny, weatherNight } from '@/lib/icons';
 import type { HTMLAttributes } from 'astro/types';
@@ -15,15 +19,14 @@ const { class: className } = Astro.props;
 		emitThemeChange,
 		getStoredTheme,
 	} from '@/lib/theme';
-	// document.querySelector("meta[name='theme-color']")?.setAttribute('content', '#ffffff');
+
 	const inputs = Array.from(
 		document.getElementsByClassName('theme-controller'),
 	);
 
-	function setInitialTheme(input: HTMLInputElement) {
+	function setInputToStoredTheme(input: HTMLInputElement) {
 		const storedTheme = getStoredTheme();
 		if (!storedTheme) return;
-		// if the stored theme is dark, uncheck the checkbox
 		if (storedTheme === DARK_THEME_NAME) {
 			input.checked = false;
 		} else if (storedTheme === LIGHT_THEME_NAME) {
@@ -46,7 +49,12 @@ const { class: className } = Astro.props;
 
 	inputs.forEach((input) => {
 		input.addEventListener('change', handleInputChange);
-		setInitialTheme(input);
+
+		if (!(input instanceof HTMLInputElement)) {
+			console.warn('selected theme input is not an input');
+			return;
+		}
+		setInputToStoredTheme(input);
 	});
 </script>
 
@@ -63,15 +71,46 @@ const { class: className } = Astro.props;
 	<Icon
 		name="theme toggle"
 		path={weatherSunny}
-		class="swap-on h-7 w-7 fill-current"
+		class="theme-icon swap-on invisible h-7 w-7 fill-current"
 		aria-hidden="true"
 		focusable="false"
 	/>
 	<Icon
 		name="theme toggle"
 		path={weatherNight}
-		class="swap-off h-7 w-7 fill-current"
+		class="theme-icon swap-off invisible h-7 w-7 fill-current"
 		aria-hidden="true"
 		focusable="false"
 	/>
 </label>
+<script
+	is:inline
+	define:vars={{ THEME_STORAGE_KEY, LIGHT_THEME_NAME, DARK_THEME_NAME }}
+>
+	'use strict';
+	function getStoredTheme() {
+		if (!(typeof localStorage !== 'undefined')) {
+			console.warn('local storage is not available');
+			return '';
+		}
+		const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+		return storedTheme || '';
+	}
+	function setInputToStoredTheme(input) {
+		const storedTheme = getStoredTheme();
+		if (!storedTheme) return;
+		if (storedTheme === DARK_THEME_NAME) {
+			input.checked = false;
+		} else if (storedTheme === LIGHT_THEME_NAME) {
+			input.checked = true;
+		}
+	}
+	const inputs = Array.from(
+		document.getElementsByClassName('theme-controller'),
+	);
+	inputs.forEach((input) => {
+		setInputToStoredTheme(input);
+	});
+	const icons = Array.from(document.getElementsByClassName('theme-icon'));
+	icons.forEach((icon) => icon.classList.toggle('invisible'));
+</script>
