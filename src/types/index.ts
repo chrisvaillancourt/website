@@ -22,4 +22,13 @@ interface SiteMeta {
 	articleDate?: string | undefined;
 }
 
-export type { IElement, PaginationLink, SiteMeta, PostCollectionEntry, Posts };
+type Links = readonly { readonly path: string; readonly title: string }[];
+
+export type {
+	IElement,
+	PaginationLink,
+	SiteMeta,
+	PostCollectionEntry,
+	Posts,
+	Links,
+};
