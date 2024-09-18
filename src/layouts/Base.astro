@@ -4,8 +4,8 @@ import BaseHead from '@/components/BaseHead';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SkipLink from '@/components/SkipLink';
-
 import { siteConfig } from '@/site.config';
+import { NAV_LINKS, FAVICON } from '@/lib/constants';
 
 interface Props {
 	meta: SiteMeta;
@@ -27,7 +27,7 @@ const {
 	</head>
 	<body>
 		<SkipLink />
-		<Header>
+		<Header logo={FAVICON} links={NAV_LINKS}>
 			<Fragment slot="title">Chris Vaillancourt</Fragment>
 		</Header>
 		<main id="main" class="flex-1">
