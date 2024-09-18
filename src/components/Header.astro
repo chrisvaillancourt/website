@@ -1,7 +1,12 @@
 ---
 import Link from '@/components/Link';
-import { NAV_LINKS, FAVICON } from '@/lib/constants';
 
+interface Props {
+	logo: string;
+	links?: readonly { path: string; title: string }[];
+}
+
+const { logo, links = [] } = Astro.props;
 const url = new URL(Astro.request.url);
 ---
 
@@ -12,27 +17,29 @@ const url = new URL(Astro.request.url);
 		class="flex items-center"
 		aria-current={url.pathname === '/' ? 'page' : false}
 	>
-		<div class="pe-3 text-3xl">{FAVICON}</div>
+		<div class="pe-3 text-3xl">{logo}</div>
 		<span class="header-title text-2xl font-bold">
 			<slot name="title" />
 		</span>
 	</Link>
-	<nav class="ml-8 mt-5 flex items-center sm:ml-0 sm:mt-0">
-		<ul class="flex divide-x divide-dashed divide-accent text-accent">
-			{
-				NAV_LINKS.map((link) => (
-					<li>
-						<Link
-							href={link.path}
-							no-underline
-							class="px-4 py-4 sm:py-0 sm:hover:underline"
-							aria-current={url.pathname === link.path ? 'page' : false}
-						>
-							{link.title}
-						</Link>
-					</li>
-				))
-			}
-		</ul>
-	</nav>
+	{
+		links.length > 0 && (
+			<nav class="ml-8 mt-5 flex items-center sm:ml-0 sm:mt-0">
+				<ul class="flex divide-x divide-dashed divide-accent text-accent">
+					{links.map((link) => (
+						<li>
+							<Link
+								href={link.path}
+								no-underline
+								class="px-4 py-4 sm:py-0 sm:hover:underline"
+								aria-current={url.pathname === link.path ? 'page' : false}
+							>
+								{link.title}
+							</Link>
+						</li>
+					))}
+				</ul>
+			</nav>
+		)
+	}
 </header>
