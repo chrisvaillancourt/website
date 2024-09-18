@@ -23,7 +23,7 @@ const url = new URL(Astro.request.url);
 		</span>
 	</Link>
 	{
-		links.length > 0 && (
+		links?.length > 0 && (
 			<nav class="ml-8 mt-5 flex items-center sm:ml-0 sm:mt-0">
 				<ul class="flex divide-x divide-dashed divide-accent text-accent">
 					{links.map((link) => (
