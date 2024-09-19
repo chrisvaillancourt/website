@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.9.3",
-		"@astrojs/mdx": "^3.1.6",
+		"@astrojs/mdx": "^3.1.7",
 		"@astrojs/sitemap": "^3.1.6",
 		"@astrojs/tailwind": "^5.1.1",
 		"@playwright/test": "^1.47.1",
@@ -39,12 +39,12 @@
 		"tailwindcss": "^3.4.12",
 		"typescript": "^5.6.2",
 		"vitest": "^2.1.1",
-		"wrangler": "^3.78.5"
+		"wrangler": "^3.78.6"
 	},
 	"dependencies": {
 		"@astrojs/rss": "^4.0.7",
 		"@mdi/js": "^7.4.47",
-		"astro": "^4.15.7",
+		"astro": "^4.15.8",
 		"dotenv": "^16.4.5",
 		"dotenv-expand": "^11.0.6",
 		"remark-unwrap-images": "^4.0.0",
