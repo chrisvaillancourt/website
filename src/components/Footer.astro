@@ -26,18 +26,19 @@ const year = new Date().getFullYear();
 	</div>
 	{
 		links?.length > 0 && (
-			<nav
-				aria-label="More on this site"
-				class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
-			>
-				{links.map((link) => (
-					<Link
-						href={link.path}
-						class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
-					>
-						{link.title}
-					</Link>
-				))}
+			<nav aria-label="More on this site">
+				<ul class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500">
+					{links.map((link) => (
+						<li>
+							<Link
+								href={link.path}
+								class="sm:hover:text-textColor px-4 py-2 sm:px-2 sm:py-0 sm:hover:underline"
+							>
+								{link.title}
+							</Link>
+						</li>
+					))}
+				</ul>
 			</nav>
 		)
 	}
