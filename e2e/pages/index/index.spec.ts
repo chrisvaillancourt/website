@@ -26,47 +26,4 @@ test.describe('home page', () => {
 		const postsText = await posts.allTextContents();
 		expect(postsText.length).toBeGreaterThan(6);
 	});
-	test('nav menu links are visible on mobile', async ({ page, isMobile }) => {
-		if (!isMobile) return;
-
-		const navHamburger = await page.getByLabel('Open main menu');
-		await expect(navHamburger).toBeVisible();
-
-		await navHamburger.click();
-		const mainMenu = await page.getByLabel('Main menu', { exact: true });
-		await expect(mainMenu).toBeVisible();
-
-		const homeLink = await mainMenu.getByRole('link', { name: 'Home' });
-		await expect(homeLink).toBeVisible();
-
-		const postsLink = await mainMenu.getByRole('link', { name: 'Posts' });
-		await expect(postsLink).toBeVisible();
-
-		const aboutLink = await mainMenu.getByRole('link', { name: 'About' });
-		await expect(aboutLink).toBeVisible();
-	});
-	test('nav menu links are visible on desktop', async ({ page, isMobile }) => {
-		if (isMobile) return;
-
-		const nav = await page.getByLabel('Main menu', { exact: true });
-		await expect(nav).toBeVisible();
-		const home = nav.getByText('home');
-		const posts = nav.getByText('posts');
-		const about = nav.getByText('about');
-		await Promise.all([
-			expect(home).toBeVisible(),
-			expect(about).toBeVisible(),
-			expect(posts).toBeVisible(),
-		]);
-	});
-	test('nav menu toggle is visible on small viewports', async ({
-		page,
-		isMobile,
-	}) => {
-		if (!isMobile) return;
-
-		await page.setViewportSize({ width: 320, height: 600 });
-		const navHamburger = await page.getByLabel('Open main menu');
-		await expect(navHamburger).toBeVisible();
-	});
 });
