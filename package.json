@@ -45,7 +45,6 @@
 		"@astrojs/rss": "^4.0.7",
 		"@mdi/js": "^7.4.47",
 		"astro": "^4.15.8",
-		"destr": "^2.0.3",
 		"dotenv": "^16.4.5",
 		"dotenv-expand": "^11.0.6",
 		"remark-unwrap-images": "^4.0.0",

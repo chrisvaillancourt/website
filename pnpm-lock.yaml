@@ -17,9 +17,6 @@ importers:
       astro:
         specifier: ^4.15.8
         version: 4.15.8(@types/node@20.16.5)(rollup@4.22.0)(typescript@5.6.2)
-      destr:
-        specifier: ^2.0.3
-        version: 2.0.3
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -1399,9 +1396,6 @@ packages:
   dequal@2.0.3:
     resolution: {integrity: sha512-0je+qPKHEMohvfRTCEo3CrPG6cAzAYgmzKyxRiYSSDkS6eGJdyVJm7WaYA5ECaAD9wLB2T4EEeymA5aFVcYXCA==}
     engines: {node: '>=6'}
-
-  destr@2.0.3:
-    resolution: {integrity: sha512-2N3BOUU4gYMpTP24s5rF5iP7BDr7uNTCs4ozw3kf/eKfvWSIu93GEBi5m427YoyJoeOzQ5smuu4nNAPGb8idSQ==}
 
   detect-libc@2.0.3:
     resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
@@ -4450,8 +4444,6 @@ snapshots:
   defu@6.1.4: {}
 
   dequal@2.0.3: {}
-
-  destr@2.0.3: {}
 
   detect-libc@2.0.3:
     optional: true
