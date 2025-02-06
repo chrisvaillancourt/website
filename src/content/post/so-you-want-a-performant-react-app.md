@@ -116,7 +116,7 @@ Use altnertives like [linaria](https://linaria.dev),
 
 ## Avoid unnecessary re-renders
 
-[See my post on this](./reducing-react-re-renders-with-memoized-references/).
+[See my post on this](/posts/reducing-react-re-renders-with-memoized-references).
 
 ### Avoid extra calculations
 
