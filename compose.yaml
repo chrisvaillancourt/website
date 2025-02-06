@@ -13,7 +13,7 @@ services:
       dockerfile: Dockerfile
       args:
         PNPM_VERSION: 9.15.4
-        NODE_VERSION: 20.17
+        NODE_VERSION: 22.13
     environment:
       NODE_ENV: development
     container_name: website
