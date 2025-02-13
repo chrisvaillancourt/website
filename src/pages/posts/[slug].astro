@@ -3,6 +3,7 @@ import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import { render } from 'astro:content';
 import BlogPostLayout from '@/layouts/BlogPost';
 import { getPostsCollection } from '@/lib/post';
+// this is the individual blog post route
 
 export const getStaticPaths = (async () => {
 	// we have to use an arrow function to leverage `satisfies` operator
