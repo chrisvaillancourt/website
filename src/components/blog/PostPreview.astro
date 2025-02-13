@@ -2,7 +2,7 @@
 import type { IElement, PostCollectionEntry } from '@/types';
 import { getFormattedDate } from '@/lib/date';
 import Link from '@/components/Link';
-
+import { POSTS_PATH } from '@/lib/constants/links';
 interface Props extends IElement {
 	post: PostCollectionEntry;
 	withDesc?: boolean;
@@ -16,7 +16,7 @@ const postDate = getFormattedDate(date);
 
 <time datetime={datetime} class="min-w-[120px] opacity-80">{postDate}</time>
 <Element>
-	<Link href={`/posts/${post.id}/`}>
+	<Link href={`${POSTS_PATH}${post.id}/`}>
 		{post.data.title}
 	</Link>
 </Element>
