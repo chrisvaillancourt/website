@@ -3,8 +3,8 @@ import { test, expect } from '@playwright/test';
 test('code element has no padding', async ({ page }) => {
 	await page.goto('/posts');
 
-	const main = await page.getByRole('main');
-	const postContainer = await main.getByLabel('Blog post list');
+	const main = page.getByRole('main');
+	const postContainer = main.getByLabel('Blog post list');
 	const posts = await postContainer.getByRole('link').all();
 
 	const postLinks = (

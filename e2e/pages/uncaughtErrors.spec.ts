@@ -11,7 +11,7 @@ test.describe('no console errors', () => {
 		const errors = collectPageConsoleErrors(page);
 		const routes = ['/', '/posts', '/about', '/tags'];
 		await waitForUrlsToLoad(page, routes);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 
 	test('posts routes ', async ({ page }) => {
@@ -22,7 +22,7 @@ test.describe('no console errors', () => {
 			linkPrefix: '/posts/',
 		});
 		await waitForUrlsToLoad(page, postUrls);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 
 	test('tag routes ', async ({ page }) => {
@@ -34,7 +34,7 @@ test.describe('no console errors', () => {
 		});
 
 		await waitForUrlsToLoad(page, tagRoutes);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 });
 
@@ -43,7 +43,7 @@ test.describe('no uncaught errors', () => {
 		const errors = collectPageErrors(page);
 		const routes = ['/', '/posts', '/about', '/tags'];
 		await waitForUrlsToLoad(page, routes);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 
 	test('posts routes ', async ({ page }) => {
@@ -54,7 +54,7 @@ test.describe('no uncaught errors', () => {
 			linkPrefix: '/posts/',
 		});
 		await waitForUrlsToLoad(page, postUrls);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 
 	test('tag routes ', async ({ page }) => {
@@ -65,6 +65,6 @@ test.describe('no uncaught errors', () => {
 			linkPrefix: '/tags/',
 		});
 		await waitForUrlsToLoad(page, tagRoutes);
-		await expect(errors).toMatchObject([]);
+		expect(errors).toMatchObject([]);
 	});
 });
