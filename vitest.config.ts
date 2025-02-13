@@ -2,7 +2,6 @@
 import { getViteConfig } from 'astro/config';
 
 export default getViteConfig({
-	// @ts-expect-error
 	test: {
 		exclude: [
 			'**/node_modules/**',

@@ -16,11 +16,11 @@ test.describe('home page', () => {
 	});
 
 	test('has posts heading', async ({ page }) => {
-		const postsHeading = await page.getByRole('heading', { name: 'Posts' });
+		const postsHeading = page.getByRole('heading', { name: 'Posts' });
 		await expect(postsHeading).toBeVisible();
 	});
 	test('has recent posts', async ({ page }) => {
-		const postsList = await page.getByLabel('Blog post list');
+		const postsList = page.getByLabel('Blog post list');
 		await expect(postsList).toBeVisible();
 		const posts = postsList.getByRole('listitem');
 		const postsText = await posts.allTextContents();
