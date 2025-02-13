@@ -45,6 +45,12 @@
 		},
 		"types": ["vitest/importMeta"]
 	},
-	"include": ["src/**/*.ts", "src/**/*.astro", "./*.*js"],
-	"exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"]
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": [
+		"node_modules",
+		"**/node_modules/*",
+		".vscode",
+		"dist",
+		"playwright-report/**/*"
+	]
 }

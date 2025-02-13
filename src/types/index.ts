@@ -1,5 +1,5 @@
 import type { CollectionEntry } from 'astro:content';
-import type { postCollectionName } from '@/content/config';
+import type { postCollectionName } from '@/content.config';
 
 type PostCollectionEntry = CollectionEntry<typeof postCollectionName>;
 

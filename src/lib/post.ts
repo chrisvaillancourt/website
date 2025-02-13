@@ -1,12 +1,10 @@
 import { getCollection } from 'astro:content';
-import { postCollectionName } from '@/content/config';
-import { POSTS_PATH } from '@/lib/constants';
+import { postCollectionName } from '@/content.config';
 import type { Posts } from '@/types';
 import { isProd } from '@/lib/env';
 
 export {
 	getPostsCollection,
-	postUrl,
 	postsByDate,
 	getUniqueTags,
 	getUniqueTagsWithCount,
@@ -20,15 +18,6 @@ function getPostsCollection() {
 		// only show draft posts during dev
 		isProd() ? data.draft !== true : true,
 	);
-}
-
-/**
- * Get the full URL of a post.
- * Used to link to a post's page.
- */
-function postUrl(slug: string) {
-	const routePrefix = POSTS_PATH;
-	return `${routePrefix}/${slug}`;
 }
 
 function postsByDate(posts: Posts) {

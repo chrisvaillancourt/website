@@ -1,3 +1,4 @@
+// @ts-nocheck updating tsconfig with astro v5 changes started checking this for ts errors
 import { defineConfig, devices } from '@playwright/test';
 import { env } from './src/lib/env';
 /**

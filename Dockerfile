@@ -16,6 +16,11 @@ ENV PATH="$PNPM_HOME:$PATH"
 # https://github.com/nodejs/corepack/blob/main/README.md#environment-variables
 ENV COREPACK_ENABLE_AUTO_PIN=0
 
+# ! Temporary fix for outdated corepack signatures see:
+#!  https://github.com/nodejs/corepack/issues/612
+RUN npm install --global corepack@0.31
+
+
 RUN corepack enable \
     && corepack prepare pnpm@$PNPM_VERSION --activate \
     && apt-get update \
