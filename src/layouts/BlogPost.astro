@@ -1,4 +1,5 @@
 ---
+import { render } from 'astro:content';
 import type { PostCollectionEntry } from '@/types';
 import BaseLayout from '@/layouts/Base';
 import Link from '@/components/Link';
@@ -12,13 +13,17 @@ interface Props {
 const { post } = Astro.props;
 const {
 	data: { title, description, ogImage, publishDate },
-	slug,
+	id,
 } = post;
-const socialImage = ogImage ?? `/og-image/${slug}.png`;
+const socialImage = ogImage ?? `/og-image/${id}.png`;
 const articleDate = publishDate.toISOString();
-const { headings } = await post.render();
+const { headings } = await render(post);
 ---
 
+<script define:vars={{ socialImage }} type="module">
+	// TODO check if og image is working
+	console.log(socialImage);
+</script>
 <BaseLayout meta={{ title, description, articleDate, ogImage: socialImage }}>
 	<div class="gap-x-10 lg:flex lg:items-start">
 		{
@@ -26,7 +31,7 @@ const { headings } = await post.render();
 				<aside class="sticky top-20 order-2 -me-32 hidden basis-64 lg:block">
 					<h2 class="font-semibold">Table of Contents</h2>
 					<ul class="mt-4 text-xs">
-						{headings.map(({ depth, slug, text }) => (
+						{headings.map(({ depth, text, slug }) => (
 							<li class="line-clamp-2 hover:text-accent">
 								<Link
 									no-underline

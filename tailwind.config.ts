@@ -54,6 +54,7 @@ export default {
 			transitionProperty: {
 				height: 'height',
 			},
+			// @ts-expect-error
 			typography: (theme) => ({
 				// TODO look at daisyUI + typography; what do we lose by removing this?
 				// cactus: {
