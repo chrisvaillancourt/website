@@ -106,5 +106,5 @@ export const getStaticPaths = (async () => {
 	const posts = await getPostsCollection();
 	return posts
 		.filter(({ data }) => !data.ogImage)
-		.map(({ slug }) => ({ params: { slug } }));
+		.map(({ id }) => ({ params: { id } }));
 }) satisfies GetStaticPaths;
