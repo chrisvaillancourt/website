@@ -12,8 +12,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        PNPM_VERSION: 10.3.0
-        NODE_VERSION: 22.13
+        PNPM_VERSION: 10.4.1
+        NODE_VERSION: 22.14
     environment:
       NODE_ENV: development
     container_name: website
