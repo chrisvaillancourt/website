@@ -94,7 +94,7 @@ typically resolves the issue.
 After the dev container starts and installs dependencies, run the local dev
 server by running `pnpm dev` from the dev container.
 
-## Core dependency changelogs
+## Astro dependency changelogs
 
 This project uses astro dependencies that have changelogs in separate locations.
 Below is a list of frequently referenced changelogs:
@@ -105,3 +105,7 @@ Below is a list of frequently referenced changelogs:
 - [@astrojs/tailwind](https://github.com/withastro/astro/blob/main/packages/integrations/tailwind/CHANGELOG.md)
 - [@astrojs/rss](https://github.com/withastro/astro/blob/main/packages/astro-rss/CHANGELOG.md)
 - [@astrojs/check](https://github.com/withastro/language-tools/blob/main/packages/astro-check/CHANGELOG.md)
+
+## Misc. dependency changelogs
+
+- [prettier](https://github.com/prettier/prettier/blob/main/CHANGELOG.md)
