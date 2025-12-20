@@ -93,7 +93,7 @@ export async function GET({ params: { slug } }: APIContext) {
 		month: 'long',
 	});
 	const svg = await satori(markup(title, postDate), ogOptions);
-	const png = new Resvg(svg).render().asPng();
+	const png = new Uint8Array(new Resvg(svg).render().asPng());
 
 	return new Response(png, {
 		headers: {

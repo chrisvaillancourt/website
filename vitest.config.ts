@@ -16,4 +16,4 @@ export default getViteConfig({
 	define: {
 		'import.meta.vitest': 'undefined',
 	},
-});
+} as Parameters<typeof getViteConfig>[0]);
