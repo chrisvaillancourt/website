@@ -55,6 +55,8 @@
 		"zod": "^3.24.2"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": ["sharp"]
+		"onlyBuiltDependencies": [
+			"sharp"
+		]
 	}
 }
