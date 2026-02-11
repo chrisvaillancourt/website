@@ -13,7 +13,6 @@ services:
   dev:
     build:
       context: .
-      dockerfile: Dockerfile
       target: development
       args:
         <<: *build-args
@@ -27,7 +26,6 @@ services:
       - playwright-browsers:/home/node/.cache/ms-playwright
     ports:
       - '4321:4321'
-    command: pnpm run dev
     tty: true
     stdin_open: true
 
@@ -35,7 +33,6 @@ services:
   production:
     build:
       context: .
-      dockerfile: Dockerfile
       target: production
       args:
         <<: *build-args
@@ -48,10 +45,12 @@ services:
       - production
 
   # Run unit and e2e tests
+  # Note: The bind mount overrides the Dockerfile COPY, enabling testing of
+  # local changes without a full rebuild. The command below is a subset of the
+  # Dockerfile CMD (which also runs format + tsc checks) for faster iteration.
   test:
     build:
       context: .
-      dockerfile: Dockerfile
       target: test
       args:
         <<: *build-args
@@ -71,7 +70,6 @@ services:
   build:
     build:
       context: .
-      dockerfile: Dockerfile
       target: deps
       args:
         <<: *build-args
