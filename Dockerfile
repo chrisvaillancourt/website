@@ -72,20 +72,22 @@ RUN apt-get update \
     && echo "node ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/node \
     && chmod 0440 /etc/sudoers.d/node
 
-RUN mkdir -p /app && chown node:node /app
+RUN chown node:node /app
 
 USER node
 WORKDIR /app
 
+# Use a user-writable store path since we're running as non-root (USER node).
+# The base stage sets /pnpm/store which is owned by root.
 RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
 
 COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=deps --chown=node:node /app/package.json ./
 
-RUN pnpm dlx playwright install chromium chromium-headless-shell firefox webkit
+RUN pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
 
-CMD ["pnpm", "run", "dev"]
 EXPOSE 4321
+CMD ["pnpm", "run", "dev"]
 
 # --- test: run unit and e2e tests -------------------------------------------
 FROM development AS test
@@ -102,17 +104,17 @@ COPY --from=deps /app/package.json ./
 COPY . .
 
 # .env is excluded by .dockerignore, so use .env-example as fallback
-RUN cp -n .env-example .env 2>/dev/null || true
-RUN pnpm run build
+RUN cp -n .env-example .env 2>/dev/null || true \
+    && pnpm run build
 
 # --- production: serve built assets ------------------------------------------
 FROM base AS production
 
-WORKDIR /app
+USER node
 
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/package.json ./
-COPY --from=deps /app/node_modules ./node_modules
+COPY --from=build --chown=node:node /app/dist ./dist
+COPY --from=build --chown=node:node /app/package.json ./
+COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 
-CMD ["pnpm", "run", "preview"]
 EXPOSE 4321
+CMD ["pnpm", "run", "preview"]
