@@ -51,6 +51,10 @@
 		"remark-unwrap-images": "4.0.1",
 		"satori": "^0.12.1",
 		"satori-html": "^0.3.2",
+		"sharp": "^0.34.5",
 		"zod": "^3.24.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": ["sharp"]
 	}
 }
