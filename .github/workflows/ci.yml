@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Create .env file
+        run: cp .env-example .env
+
       - name: Check formatting
         run: pnpm format
 

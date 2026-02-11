@@ -9,6 +9,8 @@ on:
       - '.dockerignore'
       - '.devcontainer/**'
       - '.github/workflows/docker.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
   pull_request:
     branches: [main]
     paths:
@@ -17,6 +19,8 @@ on:
       - '.dockerignore'
       - '.devcontainer/**'
       - '.github/workflows/docker.yml'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -60,9 +64,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Create .env file
-        run: cp .env-example .env
-
       - name: Build production image
         uses: docker/build-push-action@v6
         with:
@@ -85,9 +86,6 @@ jobs:
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Create .env file
-        run: cp .env-example .env
 
       - name: Build test image
         uses: docker/build-push-action@v6
