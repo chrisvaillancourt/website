@@ -10,3 +10,6 @@ coverage
 pnpm-lock.yaml
 
 .pnpm-store/**
+
+# Astro generated types
+.astro

@@ -1,51 +1,119 @@
-# syntax=docker/dockerfile:1
-# # Dockerfile reference
-# https://docs.docker.com/engine/reference/builder/
+# syntax=docker/dockerfile:1.7
 
-ARG NODE_VERSION
+# Multi-stage build supporting development, testing, and production.
+#
+# Targets:
+#   base        - Node.js setup with pnpm
+#   deps        - Install dependencies
+#   development - Full dev environment with Playwright browsers
+#   test        - Run tests (unit + e2e)
+#   build       - Build production static assets
+#   production  - Serve production build
 
-FROM node:${NODE_VERSION}-slim
+ARG NODE_VERSION=24
+ARG PNPM_VERSION=10.29.2
+
+# --- base: Node.js + pnpm ---------------------------------------------------
+FROM node:${NODE_VERSION}-slim AS base
 
 ARG PNPM_VERSION
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-# stop corepack from adding packageManager field to package.json
-# we don't need this since we already specify the package manager 
-# and version in the root compose.yaml
-# https://github.com/nodejs/corepack/blob/main/README.md#environment-variables
 ENV COREPACK_ENABLE_AUTO_PIN=0
 
-# ! Temporary fix for outdated corepack signatures see:
-#!  https://github.com/nodejs/corepack/issues/612
-RUN npm install --global corepack@0.31
-
-
 RUN corepack enable \
-    && corepack prepare pnpm@$PNPM_VERSION --activate \
-    && apt-get update \
-    # need to add ability to use sudo to node user so we can install playwright dependencies in dev container
-    && apt-get install -y sudo \
-    && echo node ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/node \
+    && corepack prepare pnpm@${PNPM_VERSION} --activate
+
+WORKDIR /app
+
+# https://github.com/pnpm/pnpm/issues/5803
+RUN pnpm config set store-dir /pnpm/store
+
+# --- deps: install dependencies ---------------------------------------------
+FROM base AS deps
+
+COPY pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+
+COPY package.json ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install --offline --frozen-lockfile
+
+# --- development: full dev environment ---------------------------------------
+FROM base AS development
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        sudo \
+        git \
+        curl \
+        ca-certificates \
+        procps \
+        # Playwright system dependencies
+        libnss3 \
+        libnspr4 \
+        libatk1.0-0 \
+        libatk-bridge2.0-0 \
+        libcups2 \
+        libdrm2 \
+        libdbus-1-3 \
+        libxkbcommon0 \
+        libatspi2.0-0 \
+        libxcomposite1 \
+        libxdamage1 \
+        libxfixes3 \
+        libxrandr2 \
+        libgbm1 \
+        libasound2 \
+        libpango-1.0-0 \
+        libcairo2 \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "node ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/node \
     && chmod 0440 /etc/sudoers.d/node
+
+RUN chown node:node /app
+
+USER node
+WORKDIR /app
+
+# Use a user-writable store path since we're running as non-root (USER node).
+# The base stage sets /pnpm/store which is owned by root.
+RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
+
+COPY --from=deps --chown=node:node /app/node_modules ./node_modules
+COPY --from=deps --chown=node:node /app/package.json ./
+
+RUN pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
+
+EXPOSE 4321
+CMD ["pnpm", "run", "dev"]
+
+# --- test: run unit and e2e tests -------------------------------------------
+FROM development AS test
+
+COPY --chown=node:node . .
+
+CMD ["sh", "-c", "pnpm format && pnpm tsc --noEmit && pnpm test run && pnpm test:e2e"]
+
+# --- build: production static assets ----------------------------------------
+FROM base AS build
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/package.json ./
+COPY . .
+
+RUN cp .env-example .env \
+    && pnpm run build
+
+# --- production: serve built assets ------------------------------------------
+FROM base AS production
 
 USER node
 
-WORKDIR /home/app
+COPY --from=build --chown=node:node /app/dist ./dist
+COPY --from=build --chown=node:node /app/package.json ./
+COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 
-# Need to change the default store location to avoid permission errors
-# https://github.com/pnpm/pnpm/issues/5803#issuecomment-1974820613
-RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
-
-COPY --chown=node:node pnpm-lock.yaml ./
-
-RUN pnpm fetch
-
-COPY --chown=node:node package.json ./
-
-RUN pnpm install --offline --frozen-lockfile \
-    && pnpm dlx playwright install --with-deps
-
-COPY --chown=node:node  . ./
-
-# CMD ["pnpm", "run", "dev"]
+EXPOSE 4321
+CMD ["pnpm", "run", "preview"]

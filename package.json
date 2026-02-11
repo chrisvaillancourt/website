@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"description": "Chris Vaillancourt's personal website.",
 	"type": "module",
+	"packageManager": "pnpm@10.29.2",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"dev": "astro check --watch & astro dev --host",
@@ -50,6 +51,12 @@
 		"remark-unwrap-images": "4.0.1",
 		"satori": "^0.12.1",
 		"satori-html": "^0.3.2",
+		"sharp": "^0.34.5",
 		"zod": "^3.24.2"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"sharp"
+		]
 	}
 }

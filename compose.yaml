@@ -1,57 +1,94 @@
-# Docker compose reference guide at
-# https://docs.docker.com/compose/compose-file/
+# Usage:
+#   Development:  docker compose up dev
+#   Production:   docker compose --profile production up production
+#   Test:         docker compose --profile test run --rm test
+#   Build only:   docker compose --profile build run --rm build
 
-# Here the instructions define your application as a service called "server".
-# This service is built from the Dockerfile in the current directory.
-# You can add other services your application may depend on here, such as a
-# database or a cache. For examples, see the Awesome Compose repository:
-# https://github.com/docker/awesome-compose
+x-build-args: &build-args
+  NODE_VERSION: '24'
+  PNPM_VERSION: '10.29.2'
+
 services:
-  website:
+  # Development with hot reloading
+  dev:
     build:
       context: .
-      dockerfile: Dockerfile
+      target: development
       args:
-        PNPM_VERSION: 10.4.1
-        NODE_VERSION: 22.14
+        <<: *build-args
+    container_name: website-dev
     environment:
-      NODE_ENV: development
-    container_name: website
-    command: pnpm run dev
-    tty: true
+      - NODE_ENV=development
     volumes:
-      - .:/website
+      - .:/app:cached
+      - node_modules:/app/node_modules
+      - pnpm-store:/home/node/.local/share/pnpm/store
+      - playwright-browsers:/home/node/.cache/ms-playwright
     ports:
-      - 4321:4321
-# The commented out section below is an example of how to define a PostgreSQL
-# database that your application can use. `depends_on` tells Docker Compose to
-# start the database before your application. The `db-data` volume persists the
-# database data between container restarts. The `db-password` secret is used
-# to set the database password. You must create `db/password.txt` and add
-# a password of your choosing to it before running `docker-compose up`.
-#     depends_on:
-#       db:
-#         condition: service_healthy
-#   db:
-#     image: postgres
-#     restart: always
-#     user: postgres
-#     secrets:
-#       - db-password
-#     volumes:
-#       - db-data:/var/lib/postgresql/data
-#     environment:
-#       - POSTGRES_DB=example
-#       - POSTGRES_PASSWORD_FILE=/run/secrets/db-password
-#     expose:
-#       - 5432
-#     healthcheck:
-#       test: [ "CMD", "pg_isready" ]
-#       interval: 10s
-#       timeout: 5s
-#       retries: 5
-# volumes:
-#   db-data:
-# secrets:
-#   db-password:
-#     file: db/password.txt
+      - '4321:4321'
+    tty: true
+    stdin_open: true
+
+  # Production preview
+  production:
+    build:
+      context: .
+      target: production
+      args:
+        <<: *build-args
+    container_name: website-production
+    environment:
+      - NODE_ENV=production
+    ports:
+      - '4321:4321'
+    profiles:
+      - production
+
+  # Run unit and e2e tests
+  # Note: The bind mount overrides the Dockerfile COPY, enabling testing of
+  # local changes without a full rebuild. The command below is a subset of the
+  # Dockerfile CMD (which also runs format + tsc checks) for faster iteration.
+  test:
+    build:
+      context: .
+      target: test
+      args:
+        <<: *build-args
+    container_name: website-test
+    environment:
+      - NODE_ENV=test
+      - CI=true
+    volumes:
+      - .:/app:cached
+      - node_modules:/app/node_modules
+      - playwright-browsers:/home/node/.cache/ms-playwright
+    profiles:
+      - test
+    command: sh -c "pnpm test run && pnpm test:e2e"
+
+  # Build production assets (outputs to ./dist on host).
+  # Targets deps (not build) because the bind mount provides source files;
+  # only node_modules from the deps stage are needed.
+  build:
+    build:
+      context: .
+      target: deps
+      args:
+        <<: *build-args
+    container_name: website-build
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/app:cached
+      - node_modules:/app/node_modules
+    profiles:
+      - build
+    command: pnpm run build
+
+volumes:
+  node_modules:
+    name: website-node-modules
+  pnpm-store:
+    name: website-pnpm-store
+  playwright-browsers:
+    name: website-playwright-browsers
