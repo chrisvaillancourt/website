@@ -98,7 +98,7 @@ jobs:
 
       - name: Install Playwright browsers
         run:
-          pnpm dlx playwright install --with-deps chromium
+          pnpm exec playwright install --with-deps chromium
           chromium-headless-shell
 
       - name: Build site

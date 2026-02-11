@@ -26,6 +26,12 @@ export default defineConfig({
 		trace: 'on-first-retry',
 	},
 
+	webServer: {
+		command: 'pnpm preview',
+		port: 4321,
+		reuseExistingServer: !process.env.CI,
+	},
+
 	/* Configure projects for major browsers */
 	projects: [
 		{
