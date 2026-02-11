@@ -1,36 +1,61 @@
-# Include any files or directories that you don't want to be copied to your
-# container here (e.g., local build artifacts, temporary files, etc.).
-#
-# For more help, visit the .dockerignore file reference guide at
-# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+# Version control
+.git
+.gitattributes
 
-**/.classpath
-**/.dockerignore
-**/.env
-**/.git
-**/.gitignore
-!.gitignore
-**/.project
-**/.settings
-**/.toolstarget
-**/.vs
-**/.vscode
-**/.next
-**/.cache
-**/*.*proj.user
-**/*.dbmdl
-**/*.jfm
-**/charts
-**/docker-compose*
-**/compose*
-**/Dockerfile*
-**/node_modules
-**/npm-debug.log
-**/obj
-**/secrets.dev.yaml
-**/values.dev.yaml
-**/build
-**/dist
+# Dependencies (installed in container)
+node_modules
+.pnpm-store
+
+# Build output (generated in container)
+dist
+build
+.astro
+
+# IDE and editor
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Docker files (not needed in context)
+Dockerfile*
+docker-compose*.yml
+docker-compose*.yaml
+compose*.yml
+compose*.yaml
+.docker
+.devcontainer
+
+# Environment and secrets
+.env
+.env.*
+!.env-example
+*.pem
+*.key
+secrets/
+
+# Documentation
+*.md
+!README.md
 LICENSE
-**/.md
-**/.DS_Store
+CHANGELOG*
+docs/
+
+# Testing
+coverage
+.nyc_output
+test-results
+playwright-report
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Miscellaneous
+.cache
+.temp
+.tmp
+*.bak
+*.backup
