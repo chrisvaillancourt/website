@@ -103,8 +103,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/package.json ./
 COPY . .
 
-# .env is excluded by .dockerignore, so use .env-example as fallback
-RUN cp -n .env-example .env 2>/dev/null || true \
+RUN cp .env-example .env \
     && pnpm run build
 
 # --- production: serve built assets ------------------------------------------

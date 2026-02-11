@@ -21,7 +21,7 @@
 		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 
-	"postCreateCommand": "pnpm install && pnpm dlx playwright install --with-deps",
+	"postCreateCommand": "pnpm install",
 	"postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
 
 	"customizations": {

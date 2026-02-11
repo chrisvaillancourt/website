@@ -26,14 +26,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  NODE_VERSION: '24'
-  PNPM_VERSION: '10.29.2'
-
 jobs:
-  build-development:
-    name: Build Development Image
+  build-images:
+    name: Build ${{ matrix.target }} Image
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target: [development, production, test]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,64 +40,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build development image
+      - name: Build ${{ matrix.target }} image
         uses: docker/build-push-action@v6
         with:
           context: .
-          target: development
+          target: ${{ matrix.target }}
           push: false
-          tags: website:development
-          build-args: |
-            NODE_VERSION=${{ env.NODE_VERSION }}
-            PNPM_VERSION=${{ env.PNPM_VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  build-production:
-    name: Build Production Image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build production image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          target: production
-          push: false
-          tags: website:production
-          build-args: |
-            NODE_VERSION=${{ env.NODE_VERSION }}
-            PNPM_VERSION=${{ env.PNPM_VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-  build-test:
-    name: Build Test Image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build test image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          target: test
-          push: false
-          tags: website:test
-          build-args: |
-            NODE_VERSION=${{ env.NODE_VERSION }}
-            PNPM_VERSION=${{ env.PNPM_VERSION }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          tags: website:${{ matrix.target }}
+          cache-from: type=gha,scope=${{ matrix.target }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.target }}
 
   docker-compose:
     name: Verify Docker Compose

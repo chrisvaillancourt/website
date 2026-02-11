@@ -66,7 +66,9 @@ services:
       - test
     command: sh -c "pnpm test run && pnpm test:e2e"
 
-  # Build production assets (outputs to ./dist on host)
+  # Build production assets (outputs to ./dist on host).
+  # Targets deps (not build) because the bind mount provides source files;
+  # only node_modules from the deps stage are needed.
   build:
     build:
       context: .
