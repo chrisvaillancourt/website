@@ -99,6 +99,11 @@ CMD ["sh", "-c", "pnpm format && pnpm tsc --noEmit && pnpm test run && pnpm test
 # --- build: production static assets ----------------------------------------
 FROM base AS build
 
+# Sharp (used by Astro's image optimization) requires libvips at build time.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libvips-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=deps /app/node_modules ./node_modules
 COPY --from=deps /app/package.json ./
 COPY . .
