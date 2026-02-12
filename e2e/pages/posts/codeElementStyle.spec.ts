@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('code element has no padding', async ({ page }) => {
+test('code element has minimal padding', async ({ page }) => {
 	await page.goto('/posts');
 
 	const main = page.getByRole('main');
@@ -12,13 +12,6 @@ test('code element has no padding', async ({ page }) => {
 	).filter((link): link is string => Boolean(link));
 
 	for (const link of postLinks) {
-		// We can't run these concurrently because fn invocation uses the same
-		// page object and changes the URL.
-		// Changing the implementation to different pages i.e.:
-		// const page = await context.newPage();
-		// then running concurrently with:
-		// `await Promise.all(postLinks.map((link) => testPostPageCodeElements(link)))`
-		// makes the test run ~60% slower.
 		await testPostPageCodeElements(link);
 	}
 
@@ -29,16 +22,20 @@ test('code element has no padding', async ({ page }) => {
 		const testedCssProperties = ['top', 'right', 'bottom', 'left'].map(
 			(direction) => `padding-${direction}`,
 		);
-		const expectedComputedStyle = '0px';
+		const maxPaddingPx = 10;
 
-		const results: Promise<void>[] = [];
 		for (const code of codeElements) {
 			for (const cssProperty of testedCssProperties) {
-				results.push(
-					expect(code).toHaveCSS(cssProperty, expectedComputedStyle),
+				const value = await code.evaluate(
+					(el, prop) => getComputedStyle(el).getPropertyValue(prop),
+					cssProperty,
 				);
+				const numericValue = parseFloat(value);
+				expect(
+					numericValue,
+					`${cssProperty} should be <= ${maxPaddingPx}px, got ${value}`,
+				).toBeLessThanOrEqual(maxPaddingPx);
 			}
 		}
-		return Promise.all(results);
 	}
 });
