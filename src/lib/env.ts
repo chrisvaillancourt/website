@@ -1,25 +1,12 @@
-import dotenv from 'dotenv';
-import dotenvExpand from 'dotenv-expand';
 import { z } from 'zod';
 
 /**
  * The app's environment variables.
  */
 function env() {
-	return validateEnv(readEnv());
+	return validateEnv(import.meta.env);
 }
 
-/**
- * Get an object of all environment variables.
- */
-function readEnv() {
-	const _env = dotenv.config();
-	dotenvExpand.expand(_env);
-	const { parsed, error } = _env;
-	if (error) throw error;
-	if (!parsed) throw new Error('No environment variables exist.');
-	return parsed;
-}
 /**
  * Get the mode the app is running in.
  */
@@ -48,19 +35,13 @@ function isProd() {
  * Check if currently running server side.
  */
 function isSSR(): boolean {
-	// Vite specific
-	// https://vitejs.dev/guide/env-and-mode.html#env-variables
-	// ! can't use vite specific env var in playwright b/c not processed by vite
-	// TODO find a way to use vite env vars in playwright
-	// return import.meta.env.SSR;
-	// https://stackoverflow.com/questions/4224606/how-to-check-whether-a-script-is-running-under-node-js
 	return typeof process !== 'undefined' && process.release.name === 'node';
 }
 
 /**
  * Validate the environment variable object.
  */
-function validateEnv(env: ReturnType<typeof readEnv>) {
+function validateEnv(env: Record<string, unknown>) {
 	const envSchema = z.object({
 		APP_URL: z.string(),
 	});
@@ -76,8 +57,11 @@ if (import.meta.vitest) {
 		const result = isSSR();
 		expect(result).toBe(true);
 	});
-	it('has environment variables', () => {
-		const envVars = env();
-		expect(envVars).toHaveProperty('APP_URL');
+	it('validates env with APP_URL', () => {
+		const result = validateEnv({ APP_URL: 'http://localhost:4321' });
+		expect(result).toHaveProperty('APP_URL');
+	});
+	it('throws on missing APP_URL', () => {
+		expect(() => validateEnv({})).toThrow();
 	});
 }
