@@ -1,4 +1,39 @@
-@tailwind base;
+@import 'tailwindcss';
+
+@plugin "daisyui" {
+	themes:
+		night --default --prefersdark,
+		winter;
+}
+
+/* Custom winter theme overrides for accessible contrast */
+@plugin "daisyui/theme" {
+	name: 'winter';
+	default: false;
+	prefersdark: false;
+	--color-accent: oklch(59.3% 0.194 334.8);
+	--color-primary: oklch(57.3% 0.21 257.7);
+}
+
+/* Custom night theme override for cross-browser consistency */
+@plugin "daisyui/theme" {
+	name: 'night';
+	default: true;
+	prefersdark: true;
+	--color-base-100: oklch(20.77% 0.04 265.75);
+}
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+	--font-sans:
+		system-ui, -apple-system, 'Segoe UI', Roboto, Ubuntu, Cantarell,
+		'Noto Sans', sans-serif;
+	--font-serif: ui-serif, serif;
+	--font-mono:
+		'Dank Mono', 'Operator Mono', Inconsolata, 'Fira Mono', ui-monospace,
+		'SF Mono', Monaco, 'Droid Sans Mono', 'Source Code Pro', monospace;
+}
 
 @layer base {
 	html {
@@ -12,6 +47,3 @@
 		color-scheme: only dark;
 	}
 }
-
-@tailwind components;
-@tailwind utilities;

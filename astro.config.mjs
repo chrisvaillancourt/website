@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import remarkUnwrapImages from 'remark-unwrap-images';
+import rehypeUnwrapImages from 'rehype-unwrap-images';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,17 +15,11 @@ export default defineConfig({
 			theme: 'dracula',
 			wrap: true,
 		},
-		remarkPlugins: [remarkUnwrapImages],
+		rehypePlugins: [rehypeUnwrapImages],
 	},
-	integrations: [
-		mdx({}),
-		tailwind({
-			applyBaseStyles: false,
-		}),
-
-		sitemap(),
-	],
+	integrations: [mdx({}), sitemap()],
 	vite: {
+		plugins: [tailwindcss()],
 		optimizeDeps: {
 			exclude: ['@resvg/resvg-js'],
 		},
