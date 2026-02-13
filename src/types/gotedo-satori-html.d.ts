@@ -1,6 +1,15 @@
 declare module '@gotedo/satori-html' {
+	interface VNode {
+		type: string;
+		props: {
+			style?: Record<string, unknown>;
+			children?: string | VNode | VNode[];
+			[prop: string]: unknown;
+		};
+	}
+
 	export function html(
-		templates: TemplateStringsArray,
+		templates: string | TemplateStringsArray,
 		...expressions: unknown[]
-	): import('satori').SatoriNode;
+	): VNode;
 }

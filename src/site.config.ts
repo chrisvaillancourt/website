@@ -1,5 +1,3 @@
-import { DARK_THEME_VALUE } from '@/lib/theme';
-
 const siteConfig = {
 	// Used as both a meta property (src/components/BaseHead.astro) & the generated satori png (src/pages/og-image/[slug].png.ts)
 	author: 'Chris Vaillancourt',
@@ -11,9 +9,7 @@ const siteConfig = {
 	lang: 'en-US',
 	// Meta property, found in src/components/BaseHead.astro
 	ogLocale: 'en_US',
-	// Sets the meta data theme-color, found in src/components/BaseHead.astro. Toggling the dark mode will update the meta content with either light/dark color, implementation in src/layouts/Base.astro.
-	themeColorDark: DARK_THEME_VALUE,
-	// Date.prototype.toLocaleDateString() parameters, found in src/utils/date.ts.
+	// Date.prototype.toLocaleDateString() parameters, found in src/lib/date.ts.
 	date: {
 		locale: 'en-US',
 		options: {

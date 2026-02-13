@@ -1,6 +1,6 @@
 import daisyuiThemes from 'daisyui/theme/object';
 
-// ! NEED TO MANUALLY SYNC THEME `background_color` and `theme_color` IN `public/manifest.webmanifest
+// ! NEED TO MANUALLY SYNC THEME `background_color` and `theme_color` IN `public/manifest.webmanifest`
 
 const LIGHT_THEME_NAME = 'winter';
 const DARK_THEME_NAME = 'night';
