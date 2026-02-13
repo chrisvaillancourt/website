@@ -12,13 +12,16 @@ test.describe('navigation', () => {
 
 		expect(hrefs.length).toBeGreaterThan(0);
 
-		for (const href of hrefs) {
-			const url = href.startsWith('/') ? href : `/${href}`;
-			const response = await request.get(url);
-			expect(
-				response.status(),
-				`Expected 200 for ${url}, got ${response.status()}`,
-			).toBe(200);
+		const results = await Promise.all(
+			hrefs.map(async (href) => {
+				const url = href.startsWith('/') ? href : `/${href}`;
+				const response = await request.get(url);
+				return { url, status: response.status() };
+			}),
+		);
+
+		for (const { url, status } of results) {
+			expect(status, `Expected 200 for ${url}, got ${status}`).toBe(200);
 		}
 	});
 

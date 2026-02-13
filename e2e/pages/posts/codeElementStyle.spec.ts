@@ -22,6 +22,9 @@ test('code element has minimal padding', async ({ page }) => {
 		const testedCssProperties = ['top', 'right', 'bottom', 'left'].map(
 			(direction) => `padding-${direction}`,
 		);
+		// DaisyUI v5 applies small default padding to inline <code> elements.
+		// This threshold ensures code blocks don't have excessive padding
+		// while tolerating the framework's baseline styling.
 		const maxPaddingPx = 10;
 
 		for (const code of codeElements) {

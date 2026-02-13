@@ -43,6 +43,8 @@
 	html body {
 		@apply mx-auto flex h-full max-w-3xl flex-col px-8 pt-16 font-mono text-sm font-normal antialiased;
 	}
+	/* Forces dark color scheme for scrollbars, form controls, etc.
+		 ThemeToggle is currently orphaned — if re-enabled, make this conditional. */
 	:root {
 		color-scheme: only dark;
 	}
