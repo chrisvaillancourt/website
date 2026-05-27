@@ -85,7 +85,7 @@ COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=deps --chown=node:node /app/package.json ./
 COPY --from=deps --chown=node:node /app/pnpm-workspace.yaml ./
 
-RUN CI=true pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
+RUN CI=true ./node_modules/.bin/playwright install --with-deps chromium chromium-headless-shell firefox webkit
 
 EXPOSE 4321
 CMD ["pnpm", "run", "dev"]
