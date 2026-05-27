@@ -6,7 +6,7 @@
 
 x-build-args: &build-args
   NODE_VERSION: '24'
-  PNPM_VERSION: '10.29.2'
+  PNPM_VERSION: '11.3.0'
 
 services:
   # Development with hot reloading

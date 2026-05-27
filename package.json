@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "Chris Vaillancourt's personal website.",
 	"type": "module",
-	"packageManager": "pnpm@10.29.2",
+	"packageManager": "pnpm@11.3.0",
 	"scripts": {
 		"preinstall": "npx only-allow pnpm",
 		"dev": "astro check --watch & astro dev --host",
@@ -25,7 +25,7 @@
 		"@astrojs/mdx": "^4.0.8",
 		"@astrojs/sitemap": "^3.2.1",
 		"@astrojs/tailwind": "^6.0.0",
-		"@playwright/test": "^1.50.1",
+		"@playwright/test": "^1.60.0",
 		"@resvg/resvg-js": "^2.6.2",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.16",
@@ -53,10 +53,5 @@
 		"satori-html": "^0.3.2",
 		"sharp": "^0.34.5",
 		"zod": "^3.24.2"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"sharp"
-		]
 	}
 }

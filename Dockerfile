@@ -11,7 +11,7 @@
 #   production  - Serve production build
 
 ARG NODE_VERSION=24
-ARG PNPM_VERSION=10.29.2
+ARG PNPM_VERSION=11.3.0
 
 # --- base: Node.js + pnpm ---------------------------------------------------
 FROM node:${NODE_VERSION}-slim AS base
@@ -33,12 +33,12 @@ RUN pnpm config set store-dir /pnpm/store
 # --- deps: install dependencies ---------------------------------------------
 FROM base AS deps
 
-COPY pnpm-lock.yaml ./
+COPY pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 
 COPY package.json ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --offline --frozen-lockfile
+    CI=true pnpm install --offline --frozen-lockfile
 
 # --- development: full dev environment ---------------------------------------
 FROM base AS development
@@ -83,8 +83,9 @@ RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
 
 COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=deps --chown=node:node /app/package.json ./
+COPY --from=deps --chown=node:node /app/pnpm-workspace.yaml ./
 
-RUN pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
+RUN CI=true ./node_modules/.bin/playwright install --with-deps chromium firefox webkit
 
 EXPOSE 4321
 CMD ["pnpm", "run", "dev"]
