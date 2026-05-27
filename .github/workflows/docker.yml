@@ -11,6 +11,7 @@ on:
       - '.github/workflows/docker.yml'
       - 'package.json'
       - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
   pull_request:
     branches: [main]
     paths:
@@ -21,6 +22,7 @@ on:
       - '.github/workflows/docker.yml'
       - 'package.json'
       - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

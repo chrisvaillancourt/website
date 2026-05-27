@@ -11,7 +11,7 @@
 #   production  - Serve production build
 
 ARG NODE_VERSION=24
-ARG PNPM_VERSION=10.29.2
+ARG PNPM_VERSION=11.3.0
 
 # --- base: Node.js + pnpm ---------------------------------------------------
 FROM node:${NODE_VERSION}-slim AS base
@@ -33,12 +33,12 @@ RUN pnpm config set store-dir /pnpm/store
 # --- deps: install dependencies ---------------------------------------------
 FROM base AS deps
 
-COPY pnpm-lock.yaml ./
+COPY pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 
 COPY package.json ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --offline --frozen-lockfile
+    CI=true pnpm install --offline --frozen-lockfile
 
 # --- development: full dev environment ---------------------------------------
 FROM base AS development
