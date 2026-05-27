@@ -83,8 +83,9 @@ RUN pnpm config set store-dir /home/node/.local/share/pnpm/store
 
 COPY --from=deps --chown=node:node /app/node_modules ./node_modules
 COPY --from=deps --chown=node:node /app/package.json ./
+COPY --from=deps --chown=node:node /app/pnpm-workspace.yaml ./
 
-RUN pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
+RUN CI=true pnpm exec playwright install --with-deps chromium chromium-headless-shell firefox webkit
 
 EXPOSE 4321
 CMD ["pnpm", "run", "dev"]
